@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">BuKa</string>
+
+    <string name="label">BuKa AMANAH</string>
+    <string name="desc_label">Aplikasi Pencatatan Keuangan <br/>Distributor Amanah</string>
+    <string name="signup_label">Buat akun BuKa AMANAH dan nikmati <br />pencatatan keuaangan Anda</string>
+
+    <!-- Text Slide -->
+    <string name="slide1">Catat <b>transaksi keuangan</b> <br />Anda lebih mudah</string>
+    <string name="slide2">Semua data Anda terjamin <b>aman <br />dan terjaga kerahasian</b></string>
+    <string name="slide3">Report transaksi lebih <b>gampang <br />terbaca</b> dengan dilengkapi chart</string>
+    <string name="slide4">Lebih <b>produktif</b> karena tinggal <br />install aplikasi BuKa AMANAH</string>
+
+    <!-- Button Slide -->
+    <string name="login">Masuk</string>
+    <string name="signup">Daftar</string>
+
+    <string name="signup_nama_lengkap_hint">Nama Lengkap</string>
+    <string name="signup_kata_sandi_hint">Kata Sandi</string>
+    <string name="signup_no_wa_hint">No. Handphone / WA</string>
+    <string name="signup_distributor_cabang_hint">Distributor Cabang</string>
+    <string name="signup_alamat_hint">Alamat Rumah</string>
+    <string name="login_username_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_signup_hint">Belum punya akun ? <b>Daftar disini</b></string>
+    <string name="signup_login_hint">Sudah punya akun ? <b>Masuk</b></string>
+</resources>
