@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.evrencoskun.tableviewsample.tableview.model;
+package com.buka.amanah.utils.tableview.model;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

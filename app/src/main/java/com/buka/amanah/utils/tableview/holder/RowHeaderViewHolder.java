@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.evrencoskun.tableviewsample.tableview.holder;
+package com.buka.amanah.utils.tableview.holder;
 
 import android.view.View;
 import android.widget.TextView;
@@ -30,7 +30,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.evrencoskun.tableview.adapter.recyclerview.holder.AbstractViewHolder;
-import com.evrencoskun.tableviewsample.R;
+import com.buka.amanah.R;
 
 /**
  * Created by evrencoskun on 23/10/2017.

@@ -1,4 +1,4 @@
-package com.buka.amanah.pelanggan;
+package com.buka.amanah.pelanggan.detail;
 
 import androidx.appcompat.app.AppCompatActivity;
 
