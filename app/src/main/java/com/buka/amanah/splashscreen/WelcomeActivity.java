@@ -20,8 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.buka.amanah.R;
-import com.buka.amanah.home.MainActivity;
-import com.buka.amanah.login.LoginActivity;
+import com.buka.amanah.users.login.LoginActivity;
 import com.buka.amanah.utils.PrefManager;
 
 public class WelcomeActivity extends AppCompatActivity {

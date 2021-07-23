@@ -36,4 +36,10 @@
         <item>@color/dot_dark_screen4</item>
     </array>
 
+    <color name="cell_background_color">#ffffff</color>
+    <color name="column_background_color">#a1a1a1</color>
+    <color name="header_line_color">@android:color/holo_red_light</color>
+
+    <color name="table_view_default_text_color">#0a0a0a</color>
+
 </resources>

@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">BuKa</string>
+    <string name="app_name">BuKa\nAMANAH</string>
 
     <string name="label">BuKa AMANAH</string>
-    <string name="desc_label">Aplikasi Pencatatan Keuangan <br/>Distributor Amanah</string>
+    <string name="desc_label">Aplikasi Pencatatan Keuangan <br />Distributor Amanah</string>
     <string name="signup_label">Buat akun BuKa AMANAH dan nikmati <br />pencatatan keuaangan Anda</string>
 
     <!-- Text Slide -->
@@ -14,6 +14,13 @@
     <!-- Button Slide -->
     <string name="login">Masuk</string>
     <string name="signup">Daftar</string>
+    <string name="forgot">Lanjut</string>
+    <string name="tgl">Hari, Tanggal</string>
+    <string name="pelanggan">Pelanggan</string>
+    <string name="penerimaan">Penerimaan</string>
+    <string name="pengeluaran">Pengeluaran</string>
+    <string name="jumlah_penerimaan">Jumlah</string>
+    <string name="harga">Harga</string>
 
     <string name="signup_nama_lengkap_hint">Nama Lengkap</string>
     <string name="signup_kata_sandi_hint">Kata Sandi</string>
@@ -24,4 +31,16 @@
     <string name="login_password_hint">Password</string>
     <string name="login_signup_hint">Belum punya akun ? <b>Daftar disini</b></string>
     <string name="signup_login_hint">Sudah punya akun ? <b>Masuk</b></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Table view -->
+    <string name="scroll_to_column_position">Scroll to 15. column position</string>
+    <string name="scroll_to_row_position">Scroll to 5. row position</string>
+    <string name="show_hide_the_column">Showing / Hiding 1. column</string>
+    <string name="table_pagination_details">%s dari %s data</string>
+
+    <string-array name="items_per_page">
+        <item>15</item>
+    </string-array>
 </resources>

@@ -9,8 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BuKa">
-        <activity android:name=".register.RegisterActivity"></activity>
-        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".users.profile.UserProfile"></activity>
+        <activity android:name=".stock.AddStockBarang" />
+        <activity android:name=".pelanggan.detail.DetailPelanggan" />
+        <activity android:name=".pelanggan.AddPelanggan" />
+        <activity android:name=".hutang_piutang.piutang.galon.AddPiutangGalon" />
+        <activity android:name=".hutang_piutang.piutang.usaha.AddPiutangUsaha" />
+        <activity android:name=".hutang_piutang.piutang.galon.PiutangGalonActivity" />
+        <activity android:name=".hutang_piutang.piutang.usaha.PiutangUsahaActivity" />
+        <activity android:name=".hutang_piutang.hutang.galon.AddHutangGalon" />
+        <activity android:name=".hutang_piutang.hutang.galon.HutangGalonActivity" />
+        <activity android:name=".hutang_piutang.hutang.usaha.AddHutangUsaha" />
+        <activity android:name=".hutang_piutang.hutang.usaha.HutangUsahaActivity" />
+        <activity android:name=".transaksi.pengeluaran.PengeluaranActivity" />
+        <activity android:name=".transaksi.pengeluaran.AddPengeluaran" />
+        <activity android:name=".transaksi.penerimaan.AddPenerimaan" />
+        <activity android:name=".transaksi.penerimaan.PenerimaanActivity" />
+        <activity
+            android:name=".users.resetpass.ForgotPasswordInputOTP"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".users.resetpass.ForgotPasswordActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".users.register.RegisterActivity" />
+        <activity
+            android:name=".users.login.LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".splashscreen.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

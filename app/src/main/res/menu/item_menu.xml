@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_dashboard_24"
+        android:title="Beranda" />
+    <item
+        android:id="@+id/action_trx"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_dashboard_24"
+        android:title="Transaksi" />
+    <item
+        android:id="@+id/action_hutang"
+        android:enabled="true"
+        android:icon="@drawable/ic_hutang_piutang"
+        android:title="Hutang\nPiutang" />
+    <item
+        android:id="@+id/action_customer"
+        android:enabled="true"
+        android:icon="@drawable/ic_customer"
+        android:title="Pelanggan" />
+    <item
+        android:id="@+id/action_stock"
+        android:enabled="true"
+        android:icon="@drawable/ic_stock"
+        android:title="Stok" />
+<!--    <item-->
+<!--        android:id="@+id/action_profile"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_user"-->
+<!--        android:title="Profil" />-->
+</menu>

@@ -6,7 +6,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="dots_height">30dp</dimen>
     <dimen name="dots_margin_bottom">20dp</dimen>
-    <dimen name="img_width_height">120dp</dimen>
+    <dimen name="img_width_height">275dp</dimen>
     <dimen name="slide_title">30dp</dimen>
     <dimen name="slide_desc">16dp</dimen>
     <dimen name="desc_padding">40dp</dimen>
@@ -16,4 +16,13 @@
     <dimen name="newsMoreTextSize">16sp</dimen>
     <dimen name="loginCardRadius">20dp</dimen>
     <dimen name="loginViewsMargin">20dp</dimen>
+
+    <dimen name="cell_height">30dp</dimen>
+    <dimen name="row_header_width">55dp</dimen>
+    <dimen name="text_size">14sp</dimen>
+    <dimen name="text_home_size">30sp</dimen>
+
+    <!-- Overriding the default values of the tableView -->
+    <dimen name="default_row_header_width">55dp</dimen>
+    <dimen name="default_column_header_height">30dp</dimen>
 </resources>
