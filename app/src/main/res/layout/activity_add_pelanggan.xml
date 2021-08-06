@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            app:titleTextAppearance="@style/Toolbar.TitleText"
             app:titleTextColor="@color/main_color" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -35,8 +36,8 @@
         app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
         <LinearLayout
-            android:layout_height="match_parent"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:orientation="vertical"
             android:padding="@dimen/loginViewsMargin">
@@ -77,21 +78,15 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textIconTglPelanggan"
-                    style="@style/parentIcon"
-                    android:layout_marginTop="@dimen/loginViewsMargin">
-
-                    <EditText
-                        android:id="@+id/ic_TglPelanggan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:maxLines="1"
-                        android:drawableLeft="@drawable/ic_calendar"
-                        android:textColor="@color/teal_700" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                <ImageButton
+                    android:id="@+id/buttonPickTglAddPelanggan"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_transparant2"
+                    android:src="@drawable/ic_calendar"
+                    app:backgroundTint="@null"
+                    />
 
             </LinearLayout>
 
@@ -108,7 +103,7 @@
                     android:imeOptions="actionNext"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:text="Masukan nama lengkap" />
+                     />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -124,7 +119,7 @@
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:text="Masukan nomor handphone" />
+                     />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -140,7 +135,7 @@
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:text="Masukan nomor whatsapp" />
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -153,41 +148,46 @@
                 <EditText
                     android:id="@+id/editTextAlamat"
                     style="@style/modifiedEditTextAlamat"
-                    android:imeOptions="actionNext"
                     android:gravity="top"
+                    android:imeOptions="actionNext"
                     android:inputType="text"
-                    android:text="Masukan alamat secara lengkap" />
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="67dp">
+                android:layout_marginTop="70dp">
 
                 <Button
-                    android:id="@+id/btn_cancel_penerimaan"
+                    android:id="@+id/btn_cancel_pelanggan"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginEnd="15dp"
                     android:background="@drawable/button_transparant"
+                    android:fontFamily="@font/poppins"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:text="BATAL"
+                    android:paddingHorizontal="30dp"
+                    android:text="Batal"
+                    android:textAllCaps="false"
                     android:textColor="#EB5757"
-                    android:textSize="20sp"
-                    android:layout_marginEnd="10dp"
+                    android:textSize="18sp"
+                    app:backgroundTint="@null"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_add_penerimaan" />
+                    app:layout_constraintEnd_toStartOf="@+id/btn_add_pelanggan"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btn_add_penerimaan"
+                    android:id="@+id/btn_add_pelanggan"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/button"
-                    android:fontFamily="@font/poppins_bold"
+                    android:fontFamily="@font/poppins"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:text="TAMBAH"
+                    android:text="Tambah"
+                    android:textAllCaps="false"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 

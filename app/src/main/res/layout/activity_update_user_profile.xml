@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".users.profile.UpdateUserProfile">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppBarThemeProfile"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:foreground="@drawable/app_shape">-->
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/app_shape"
+                app:titleTextAppearance="@style/Toolbar.ProfileTitleText"
+                app:titleTextColor="@color/white" />
+
+<!--        </androidx.cardview.widget.CardView>-->
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/loginViewsMargin"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/default_picture"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                style="@style/modifiedUpdateProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/loginViewsMargin"
+                android:gravity="center"
+                android:text="Klik untuk ganti foto" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputNamaLengkap"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:focusable="true">
+
+                <EditText
+                    android:id="@+id/editTextNamaLengkap"
+                    style="@style/modifiedEditText"
+                    android:hint="@string/signup_nama_lengkap_hint"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapSentences"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputNomorTelepon"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:focusable="true">
+
+                <EditText
+                    android:id="@+id/editTextNomorTelepon"
+                    style="@style/modifiedEditText"
+                    android:hint="@string/no_telp_hint"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputEmail"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:enabled="false">
+
+                <EditText
+                    android:id="@+id/editTextEmail"
+                    style="@style/modifiedEditText"
+                    android:enabled="false"
+                    android:hint="@string/login_username_hint"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textAlamat"
+                style="@style/parent"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:focusable="true"
+                android:hint="Alamat">
+
+                <EditText
+                    android:id="@+id/editTextAlamat"
+                    style="@style/modifiedEditTextAlamat"
+                    android:gravity="top"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_save"
+                style="@style/loginButton"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:onClick="updateProfile"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:text="@string/simpan" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

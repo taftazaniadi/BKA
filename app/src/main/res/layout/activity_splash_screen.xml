@@ -14,9 +14,11 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="@dimen/img_width_height"
             android:layout_height="@dimen/img_width_height"
-            android:src="@null" />
+            android:scaleType="fitCenter"
+            app:srcCompat="@null" />
 
         <TextView
             android:id="@+id/textView"

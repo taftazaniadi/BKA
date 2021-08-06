@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">BuKa\nAMANAH</string>
+    <string name="transaksi">Transaksi</string>
+    <string name="utang">Hutang Piutang</string>
+    <string name="stok">Stok</string>
 
     <string name="label">BuKa AMANAH</string>
     <string name="desc_label">Aplikasi Pencatatan Keuangan <br />Distributor Amanah</string>
@@ -21,14 +24,21 @@
     <string name="pengeluaran">Pengeluaran</string>
     <string name="jumlah_penerimaan">Jumlah</string>
     <string name="harga">Harga</string>
+    <string name="simpan">Simpan</string>
 
+    <string name="signup_username_hint">Username</string>
     <string name="signup_nama_lengkap_hint">Nama Lengkap</string>
+    <string name="no_ktp_hint">Nomor KTP</string>
+    <string name="no_telp_hint">Nomor Telepon</string>
     <string name="signup_kata_sandi_hint">Kata Sandi</string>
     <string name="signup_no_wa_hint">No. Handphone / WA</string>
     <string name="signup_distributor_cabang_hint">Distributor Cabang</string>
     <string name="signup_alamat_hint">Alamat Rumah</string>
     <string name="login_username_hint">Email</string>
     <string name="login_password_hint">Password</string>
+    <string name="old_password_hint">Kata sandi lama</string>
+    <string name="new_password_hint">Kata sandi baru</string>
+    <string name="re_new_password_hint">Ulangi kata sandi baru</string>
     <string name="login_signup_hint">Belum punya akun ? <b>Daftar disini</b></string>
     <string name="signup_login_hint">Sudah punya akun ? <b>Masuk</b></string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -43,4 +53,42 @@
     <string-array name="items_per_page">
         <item>15</item>
     </string-array>
+
+    <string-array name="items_page">
+        <item>20</item>
+    </string-array>
+
+    <string-array name="profile_menu">
+        <item>Ubah Profil</item>
+        <item>Ganti Kata Sandi</item>
+        <item>Logout</item>
+    </string-array>
+
+
+    <!-- HIT API -->
+    <string name="host_auth">http://bukukas-api.herokuapp.com/authenticate</string>
+
+    <string name="host_profile">http://bukukas-api.herokuapp.com/api/profile/get</string>
+    <string name="host_update_profile">http://bukukas-api.herokuapp.com/api/profile/update</string>
+    <string name="host_update_password">http://bukukas-api.herokuapp.com/api/password/update</string>
+    <string name="host_update_picture_profile">http://bukukas-api.herokuapp.com/api/profile/picture/update</string>
+
+    <string name="host_add_customer">http://bukukas-api.herokuapp.com/api/customers/add</string>
+    <string name="host_get_customer">http://bukukas-api.herokuapp.com/api/customers/</string>
+    <string name="host_update_customer">http://bukukas-api.herokuapp.com/api/customers/update</string>
+    <string name="host_delete_customer">http://bukukas-api.herokuapp.com/api/customers/delete</string>
+    <string name="host_get_customer_list">http://bukukas-api.herokuapp.com/api/customers/getCustList</string>
+
+    <string name="host_income">http://bukukas-api.herokuapp.com/api/receipts/add</string>
+    <string name="host_get_receipt">http://bukukas-api.herokuapp.com/api/receipts/get</string>
+    <string name="host_delete_receipt">http://bukukas-api.herokuapp.com/api/receipts/delete</string>
+    <string name="host_update_receipt">http://bukukas-api.herokuapp.com/api/receipts/update</string>
+    <string name="host_get_receipt_list">http://bukukas-api.herokuapp.com/api/receipts/getOptions</string>
+
+    <string name="host_disbursement">http://bukukas-api.herokuapp.com/api/disbursements/add</string>
+    <string name="host_get_disbursement">http://bukukas-api.herokuapp.com/api/disbursements/get</string>
+    <string name="host_delete_disbursement">http://bukukas-api.herokuapp.com/api/disbursements/delete</string>
+    <string name="host_update_disbursement">http://bukukas-api.herokuapp.com/api/disbursements/update</string>
+    <string name="host_get_detail_disbursement_list">http://bukukas-api.herokuapp.com/api/disbursements/getOptions</string>
+    <string name="host_get_disbursement_list">http://bukukas-api.herokuapp.com/api/disbursements/getTypes</string>
 </resources>

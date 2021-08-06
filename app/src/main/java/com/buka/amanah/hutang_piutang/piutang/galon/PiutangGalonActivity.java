@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.buka.amanah.R;
+import com.buka.amanah.home.MainActivity;
 import com.buka.amanah.hutang_piutang.hutang.galon.AddHutangGalon;
 import com.buka.amanah.utils.tableview.TableViewAdapter;
 import com.buka.amanah.utils.tableview.TableViewListener;
@@ -31,6 +32,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class PiutangGalonActivity extends AppCompatActivity {
 
     Button buttonPiutangGalon;
+    String message;
 
     //Table View
     private FloatingActionButton previousButton, nextButton;
@@ -112,17 +114,17 @@ public class PiutangGalonActivity extends AppCompatActivity {
         TableViewModel tableViewModel = new TableViewModel();
 
         // Create TableView Adapter
-        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel);
+        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel, PiutangGalonActivity.this);
 
         mTableView.setAdapter(tableViewAdapter);
-        mTableView.setTableViewListener(new TableViewListener(mTableView));
+        mTableView.setTableViewListener(new TableViewListener(mTableView, PiutangGalonActivity.this));
 
         // Create an instance of a Filter and pass the TableView.
         //mTableFilter = new Filter(mTableView);
 
         // Load the dummy data to the TableView
         tableViewAdapter.setAllItems(tableViewModel.getColumnHeaderList("Piutang Galon"), tableViewModel
-                .getSimpleRowHeaderList(), tableViewModel.getCellList("Piutang Galon"));
+                .getSimpleRowHeaderList(), tableViewModel.getCellList("Piutang Galon", message));
 
         //mTableView.setHasFixedWidth(true);
 
@@ -145,10 +147,10 @@ public class PiutangGalonActivity extends AppCompatActivity {
         TableViewModel tableViewModel = new TableViewModel();
 
         // Create TableView Adapter
-        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel);
+        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel, PiutangGalonActivity.this);
 
         mTableViewDetails.setAdapter(tableViewAdapter);
-        mTableViewDetails.setTableViewListener(new TableViewListener(mTableViewDetails));
+        mTableViewDetails.setTableViewListener(new TableViewListener(mTableViewDetails, PiutangGalonActivity.this));
 
         // Create an instance of a Filter and pass the TableView.
         //mTableFilter = new Filter(mTableView);
@@ -264,11 +266,12 @@ public class PiutangGalonActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed()
-    {
-        if(getSupportFragmentManager().getBackStackEntryCount() > 0)
-            getSupportFragmentManager().popBackStack();
-        else
-            super.onBackPressed();
+    public void onBackPressed() {
+        //this is only needed if you have specific things
+        //that you want to do when the user presses the back button.
+        /* your specific things...*/
+        super.onBackPressed();
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }

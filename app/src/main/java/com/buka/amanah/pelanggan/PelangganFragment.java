@@ -27,6 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class PelangganFragment extends Fragment {
 
     Button buttonAddPelanggan;
+    String message;
 
     //Table View
     private FloatingActionButton previousButton, nextButton;
@@ -97,17 +98,17 @@ public class PelangganFragment extends Fragment {
         TableViewModel tableViewModel = new TableViewModel();
 
         // Create TableView Adapter
-        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel);
+        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel, getContext());
 
         mTableView.setAdapter(tableViewAdapter);
-        mTableView.setTableViewListener(new TableViewListener(mTableView));
+        mTableView.setTableViewListener(new TableViewListener(mTableView, getContext()));
 
         // Create an instance of a Filter and pass the TableView.
         //mTableFilter = new Filter(mTableView);
 
         // Load the dummy data to the TableView
         tableViewAdapter.setAllItems(tableViewModel.getColumnHeaderList("Pelanggan"), tableViewModel
-                .getSimpleRowHeaderList(), tableViewModel.getCellList("Pelanggan"));
+                .getSimpleRowHeaderList(), tableViewModel.getCellList("Pelanggan", message));
 
         //mTableView.setHasFixedWidth(true);
 
@@ -130,10 +131,10 @@ public class PelangganFragment extends Fragment {
         TableViewModel tableViewModel = new TableViewModel();
 
         // Create TableView Adapter
-        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel);
+        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel, getContext());
 
         mTableViewDetails.setAdapter(tableViewAdapter);
-        mTableViewDetails.setTableViewListener(new TableViewListener(mTableViewDetails));
+        mTableViewDetails.setTableViewListener(new TableViewListener(mTableViewDetails, getContext()));
 
         // Create an instance of a Filter and pass the TableView.
         //mTableFilter = new Filter(mTableView);

@@ -28,9 +28,11 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 
 import com.buka.amanah.R;
+import com.buka.amanah.pojo.receipt_get.ReceiptView;
 import com.buka.amanah.utils.tableview.model.Cell;
 import com.buka.amanah.utils.tableview.model.ColumnHeader;
 import com.buka.amanah.utils.tableview.model.RowHeader;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,17 +44,40 @@ import java.util.Random;
 
 public class TableViewModel {
 
+    public static final int MENU = 1;
+    public static final int VIEW = 1;
+    public static final int EDIT = 2;
+    public static final int DEL = 3;
+
+
+
+    public static final int MENU_COLUMN_INDEX = 6;
+//    public static final int VIEW_COLUMN_INDEX = 6;
+//    public static final int EDIT_COLUMN_INDEX = 7;
+//    public static final int DEL_COLUMN_INDEX = 8;
     // Constant size for dummy data sets
 //    private static final int COLUMN_SIZE_PENERIMAAN = 7;
 //    private static final int COLUMN_SIZE_PENGELUARAN = 6;
 //    private static final int COLUMN_SIZE_DETAIL_PENERIMAAN = 3;
     private static final int ROW_SIZE = 500;
-//    private static final int ROW_SIZE_DETAIL_PENERIMAAN = 3;
-
+//    @DrawableRes
+//    private final int mViewDrawable;
+//    @DrawableRes
+//    private final int mEditDrawable;
+//    @DrawableRes
+//    private final int mDeleteDrawable;
+    @DrawableRes
+    private final int mMenuDrawable;
     int COLUMN_SIZE, COLUMN_SIZE_DETAIL, ROW_SIZE_DETAIL;
+    ReceiptView receiptGet = new ReceiptView();
+
 
     public TableViewModel() {
         // initialize drawables
+//        mViewDrawable = R.drawable.ic_baseline_view_24;
+//        mEditDrawable = R.drawable.ic_baseline_edit_24;
+//        mDeleteDrawable = R.drawable.ic_baseline_delete_24;
+        mMenuDrawable = R.drawable.ic_baseline_more_vert_24;
     }
 
     // Row Number
@@ -115,6 +140,7 @@ public class TableViewModel {
 
 
     // Column Header
+
     /**
      * This is a dummy model list test some cases.
      */
@@ -149,6 +175,12 @@ public class TableViewModel {
                     case 7:
                         title = "Aksi";
                         break;
+//                    case 8:
+//                        title = "Edit";
+//                        break;
+//                    case 9:
+//                        title = "Delete";
+//                        break;
                 }
 
                 ColumnHeader header = new ColumnHeader(String.valueOf(i), title);
@@ -472,44 +504,70 @@ public class TableViewModel {
 
 
     // Cell Data
+
     /**
      * This is a dummy model list test some cases.
      */
     @NonNull
-    public List<List<Cell>> getCellList(String category) {
+    public List<List<Cell>> getCellList(String category, String response) {
         List<List<Cell>> list = new ArrayList<>();
 
-            for (int i = 0; i < ROW_SIZE; i++) {
+        if (category.equalsIgnoreCase("Penerimaan")) {
+            Gson gson = new Gson();
+            receiptGet = gson.fromJson(response, ReceiptView.class);
+
+            for (int i = 0; i < receiptGet.getData().length; i++) {
+                List<Cell> cellList = new ArrayList<>();
+                COLUMN_SIZE = 7;
+                for (int j = 0; j < COLUMN_SIZE; j++) {
+                    Cell cell;
+                    Object text = null;
+
+                    final int random = new Random().nextInt();
+                    if (j == MENU_COLUMN_INDEX) {
+                        text = random % 2 == 0 ? MENU : MENU;
+                    } /*else if (j == EDIT_COLUMN_INDEX) {
+                        text = random % 2 == 0 ? EDIT : EDIT;
+                    } else if (j == DEL_COLUMN_INDEX) {
+                        text = random % 2 == 0 ? DEL : DEL;
+                    }*/
+
+                    // Create dummy id.
+                    String id = j + "-" + i;
+
+                    if (j == 0) {
+                        cell = new Cell(id, receiptGet.getData()[i].getCreated_at());
+                    } else if (j == 1) {
+                        cell = new Cell(id, receiptGet.getData()[i].getCustomer_name());
+                    } else if (j == 2) {
+                        cell = new Cell(id, receiptGet.getData()[i].getType());
+                    } else if (j == 3) {
+                        cell = new Cell(id, receiptGet.getData()[i].getAmount());
+                    } else if (j == 4) {
+                        cell = new Cell(id, "Rp " + receiptGet.getData()[i].getPrice());
+                    } else if (j == 5) {
+                        cell = new Cell(id, "Rp " + receiptGet.getData()[i].getTotal());
+//                    } else if (j == 6){
+//                        cell = new Cell(id, text);
+//                    } else if (j == 7){
+//                        cell = new Cell(id, text);
+                    } else {
+                        cell = new Cell(id, receiptGet.getData()[i].getId());
+                    }
+
+                    cellList.add(cell);
+                }
+                list.add(cellList);
+
+            }
+        } else if (category.equalsIgnoreCase("Pengeluaran")) {
+            Gson gson = new Gson();
+            receiptGet = gson.fromJson(response, ReceiptView.class);
+
+            for (int i = 0; i < receiptGet.getData().length; i++) {
                 List<Cell> cellList = new ArrayList<>();
 
-                if (category.equalsIgnoreCase("Penerimaan")) {
-                    COLUMN_SIZE = 7;
-                    for (int j = 0; j < COLUMN_SIZE; j++) {
-                        Object text = "cell " + j + " " + i;
-
-                        final int random = new Random().nextInt();
-                        if (j == 0) {
-                            text = i;
-                        } else if (j == 1) {
-                            text = random;
-                        }
-
-                        // Create dummy id.
-                        String id = j + "-" + i;
-
-                        Cell cell;
-                        if (j == 3) {
-                            cell = new Cell(id, text);
-                        } else if (j == 4) {
-                            // NOTE female and male keywords for filter will have conflict since "female"
-                            // contains "male"
-                            cell = new Cell(id, text);
-                        } else {
-                            cell = new Cell(id, text);
-                        }
-                        cellList.add(cell);
-                    }
-                } else if (category.equalsIgnoreCase("Pengeluaran")) {
+                if (category.equalsIgnoreCase("Pengeluaran")) {
                     COLUMN_SIZE = 5;
                     for (int j = 0; j < COLUMN_SIZE; j++) {
                         Object text = "cell " + j + " " + i;
@@ -536,7 +594,17 @@ public class TableViewModel {
                         }
                         cellList.add(cell);
                     }
-                } else if (category.equalsIgnoreCase("Hutang Usaha")) {
+                    list.add(cellList);
+                }
+            }
+        } else if (category.equalsIgnoreCase("Hutang Usaha")) {
+            Gson gson = new Gson();
+            receiptGet = gson.fromJson(response, ReceiptView.class);
+
+            for (int i = 0; i < receiptGet.getData().length; i++) {
+                List<Cell> cellList = new ArrayList<>();
+
+                if (category.equalsIgnoreCase("Hutang Usaha")) {
                     COLUMN_SIZE = 6;
                     for (int j = 0; j < COLUMN_SIZE; j++) {
                         Object text = "cell " + j + " " + i;
@@ -563,7 +631,17 @@ public class TableViewModel {
                         }
                         cellList.add(cell);
                     }
-                } else if (category.equalsIgnoreCase("Hutang Galon")) {
+                    list.add(cellList);
+                }
+            }
+        } else if (category.equalsIgnoreCase("Hutang Galon")) {
+            Gson gson = new Gson();
+            receiptGet = gson.fromJson(response, ReceiptView.class);
+
+            for (int i = 0; i < receiptGet.getData().length; i++) {
+                List<Cell> cellList = new ArrayList<>();
+
+                if (category.equalsIgnoreCase("Hutang Galon")) {
                     COLUMN_SIZE = 6;
                     for (int j = 0; j < COLUMN_SIZE; j++) {
                         Object text = "cell " + j + " " + i;
@@ -590,7 +668,17 @@ public class TableViewModel {
                         }
                         cellList.add(cell);
                     }
-                } else if (category.equalsIgnoreCase("Piutang Usaha")) {
+                    list.add(cellList);
+                }
+            }
+        } else if (category.equalsIgnoreCase("Piutang Usaha")) {
+            Gson gson = new Gson();
+            receiptGet = gson.fromJson(response, ReceiptView.class);
+
+            for (int i = 0; i < receiptGet.getData().length; i++) {
+                List<Cell> cellList = new ArrayList<>();
+
+                if (category.equalsIgnoreCase("Piutang Usaha")) {
                     COLUMN_SIZE = 7;
                     for (int j = 0; j < COLUMN_SIZE; j++) {
                         Object text = "cell " + j + " " + i;
@@ -617,7 +705,17 @@ public class TableViewModel {
                         }
                         cellList.add(cell);
                     }
-                } else if (category.equalsIgnoreCase("Piutang Galon")) {
+                    list.add(cellList);
+                }
+            }
+        } else if (category.equalsIgnoreCase("Piutang Galon")) {
+            Gson gson = new Gson();
+            receiptGet = gson.fromJson(response, ReceiptView.class);
+
+            for (int i = 0; i < receiptGet.getData().length; i++) {
+                List<Cell> cellList = new ArrayList<>();
+
+                if (category.equalsIgnoreCase("Piutang Galon")) {
                     COLUMN_SIZE = 6;
                     for (int j = 0; j < COLUMN_SIZE; j++) {
                         Object text = "cell " + j + " " + i;
@@ -644,7 +742,17 @@ public class TableViewModel {
                         }
                         cellList.add(cell);
                     }
-                } else if (category.equalsIgnoreCase("Pelanggan")) {
+                    list.add(cellList);
+                }
+            }
+        } else if (category.equalsIgnoreCase("Pelanggan")) {
+            Gson gson = new Gson();
+            receiptGet = gson.fromJson(response, ReceiptView.class);
+
+            for (int i = 0; i < receiptGet.getData().length; i++) {
+                List<Cell> cellList = new ArrayList<>();
+
+                if (category.equalsIgnoreCase("Pelanggan")) {
                     COLUMN_SIZE = 7;
                     for (int j = 0; j < COLUMN_SIZE; j++) {
                         Object text = "cell " + j + " " + i;
@@ -671,7 +779,17 @@ public class TableViewModel {
                         }
                         cellList.add(cell);
                     }
-                } else if (category.equalsIgnoreCase("Stok")) {
+                    list.add(cellList);
+                }
+            }
+        } else if (category.equalsIgnoreCase("Stok")) {
+            Gson gson = new Gson();
+            receiptGet = gson.fromJson(response, ReceiptView.class);
+
+            for (int i = 0; i < receiptGet.getData().length; i++) {
+                List<Cell> cellList = new ArrayList<>();
+
+                if (category.equalsIgnoreCase("Stok")) {
                     COLUMN_SIZE = 4;
                     for (int j = 0; j < COLUMN_SIZE; j++) {
                         Object text = "cell " + j + " " + i;
@@ -698,9 +816,10 @@ public class TableViewModel {
                         }
                         cellList.add(cell);
                     }
+                    list.add(cellList);
                 }
-                list.add(cellList);
             }
+        }
 
         return list;
     }
@@ -906,6 +1025,25 @@ public class TableViewModel {
         return list;
     }
 
+    @DrawableRes
+    public int getDrawable(int value) {
+        return value == MENU ? mMenuDrawable : mMenuDrawable;
+    }
+
+//    @DrawableRes
+//    public int getDrawableEdit(int value) {
+//        return value == EDIT ? mEditDrawable : mEditDrawable;
+//    }
+
+//    @DrawableRes
+//    public int getDrawableView(int value) {
+//        return value == VIEW ? mViewDrawable : mViewDrawable;
+//    }
+
+//    @DrawableRes
+//    public int getDrawableDel(int value) {
+//        return value == DEL ? mDeleteDrawable : mDeleteDrawable;
+//    }
 
     // Get Cell Data
 //    @NonNull

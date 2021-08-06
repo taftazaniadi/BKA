@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
+                app:titleTextAppearance="@style/Toolbar.TitleText"
                 app:titleTextColor="@color/main_color" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -34,17 +35,16 @@
         <LinearLayout
             style="@style/linearParent"
             android:layout_gravity="center"
-            android:padding="@dimen/loginViewsMargin">
+            android:padding="@dimen/cell_height">
 
             <TextView
-                android:layout_width="wrap_content"
+                style="@style/modifiedEditText"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginTop="10dp"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="@string/signup_label"
-                android:textColor="@color/teal_700"
-                android:textSize="@dimen/newsMoreTextSize" />
+                android:textColor="@color/black" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputNamaLengkap"
@@ -141,7 +141,6 @@
                 style="@style/loginButton"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/loginViewsMargin"
-
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="@string/signup" />
 

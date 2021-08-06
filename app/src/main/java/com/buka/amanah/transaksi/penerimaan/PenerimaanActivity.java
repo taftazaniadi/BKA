@@ -6,25 +6,43 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.buka.amanah.R;
+import com.buka.amanah.pojo.ResponseDefault;
+import com.buka.amanah.pojo.cust_list.CustList;
 import com.buka.amanah.utils.tableview.TableViewAdapter;
 import com.buka.amanah.utils.tableview.TableViewListener;
 import com.buka.amanah.utils.tableview.TableViewModel;
@@ -32,10 +50,27 @@ import com.evrencoskun.tableview.TableView;
 import com.evrencoskun.tableview.filter.Filter;
 import com.evrencoskun.tableview.pagination.Pagination;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+import dev.shreyaspatil.MaterialDialog.MaterialDialog;
+import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
+import dev.shreyaspatil.MaterialDialog.model.TextAlignment;
 
 public class PenerimaanActivity extends AppCompatActivity {
 
+    RequestQueue mRequestQueue;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     Button buttonPenerimaan;
+    String message;
 
     //Table View
     private FloatingActionButton previousButton, nextButton;
@@ -52,6 +87,15 @@ public class PenerimaanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_penerimaan);
 
+        mRequestQueue = Volley.newRequestQueue(this);
+
+        sharedPreferences = getApplication().getSharedPreferences("BuKaAuth", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        getList();
+    }
+
+    private void initialize() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(16);
@@ -59,7 +103,7 @@ public class PenerimaanActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         //actionbar.setLogo(R.drawable.ic_logo);
-        actionbar.setTitle("Tambah Penerimaan");
+        actionbar.setTitle("Penerimaan");
 
         buttonPenerimaan = findViewById(R.id.buttonPenerimaan);
 
@@ -112,22 +156,83 @@ public class PenerimaanActivity extends AppCompatActivity {
         }
     }
 
+    private void getList() {
+        String url = getString(R.string.host_get_receipt);
+
+        try {
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("page", 1);
+            final String mRequestBody = jsonBody.toString();
+            System.out.println("DATA JSON : " + mRequestBody);
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.i("LOG_VOLLEY", response);
+
+                    message = response;
+
+                    initialize();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("LOG_VOLLEY", error.toString());
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap headers = new HashMap();
+
+                    String access_token = sharedPreferences.getString("token", "");
+
+                    headers.put("Authorization", "Bearer " + access_token);
+                    headers.put("Content-Type", "application/json; charset=utf-8");
+
+                    return headers;
+                }
+
+                @Override
+                public byte[] getBody() throws AuthFailureError {
+                    return mRequestBody == null ? null : mRequestBody.getBytes(StandardCharsets.UTF_8);
+                }
+
+                @Override
+                protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                    String responseString = "";
+                    if (response != null) {
+                        String responseData = new String(response.data, StandardCharsets.UTF_8);
+
+                        responseString = responseData;
+                    }
+                    return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                }
+            };
+
+            // Add the request to the RequestQueue.
+            mRequestQueue.add(stringRequest);
+            System.out.println("RESPONSE API >>> " + stringRequest.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void initializeTableView() {
         // Create TableView View model class  to group view models of TableView
         TableViewModel tableViewModel = new TableViewModel();
 
         // Create TableView Adapter
-        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel);
+        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel, PenerimaanActivity.this);
 
         mTableView.setAdapter(tableViewAdapter);
-        mTableView.setTableViewListener(new TableViewListener(mTableView));
+        mTableView.setTableViewListener(new TableViewListener(mTableView, PenerimaanActivity.this));
 
         // Create an instance of a Filter and pass the TableView.
         //mTableFilter = new Filter(mTableView);
 
         // Load the dummy data to the TableView
         tableViewAdapter.setAllItems(tableViewModel.getColumnHeaderList("Penerimaan"), tableViewModel
-                .getSimpleRowHeaderList(), tableViewModel.getCellList("Penerimaan"));
+                .getSimpleRowHeaderList(), tableViewModel.getCellList("Penerimaan", message));
 
         //mTableView.setHasFixedWidth(true);
 
@@ -150,10 +255,10 @@ public class PenerimaanActivity extends AppCompatActivity {
         TableViewModel tableViewModel = new TableViewModel();
 
         // Create TableView Adapter
-        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel);
+        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel, PenerimaanActivity.this);
 
         mTableViewDetails.setAdapter(tableViewAdapter);
-        mTableViewDetails.setTableViewListener(new TableViewListener(mTableViewDetails));
+        mTableViewDetails.setTableViewListener(new TableViewListener(mTableViewDetails, PenerimaanActivity.this));
 
         // Create an instance of a Filter and pass the TableView.
         //mTableFilter = new Filter(mTableView);

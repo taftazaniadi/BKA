@@ -6,4 +6,321 @@
     android:layout_height="match_parent"
     tools:context=".users.profile.UserProfile">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppBarThemeProfile"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:titleTextAppearance="@style/Toolbar.ProfileTitleText"
+            app:titleTextColor="@color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/loginViewsMargin"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/default_picture"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:id="@+id/tv_nama"
+                style="@style/modifiedPage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/loginViewsMargin"
+                android:gravity="center"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginVertical="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    style="@style/linearParent"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="15dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/ic_user_profile" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/cell_height"
+                        android:layout_toEndOf="@id/profile_image"
+                        android:layout_toRightOf="@+id/profile_image"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/modifiedEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nama Lengkap" />
+
+                        <com.elyeproj.loaderviewlibrary.LoaderTextView
+                            android:id="@+id/tv_nama_lengkap"
+                            style="@style/modifiedEditTextEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:corners="27"
+                            app:height_weight="0.8"
+                            app:use_gradient="true"
+                            app:width_weight="0.6" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="4dp"-->
+<!--                android:layout_marginVertical="10dp"-->
+<!--                app:cardCornerRadius="20dp"-->
+<!--                app:cardElevation="5dp">-->
+
+<!--                <LinearLayout-->
+<!--                    style="@style/linearParent"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:padding="15dp">-->
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:layout_marginStart="20dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        app:srcCompat="@drawable/ic_ktp" />-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginStart="@dimen/cell_height"-->
+<!--                        android:layout_toEndOf="@id/profile_image"-->
+<!--                        android:layout_toRightOf="@+id/profile_image"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            style="@style/modifiedEditText"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Nomor KTP" />-->
+
+<!--                        <com.elyeproj.loaderviewlibrary.LoaderTextView-->
+<!--                            android:id="@+id/tv_noKTP"-->
+<!--                            style="@style/modifiedEditTextEmail"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            app:corners="27"-->
+<!--                            app:height_weight="0.8"-->
+<!--                            app:use_gradient="true"-->
+<!--                            app:width_weight="0.6" />-->
+
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--            </com.google.android.material.card.MaterialCardView>-->
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginVertical="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    style="@style/linearParent"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="15dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/ic_nomor_telepon" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/cell_height"
+                        android:layout_toEndOf="@id/profile_image"
+                        android:layout_toRightOf="@+id/profile_image"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/modifiedEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nomor Telepon" />
+
+                        <com.elyeproj.loaderviewlibrary.LoaderTextView
+                            android:id="@+id/tv_nomor_telepon"
+                            style="@style/modifiedEditTextEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:corners="27"
+                            app:height_weight="0.8"
+                            app:use_gradient="true"
+                            app:width_weight="0.6" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginVertical="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    style="@style/linearParent"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="15dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/ic_email" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/cell_height"
+                        android:layout_toEndOf="@id/profile_image"
+                        android:layout_toRightOf="@+id/profile_image"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/modifiedEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Email" />
+
+                        <com.elyeproj.loaderviewlibrary.LoaderTextView
+                            android:id="@+id/tv_email"
+                            style="@style/modifiedEditTextEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:corners="27"
+                            app:height_weight="0.8"
+                            app:use_gradient="true"
+                            app:width_weight="0.6" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginVertical="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    style="@style/linearParent"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="15dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/ic_alamat" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/cell_height"
+                        android:layout_toEndOf="@id/profile_image"
+                        android:layout_toRightOf="@+id/profile_image"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/modifiedEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Alamat" />
+
+                        <com.elyeproj.loaderviewlibrary.LoaderTextView
+                            android:id="@+id/tv_alamat"
+                            style="@style/modifiedEditTextEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:corners="27"
+                            app:height_weight="0.8"
+                            app:use_gradient="true"
+                            app:width_weight="0.6" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

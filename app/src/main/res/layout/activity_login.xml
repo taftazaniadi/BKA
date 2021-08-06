@@ -68,7 +68,7 @@
                         android:id="@+id/editTextPassword"
                         style="@style/modifiedEditTextForm"
                         android:hint="@string/login_password_hint"
-                        android:inputType="numberPassword"
+                        android:inputType="textPassword"
                         android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 

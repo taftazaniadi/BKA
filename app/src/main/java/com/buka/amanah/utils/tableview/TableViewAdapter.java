@@ -24,17 +24,23 @@
 
 package com.buka.amanah.utils.tableview;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.buka.amanah.utils.tableview.holder.ActionCellViewHolder;
+import com.buka.amanah.utils.tableview.holder.DelCellViewHolder;
+import com.buka.amanah.utils.tableview.holder.EditCellViewHolder;
+import com.buka.amanah.utils.tableview.holder.MenuCellViewHolder;
+import com.buka.amanah.utils.tableview.holder.ViewCellViewHolder;
 import com.evrencoskun.tableview.adapter.AbstractTableAdapter;
 import com.evrencoskun.tableview.adapter.recyclerview.holder.AbstractViewHolder;
-import com.evrencoskun.tableview.sort.SortState;
 import com.buka.amanah.R;
 import com.buka.amanah.utils.tableview.holder.CellViewHolder;
 import com.buka.amanah.utils.tableview.holder.ColumnHeaderViewHolder;
@@ -52,18 +58,23 @@ import com.buka.amanah.utils.tableview.model.RowHeader;
 public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHeader, Cell> {
 
     // Cell View Types by Column Position
-    private static final int MOOD_CELL_TYPE = 1;
-    private static final int GENDER_CELL_TYPE = 2;
+    private static final int MENU_CELL_TYPE = 1;
+//    private static final int VIEW_CELL_TYPE = 1;
+//    private static final int EDIT_CELL_TYPE = 2;
+//    private static final int DEL_CELL_TYPE = 3;
     // add new one if it necessary..
 
     private static final String LOG_TAG = TableViewAdapter.class.getSimpleName();
 
+    Context context;
+
     @NonNull
     private final TableViewModel mTableViewModel;
 
-    public TableViewAdapter(@NonNull TableViewModel tableViewModel) {
+    public TableViewAdapter(@NonNull TableViewModel tableViewModel, Context context) {
         super();
         this.mTableViewModel = tableViewModel;
+        this.context = context;
     }
 
     /**
@@ -84,6 +95,26 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
         View layout;
 
         switch (viewType) {
+            case MENU_CELL_TYPE:
+                // Get image cell layout which has ImageView on the base instead of TextView.
+                layout = inflater.inflate(R.layout.table_view_action_cell_layout, parent, false);
+
+                return new ActionCellViewHolder(layout);
+//            case VIEW_CELL_TYPE:
+//                // Get image cell layout which has ImageView on the base instead of TextView.
+//                layout = inflater.inflate(R.layout.table_view_image_cell_layout, parent, false);
+//
+//                return new ViewCellViewHolder(layout);
+//            case DEL_CELL_TYPE:
+//                // Get image cell layout which has ImageView on the base instead of TextView.
+//                layout = inflater.inflate(R.layout.table_view_image_cell_layout, parent, false);
+//
+//                return new DelCellViewHolder(layout);
+//            case EDIT_CELL_TYPE:
+//                // Get image cell layout which has ImageView on the base instead of TextView.
+//                layout = inflater.inflate(R.layout.table_view_image_cell_layout, parent, false);
+//
+//                return new EditCellViewHolder(layout);
             default:
                 // For cells that display a text
                 layout = inflater.inflate(R.layout.table_view_cell_layout, parent, false);
@@ -111,13 +142,67 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
     public void onBindCellViewHolder(@NonNull AbstractViewHolder holder, @Nullable Cell cellItemModel, int
             columnPosition, int rowPosition) {
 
-//        switch (holder.getItemViewType()) {
-//            default:
+        switch (holder.getItemViewType()) {
+            case MENU_CELL_TYPE:
+//                MenuCellViewHolder menuViewHolder = (MenuCellViewHolder) holder;
+//
+//                menuViewHolder.cell_image.setImageResource(mTableViewModel.getDrawable((int) cellItemModel
+//                        .getData()));
+                ActionCellViewHolder actionViewHolder = (ActionCellViewHolder) holder;
+
+                actionViewHolder.btnView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        cellItemModel.getData().toString();
+                        Toast.makeText(context, "Value: " + cellItemModel.getData().toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+                actionViewHolder.btnEdit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        cellItemModel.getData().toString();
+                        Toast.makeText(context, "Value: " + cellItemModel.getData().toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+                actionViewHolder.btnDel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        cellItemModel.getData().toString();
+                        Toast.makeText(context, "Value: " + cellItemModel.getData().toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+                break;
+//            case VIEW_CELL_TYPE:
+//                ViewCellViewHolder viewViewHolder = (ViewCellViewHolder) holder;
+//
+//                viewViewHolder.cell_image.setImageResource(mTableViewModel.getDrawableView((int) cellItemModel
+//                        .getData()));
+//                break;
+//            case EDIT_CELL_TYPE:
+//                EditCellViewHolder editViewHolder = (EditCellViewHolder) holder;
+//
+//                editViewHolder.cell_image.setImageResource(mTableViewModel.getDrawableEdit((int) cellItemModel
+//                        .getData()));
+//                break;
+//            case DEL_CELL_TYPE:
+//                DelCellViewHolder delViewHolder = (DelCellViewHolder) holder;
+//
+//                delViewHolder.cell_image.setImageResource(mTableViewModel.getDrawableDel((int) cellItemModel
+//                        .getData()));
+//                break;
+            default:
                 // Get the holder to update cell item text
                 CellViewHolder viewHolder = (CellViewHolder) holder;
                 viewHolder.setCell(cellItemModel);
-//                break;
-//        }
+                break;
+        }
+////        switch (holder.getItemViewType()) {
+////            default:
+//                // Get the holder to update cell item text
+//                CellViewHolder viewHolder = (CellViewHolder) holder;
+//                viewHolder.setCell(cellItemModel);
+////                break;
+////        }
     }
 
     /**
@@ -253,10 +338,18 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
         // If you have different items for Cell View by X (Column) position,
         // then you should fill this method to be able create different
         // type of CellViewHolder on "onCreateCellViewHolder"
-//        switch (column) {
-//            default:
+        switch (column) {
+            case TableViewModel.MENU_COLUMN_INDEX:
+                return MENU_CELL_TYPE;
+//            case TableViewModel.VIEW_COLUMN_INDEX:
+//                return VIEW_CELL_TYPE;
+//            case TableViewModel.EDIT_COLUMN_INDEX:
+//                return EDIT_CELL_TYPE;
+//            case TableViewModel.DEL_COLUMN_INDEX:
+//                return DEL_CELL_TYPE;
+            default:
                 // Default view type
                 return 0;
-//        }
+        }
     }
 }

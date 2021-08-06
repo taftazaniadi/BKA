@@ -2,14 +2,35 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.buka.amanah">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BuKa">
-        <activity android:name=".users.profile.UserProfile"></activity>
+        android:theme="@style/Theme.BuKa"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".transaksi.pengeluaran.DetailPengeluaran"></activity>
+        <activity android:name=".transaksi.penerimaan.DetailPenerimaan" />
+        <activity android:name=".report.ReportActivity" />
+        <activity
+            android:name=".users.profile.ChangePassword"
+            android:theme="@style/ProfileTheme" />
+        <activity
+            android:name=".users.profile.UpdateUserProfile"
+            android:theme="@style/ProfileTheme" />
+        <activity
+            android:name=".users.profile.UserProfile"
+            android:theme="@style/ProfileTheme" />
         <activity android:name=".stock.AddStockBarang" />
         <activity android:name=".pelanggan.detail.DetailPelanggan" />
         <activity android:name=".pelanggan.AddPelanggan" />
@@ -31,7 +52,9 @@
         <activity
             android:name=".users.resetpass.ForgotPasswordActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".users.register.RegisterActivity" />
+        <activity
+            android:name=".users.register.RegisterActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".users.login.LoginActivity"
             android:windowSoftInputMode="adjustResize" />

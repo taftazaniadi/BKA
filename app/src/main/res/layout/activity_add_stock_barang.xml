@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            app:titleTextAppearance="@style/Toolbar.TitleText"
             app:titleTextColor="@color/main_color" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -54,14 +55,14 @@
                 android:textSize="@dimen/newsMoreTextSize" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textPelanggan"
+                android:id="@+id/textBarang"
                 style="@style/parentDD"
                 android:layout_marginTop="20dp"
                 android:hint="Nama Barang"
                 android:theme="@style/Theme3">
 
                 <AutoCompleteTextView
-                    android:id="@+id/actPelanggan"
+                    android:id="@+id/actBarang"
                     style="@style/modifiedEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,67 +73,68 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textHargaPiutangUsaha"
+                android:id="@+id/textJumlahBarang"
                 style="@style/parent"
                 android:layout_marginTop="@dimen/loginViewsMargin"
                 android:focusable="true"
                 android:hint="Jumlah Barang">
 
                 <EditText
-                    android:id="@+id/editTextHargaPiutangUsaha"
+                    android:id="@+id/editTextJumlahBarang"
                     style="@style/modifiedEditText"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:text="Masukan jumlah barang" />
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputTotal"
+                android:id="@+id/textInputHarga"
                 style="@style/parentTotal"
                 android:layout_marginTop="@dimen/loginViewsMargin"
-                android:enabled="false"
                 android:hint="Harga">
 
                 <EditText
-                    android:id="@+id/editTextTotal"
+                    android:id="@+id/editTextHarga"
                     style="@style/modifiedEditText"
-                    android:enabled="false"
                     android:fontFamily="@font/poppins"
                     android:maxLines="1"
-                    android:text="RP. 0"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="67dp">
+                android:layout_marginTop="70dp">
 
                 <Button
-                    android:id="@+id/btn_cancel_penerimaan"
+                    android:id="@+id/btn_cancel_stock_barang"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="15dp"
                     android:background="@drawable/button_transparant"
-                    android:fontFamily="@font/poppins_bold"
+                    android:fontFamily="@font/poppins"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:text="BATAL"
+                    android:text="Batal"
                     android:textColor="#EB5757"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
+                    android:textAllCaps="false"
+                    android:paddingHorizontal="30dp"
+                    app:backgroundTint="@null"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_add_penerimaan" />
+                    app:layout_constraintEnd_toStartOf="@+id/btn_add_stock_barang" />
 
                 <Button
-                    android:id="@+id/btn_add_penerimaan"
+                    android:id="@+id/btn_add_stock_barang"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/button"
-                    android:fontFamily="@font/poppins_bold"
+                    android:fontFamily="@font/poppins"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:text="TAMBAH"
+                    android:text="Tambah"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
+                    android:textAllCaps="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 

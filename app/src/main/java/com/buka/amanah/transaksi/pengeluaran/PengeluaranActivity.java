@@ -31,10 +31,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class PengeluaranActivity extends AppCompatActivity {
 
     Button buttonPengeluaran;
+    String message;
 
     //Table View
     private FloatingActionButton previousButton, nextButton;
-    private Spinner items_per_page;
+    private Spinner items_page;
     private TextView tablePaginationDetails, pageNumbers;
     private TableView mTableView;
     @Nullable
@@ -54,7 +55,7 @@ public class PengeluaranActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         //actionbar.setLogo(R.drawable.ic_logo);
-        actionbar.setTitle("Tambah Pengeluaran");
+        actionbar.setTitle("Pengeluaran");
 
         buttonPengeluaran = findViewById(R.id.buttonPengeluaran);
 
@@ -76,13 +77,13 @@ public class PengeluaranActivity extends AppCompatActivity {
         nextButton = findViewById(R.id.next_button);
         tablePaginationDetails = findViewById(R.id.table_details);
         pageNumbers = findViewById(R.id.page_number_text);
-        items_per_page = findViewById(R.id.items_per_page);
+        items_page = findViewById(R.id.items_page);
 
         previousButton.setVisibility(View.INVISIBLE);
 
         if (mPaginationEnabled) {
             tableTestContainer.setVisibility(View.VISIBLE);
-            items_per_page.setOnItemSelectedListener(onItemsPerPageSelectedListener);
+            items_page.setOnItemSelectedListener(onItemsPerPageSelectedListener);
 
             previousButton.setOnClickListener(mClickListener);
             nextButton.setOnClickListener(mClickListener);
@@ -110,17 +111,17 @@ public class PengeluaranActivity extends AppCompatActivity {
         TableViewModel tableViewModel = new TableViewModel();
 
         // Create TableView Adapter
-        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel);
+        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel, PengeluaranActivity.this);
 
         mTableView.setAdapter(tableViewAdapter);
-        mTableView.setTableViewListener(new TableViewListener(mTableView));
+        mTableView.setTableViewListener(new TableViewListener(mTableView, PengeluaranActivity.this));
 
         // Create an instance of a Filter and pass the TableView.
         //mTableFilter = new Filter(mTableView);
 
         // Load the dummy data to the TableView
         tableViewAdapter.setAllItems(tableViewModel.getColumnHeaderList("Pengeluaran"), tableViewModel
-                .getSimpleRowHeaderList(), tableViewModel.getCellList("Pengeluaran"));
+                .getSimpleRowHeaderList(), tableViewModel.getCellList("Pengeluaran", message));
 
         //mTableView.setHasFixedWidth(true);
 

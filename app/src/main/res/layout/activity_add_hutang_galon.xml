@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            app:titleTextAppearance="@style/Toolbar.TitleText"
             app:titleTextColor="@color/main_color" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -59,7 +60,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputTglHutangUsaha"
+                    android:id="@+id/textInputTglHutangGalon"
                     style="@style/parentTotal"
                     android:layout_marginTop="@dimen/loginViewsMargin"
                     android:layout_marginEnd="@dimen/loginViewsMargin"
@@ -67,7 +68,7 @@
                     android:hint="@string/tgl">
 
                     <EditText
-                        android:id="@+id/editTextTglHutangUsaha"
+                        android:id="@+id/editTextTglHutangGalon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
@@ -77,21 +78,15 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textIconTglHutangUsaha"
-                    style="@style/parentIcon"
-                    android:layout_marginTop="@dimen/loginViewsMargin">
-
-                    <EditText
-                        android:id="@+id/ic_TglHutangUsaha"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:maxLines="1"
-                        android:drawableLeft="@drawable/ic_calendar"
-                        android:textColor="@color/teal_700" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                <ImageButton
+                    android:id="@+id/buttonPickTglAddHutangGalon"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/button_transparant2"
+                    android:src="@drawable/ic_calendar"
+                    app:backgroundTint="@null"
+                    />
 
             </LinearLayout>
 
@@ -127,25 +122,6 @@
                     android:fontFamily="@font/poppins"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:text="Masukan jumlah galon"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputTotal"
-                style="@style/parentTotal"
-                android:layout_marginTop="@dimen/loginViewsMargin"
-                android:enabled="false"
-                android:hint="Total">
-
-                <EditText
-                    android:id="@+id/editTextTotal"
-                    style="@style/modifiedEditText"
-                    android:enabled="false"
-                    android:fontFamily="@font/poppins"
-                    android:maxLines="1"
-                    android:inputType="number"
-                    android:text="RP. 0"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -163,39 +139,59 @@
                     android:fontFamily="@font/poppins"
                     android:maxLines="1"
                     android:inputType="number"
-                    android:text="RP. 0"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputTotal"
+                style="@style/parentTotal"
+                android:layout_marginTop="@dimen/loginViewsMargin"
+                android:enabled="false"
+                android:hint="Total Rupiah">
+
+                <EditText
+                    android:id="@+id/editTextTotal"
+                    style="@style/modifiedEditText"
+                    android:enabled="false"
+                    android:fontFamily="@font/poppins"
+                    android:maxLines="1"
+                    android:inputType="number"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="67dp">
+                android:layout_marginTop="70dp">
 
                 <Button
-                    android:id="@+id/btn_cancel_penerimaan"
+                    android:id="@+id/btn_cancel_hutang_galon"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_bold"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="15dp"
                     android:background="@drawable/button_transparant"
+                    android:fontFamily="@font/poppins"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:text="BATAL"
+                    android:text="Batal"
                     android:textColor="#EB5757"
-                    android:textSize="20sp"
-                    android:layout_marginEnd="10dp"
+                    android:textSize="18sp"
+                    android:paddingHorizontal="30dp"
+                    app:backgroundTint="@null"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_add_penerimaan" />
+                    app:layout_constraintEnd_toStartOf="@+id/btn_add_hutang_galon"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btn_add_penerimaan"
+                    android:id="@+id/btn_add_hutang_galon"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/button"
-                    android:fontFamily="@font/poppins_bold"
+                    android:fontFamily="@font/poppins"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:text="TAMBAH"
+                    android:text="Tambah"
+                    android:textAllCaps="false"
                     android:textColor="@android:color/white"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 

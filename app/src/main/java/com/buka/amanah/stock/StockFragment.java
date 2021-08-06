@@ -27,10 +27,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class StockFragment extends Fragment {
 
     Button buttonAddStock;
+    String message;
 
     //Table View
     private FloatingActionButton previousButton, nextButton;
-    private Spinner items_per_page;
+    private Spinner items_page;
     private TextView tablePaginationDetails, pageNumbers;
     private TableView mTableView, mTableViewDetails;
     @Nullable
@@ -59,13 +60,13 @@ public class StockFragment extends Fragment {
         nextButton = view.findViewById(R.id.next_button);
         tablePaginationDetails = view.findViewById(R.id.table_details);
         pageNumbers = view.findViewById(R.id.page_number_text);
-        items_per_page = view.findViewById(R.id.items_per_page);
+        items_page = view.findViewById(R.id.items_page);
 
         previousButton.setVisibility(View.INVISIBLE);
 
         if (mPaginationEnabled) {
             tableTestContainer.setVisibility(View.VISIBLE);
-            items_per_page.setOnItemSelectedListener(onItemsPerPageSelectedListener);
+            items_page.setOnItemSelectedListener(onItemsPerPageSelectedListener);
 
             previousButton.setOnClickListener(mClickListener);
             nextButton.setOnClickListener(mClickListener);
@@ -96,17 +97,17 @@ public class StockFragment extends Fragment {
         TableViewModel tableViewModel = new TableViewModel();
 
         // Create TableView Adapter
-        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel);
+        TableViewAdapter tableViewAdapter = new TableViewAdapter(tableViewModel, getContext());
 
         mTableView.setAdapter(tableViewAdapter);
-        mTableView.setTableViewListener(new TableViewListener(mTableView));
+        mTableView.setTableViewListener(new TableViewListener(mTableView, getContext()));
 
         // Create an instance of a Filter and pass the TableView.
         //mTableFilter = new Filter(mTableView);
 
         // Load the dummy data to the TableView
         tableViewAdapter.setAllItems(tableViewModel.getColumnHeaderList("Stok"), tableViewModel
-                .getSimpleRowHeaderList(), tableViewModel.getCellList("Stok"));
+                .getSimpleRowHeaderList(), tableViewModel.getCellList("Stok", message));
 
         //mTableView.setHasFixedWidth(true);
 

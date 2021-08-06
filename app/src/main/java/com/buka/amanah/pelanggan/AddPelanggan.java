@@ -33,17 +33,7 @@ public class AddPelanggan extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         //actionbar.setLogo(R.drawable.ic_logo);
-        actionbar.setTitle("Tambah Penerimaan");
-
-        buttonPelanggan = findViewById(R.id.buttonAddPelanggan);
-
-        buttonPelanggan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddPelanggan.class);
-                startActivity(intent);
-            }
-        });
+        actionbar.setTitle("Tambah Pelanggan");
 
         // making notification bar transparent
         changeStatusBarColor();

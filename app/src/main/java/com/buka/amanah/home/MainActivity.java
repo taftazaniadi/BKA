@@ -1,5 +1,10 @@
 package com.buka.amanah.home;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,15 +14,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Bundle;
-import android.text.Html;
-import android.view.MenuItem;
-
 import com.buka.amanah.R;
 import com.buka.amanah.hutang_piutang.HutangPiutangFragment;
 import com.buka.amanah.pelanggan.PelangganFragment;
 import com.buka.amanah.stock.StockFragment;
 import com.buka.amanah.transaksi.TransaksiFragment;
+import com.buka.amanah.users.profile.UserProfile;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -38,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
         /* Toolbar */
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setElevation(16);
+        getSupportActionBar().setElevation(0);
 
-        actionbar = getSupportActionBar();
-//        actionbar.setIcon(R.drawable.ic_jitu);
-        actionbar.setTitle(Html.fromHtml("<center>" + getString(R.string.app_name) + "</center>"));
+//        actionbar = getSupportActionBar();
+////        actionbar.setIcon(R.drawable.image);
+//        actionbar.setTitle(getString(R.string.app_name));
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -54,18 +56,23 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_home:
                         viewPager.setCurrentItem(0);
                         break;
+
                     case R.id.action_trx:
                         viewPager.setCurrentItem(1);
                         break;
+
                     case R.id.action_hutang:
                         viewPager.setCurrentItem(2);
                         break;
+
                     case R.id.action_customer:
                         viewPager.setCurrentItem(3);
                         break;
+
                     case R.id.action_stock:
                         viewPager.setCurrentItem(4);
                         break;
+
                 }
                 return false;
             }
@@ -85,6 +92,34 @@ public class MainActivity extends AppCompatActivity {
                 }
                 bottomNavigationView.getMenu().getItem(position).setChecked(true);
                 prevMenuItem = bottomNavigationView.getMenu().getItem(position);
+
+                switch(position) {
+                    case 0:
+                        actionbar = getSupportActionBar();
+//        actionbar.setIcon(R.drawable.image);
+                        actionbar.setTitle(getString(R.string.app_name));
+                        break;
+
+                    case 1:
+                        actionbar = getSupportActionBar();
+                        actionbar.setTitle(getString(R.string.transaksi));
+                        break;
+
+                    case 2:
+                        actionbar = getSupportActionBar();
+                        actionbar.setTitle(getString(R.string.utang));
+                        break;
+
+                    case 3:
+                        actionbar = getSupportActionBar();
+                        actionbar.setTitle(getString(R.string.pelanggan));
+                        break;
+
+                    case 4:
+                        actionbar.setTitle(getString(R.string.stok));
+                        actionbar = getSupportActionBar();
+                        break;
+                }
             }
 
 
@@ -106,12 +141,30 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.home_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_profil:
+                startActivity(new Intent(this, UserProfile.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
 
         public ViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
+
         @Override
         public Fragment getItem(int position) {
             return mFragmentList.get(position);

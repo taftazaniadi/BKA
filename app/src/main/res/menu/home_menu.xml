@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--<item-->
+    <!--android:id="@+id/mnTiketDeposit"-->
+    <!--android:title="@string/mn_tiket_deposit" />-->
+
+    <item
+        android:id="@+id/nav_profil"
+        android:icon="@drawable/ic_baseline_person_24"
+        app:showAsAction="always"
+        android:title="Profile" />
+
+<!--    <item-->
+<!--        android:id="@+id/nav_report_depo"-->
+<!--        android:icon="@drawable/ic_list_white_24dp"-->
+<!--        android:title="@string/mn_title_depo_history" />-->
+
+<!--    <item-->
+<!--        android:id="@+id/mnLogout"-->
+<!--        android:title="@string/mn_signout" />-->
+
+</menu>

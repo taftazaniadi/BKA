@@ -73,7 +73,7 @@
                             android:layout_height="40dp"
                             android:layout_gravity="end"
                             android:layout_marginTop="15dp"
-                            android:background="@drawable/button"
+                            android:background="@drawable/button3"
                             android:fontFamily="@font/poppins_bold"
                             android:foreground="?attr/selectableItemBackgroundBorderless"
                             android:text="Lihat"
@@ -142,6 +142,7 @@
                             android:fontFamily="@font/poppins_bold"
                             android:foreground="?attr/selectableItemBackgroundBorderless"
                             android:text="Lihat"
+                            app:backgroundTint="#F14546"
                             android:textAllCaps="false" />
 
                     </LinearLayout>
