@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".transaksi.penerimaan.AddPenerimaan">
+    tools:context=".transaksi.penerimaan.FormPenerimaan">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -47,7 +47,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppins_bold"
+                android:fontFamily="@font/poppins"
+                android:textFontWeight="700"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="Lengkapi data penerimaan Anda"
                 android:textColor="@color/black"
@@ -81,9 +82,9 @@
 
                 <ImageButton
                     android:id="@+id/buttonPickTglPenerimaan"
-                    android:layout_marginTop="@dimen/loginViewsMargin"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_height="50dp"
+                    android:layout_width="90dp"
                     android:background="@drawable/button_transparant2"
                     android:src="@drawable/ic_calendar"
                     app:backgroundTint="@null"
@@ -184,30 +185,32 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/button_transparant"
-                    android:fontFamily="@font/poppins"
+                    android:fontFamily="@font/poppins_bold"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:text="Batal"
+                    android:letterSpacing="-0.01"
                     android:textColor="#EB5757"
                     android:textSize="18sp"
                     android:textAllCaps="false"
                     android:paddingHorizontal="30dp"
                     app:backgroundTint="@null"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_add_penerimaan"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_form_penerimaan"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btn_add_penerimaan"
+                    android:id="@+id/btn_form_penerimaan"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/button"
-                    android:fontFamily="@font/poppins"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textFontWeight="500"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:text="Tambah"
+                    android:letterSpacing="-0.01"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textAllCaps="false"
-                    android:onClick="confirmation"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 

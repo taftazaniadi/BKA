@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".transaksi.pengeluaran.AddPengeluaran">
+    tools:context=".transaksi.pengeluaran.FormPengeluaran">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -176,11 +176,11 @@
                     android:paddingHorizontal="30dp"
                     app:backgroundTint="@null"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_add_pengeluaran"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_form_pengeluaran"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btn_add_pengeluaran"
+                    android:id="@+id/btn_form_pengeluaran"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/button"
@@ -190,7 +190,6 @@
                     android:text="Tambah"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
-                    android:onClick="confirmation"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 

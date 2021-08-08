@@ -19,17 +19,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BuKa"
         android:usesCleartextTraffic="true">
-        <activity android:name=".transaksi.pengeluaran.DetailPengeluaran"></activity>
-        <activity android:name=".transaksi.penerimaan.DetailPenerimaan" />
+        <activity
+            android:name=".transaksi.pengeluaran.DetailPengeluaran"
+            android:configChanges="orientation"
+            android:parentActivityName=".transaksi.pengeluaran.PengeluaranActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".transaksi.penerimaan.DetailPenerimaan"
+            android:configChanges="orientation"
+            android:parentActivityName=".transaksi.penerimaan.PenerimaanActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".report.ReportActivity" />
         <activity
             android:name=".users.profile.ChangePassword"
+            android:configChanges="orientation"
+            android:parentActivityName=".users.profile.UserProfile"
+            android:screenOrientation="portrait"
             android:theme="@style/ProfileTheme" />
         <activity
             android:name=".users.profile.UpdateUserProfile"
+            android:configChanges="orientation"
+            android:parentActivityName=".users.profile.UserProfile"
+            android:screenOrientation="portrait"
             android:theme="@style/ProfileTheme" />
         <activity
             android:name=".users.profile.UserProfile"
+            android:configChanges="orientation"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/ProfileTheme" />
         <activity android:name=".stock.AddStockBarang" />
         <activity android:name=".pelanggan.detail.DetailPelanggan" />
@@ -43,9 +60,17 @@
         <activity android:name=".hutang_piutang.hutang.usaha.AddHutangUsaha" />
         <activity android:name=".hutang_piutang.hutang.usaha.HutangUsahaActivity" />
         <activity android:name=".transaksi.pengeluaran.PengeluaranActivity" />
-        <activity android:name=".transaksi.pengeluaran.AddPengeluaran" />
-        <activity android:name=".transaksi.penerimaan.AddPenerimaan" />
-        <activity android:name=".transaksi.penerimaan.PenerimaanActivity" />
+        <activity android:name=".transaksi.pengeluaran.FormPengeluaran" />
+        <activity
+            android:name=".transaksi.penerimaan.FormPenerimaan"
+            android:configChanges="orientation"
+            android:parentActivityName=".transaksi.penerimaan.PenerimaanActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".transaksi.penerimaan.PenerimaanActivity"
+            android:configChanges="orientation"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".users.resetpass.ForgotPasswordInputOTP"
             android:windowSoftInputMode="adjustResize" />

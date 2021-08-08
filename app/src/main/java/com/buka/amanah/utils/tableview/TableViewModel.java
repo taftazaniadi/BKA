@@ -28,7 +28,10 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 
 import com.buka.amanah.R;
+import com.buka.amanah.pojo.customer_get.CustomerView;
+import com.buka.amanah.pojo.disbursement_get.DisbursementView;
 import com.buka.amanah.pojo.receipt_get.ReceiptView;
+import com.buka.amanah.pojo.receipt_summary.ReceiptSummary;
 import com.buka.amanah.utils.tableview.model.Cell;
 import com.buka.amanah.utils.tableview.model.ColumnHeader;
 import com.buka.amanah.utils.tableview.model.RowHeader;
@@ -50,9 +53,16 @@ public class TableViewModel {
     public static final int DEL = 3;
 
 
+    public static final int PENERIMAAN_COLUMN_INDEX = 6;
+    public static final int PENGELUARAN_COLUMN_INDEX = 4;
+    public static final int HUTANG_USAHA_COLUMN_INDEX = 5;
+    public static final int HUTANG_GALON_COLUMN_INDEX = 5;
+    public static final int PIUTANG_USAHA_COLUMN_INDEX = 6;
+    public static final int PIUTANG_GALON_COLUMN_INDEX = 5;
+    public static final int PELANGGAN_COLUMN_INDEX = 6;
+    public static final int STOCK_COLUMN_INDEX = 3;
 
-    public static final int MENU_COLUMN_INDEX = 6;
-//    public static final int VIEW_COLUMN_INDEX = 6;
+    //    public static final int VIEW_COLUMN_INDEX = 6;
 //    public static final int EDIT_COLUMN_INDEX = 7;
 //    public static final int DEL_COLUMN_INDEX = 8;
     // Constant size for dummy data sets
@@ -60,7 +70,9 @@ public class TableViewModel {
 //    private static final int COLUMN_SIZE_PENGELUARAN = 6;
 //    private static final int COLUMN_SIZE_DETAIL_PENERIMAAN = 3;
     private static final int ROW_SIZE = 500;
-//    @DrawableRes
+    private static final int ROW_SIZE_DETAIL = 500;
+//    private static final int ROW_SIZE_DET = 6;
+    //    @DrawableRes
 //    private final int mViewDrawable;
 //    @DrawableRes
 //    private final int mEditDrawable;
@@ -68,9 +80,12 @@ public class TableViewModel {
 //    private final int mDeleteDrawable;
     @DrawableRes
     private final int mMenuDrawable;
-    int COLUMN_SIZE, COLUMN_SIZE_DETAIL, ROW_SIZE_DETAIL;
-    ReceiptView receiptGet = new ReceiptView();
+    int COLUMN_SIZE, COLUMN_SIZE_DETAIL, ROW_SIZE_DETAILS;
 
+    ReceiptView receiptGet = new ReceiptView();
+    DisbursementView disbursementGet = new DisbursementView();
+    CustomerView customerView = new CustomerView();
+    ReceiptSummary receiptSummary = new ReceiptSummary();
 
     public TableViewModel() {
         // initialize drawables
@@ -96,39 +111,34 @@ public class TableViewModel {
     @NonNull
     public List<RowHeader> getDetailRowHeaderList(String category) {
         List<RowHeader> list = new ArrayList<>();
+        int ROW_SIZE_DET = 6;
 
         if (category.equalsIgnoreCase("Penerimaan")) {
-            ROW_SIZE_DETAIL = 3;
-            for (int i = 1; i <= ROW_SIZE_DETAIL; i++) {
+            for (int i = 1; i <= ROW_SIZE_DET; i++) {
                 RowHeader header = new RowHeader(String.valueOf(i), "" + i);
                 list.add(header);
             }
         } else if (category.equalsIgnoreCase("Hutang Usaha")) {
-            ROW_SIZE_DETAIL = 1;
-            for (int i = 1; i <= ROW_SIZE_DETAIL; i++) {
+            for (int i = 1; i <= ROW_SIZE_DET; i++) {
                 RowHeader header = new RowHeader(String.valueOf(i), "" + i);
                 list.add(header);
             }
         } else if (category.equalsIgnoreCase("Hutang Galon")) {
-            ROW_SIZE_DETAIL = 1;
-            for (int i = 1; i <= ROW_SIZE_DETAIL; i++) {
+            for (int i = 1; i <= ROW_SIZE_DET; i++) {
                 RowHeader header = new RowHeader(String.valueOf(i), "" + i);
                 list.add(header);
             }
         } else if (category.equalsIgnoreCase("Piutang Usaha")) {
-            ROW_SIZE_DETAIL = 1;
-            for (int i = 1; i <= ROW_SIZE_DETAIL; i++) {
+            for (int i = 1; i <= ROW_SIZE_DET; i++) {
                 RowHeader header = new RowHeader(String.valueOf(i), "" + i);
                 list.add(header);
             }
         } else if (category.equalsIgnoreCase("Piutang Galon")) {
-            ROW_SIZE_DETAIL = 1;
-            for (int i = 1; i <= ROW_SIZE_DETAIL; i++) {
+            for (int i = 1; i <= ROW_SIZE_DET; i++) {
                 RowHeader header = new RowHeader(String.valueOf(i), "" + i);
                 list.add(header);
             }
         } else if (category.equalsIgnoreCase("Pelanggan")) {
-            ROW_SIZE_DETAIL = 1;
             for (int i = 1; i <= ROW_SIZE_DETAIL; i++) {
                 RowHeader header = new RowHeader(String.valueOf(i), "" + i);
                 list.add(header);
@@ -508,6 +518,296 @@ public class TableViewModel {
     /**
      * This is a dummy model list test some cases.
      */
+//    @NonNull
+//    public List<List<Cell>> getCellList(String category, String response) {
+//        List<List<Cell>> list = new ArrayList<>();
+//
+//        if (category.equalsIgnoreCase("Penerimaan")) {
+//            Gson gson = new Gson();
+//            receiptGet = gson.fromJson(response, ReceiptView.class);
+//
+//            for (int i = 0; i < receiptGet.getData().length; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//                COLUMN_SIZE = 7;
+//                for (int j = 0; j < COLUMN_SIZE; j++) {
+//                    Cell cell;
+//
+//                    // Create dummy id.
+//                    String id = j + "-" + i;
+//
+//                    if (j == 0) {
+//                        cell = new Cell(id, receiptGet.getData()[i].getCreatedAt());
+//                    } else if (j == 1) {
+//                        cell = new Cell(id, receiptGet.getData()[i].getCustomerName());
+//                    } else if (j == 2) {
+//                        cell = new Cell(id, receiptGet.getData()[i].getType());
+//                    } else if (j == 3) {
+//                        cell = new Cell(id, receiptGet.getData()[i].getAmount());
+//                    } else if (j == 4) {
+//                        cell = new Cell(id, "Rp " + receiptGet.getData()[i].getPrice());
+//                    } else if (j == 5) {
+//                        cell = new Cell(id, "Rp " + receiptGet.getData()[i].getTotal());
+//                    } else {
+//                        cell = new Cell(id, receiptGet.getData()[i].getId());
+//                    }
+//
+//                    cellList.add(cell);
+//                }
+//                list.add(cellList);
+//
+//            }
+//        } else if (category.equalsIgnoreCase("Pengeluaran")) {
+//            Gson gson = new Gson();
+//            disbursementGet = gson.fromJson(response, DisbursementView.class);
+//
+//            for (int i = 0; i < disbursementGet.getData().length; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//                COLUMN_SIZE = 5;
+//                for (int j = 0; j < COLUMN_SIZE; j++) {
+//                    Cell cell;
+//
+//                    // Create dummy id.
+//                    String id = j + "-" + i;
+//
+//                    if (j == 0) {
+//                        cell = new Cell(id, disbursementGet.getData()[i].getCreatedAt());
+//                    } else if (j == 1) {
+//                        cell = new Cell(id, disbursementGet.getData()[i].getType());
+//                    } else if (j == 2) {
+//                        cell = new Cell(id, disbursementGet.getData()[i].getCategory());
+//                    } else if (j == 3) {
+//                        cell = new Cell(id, "Rp " + disbursementGet.getData()[i].getTotal());
+//                    } else {
+//                        cell = new Cell(id, disbursementGet.getData()[i].getId());
+//                    }
+//
+//                    cellList.add(cell);
+//                }
+//                list.add(cellList);
+//            }
+//        } else if (category.equalsIgnoreCase("Hutang Usaha")) {
+//            Gson gson = new Gson();
+//            receiptGet = gson.fromJson(response, ReceiptView.class);
+//
+//            for (int i = 0; i < receiptGet.getData().length; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//
+//                if (category.equalsIgnoreCase("Hutang Usaha")) {
+//                    COLUMN_SIZE = 6;
+//                    for (int j = 0; j < COLUMN_SIZE; j++) {
+//                        Object text = "cell " + j + " " + i;
+//
+//                        final int random = new Random().nextInt();
+//                        if (j == 0) {
+//                            text = i;
+//                        } else if (j == 1) {
+//                            text = random;
+//                        }
+//
+//                        // Create dummy id.
+//                        String id = j + "-" + i;
+//
+//                        Cell cell;
+//                        if (j == 3) {
+//                            cell = new Cell(id, text);
+//                        } else if (j == 4) {
+//                            // NOTE female and male keywords for filter will have conflict since "female"
+//                            // contains "male"
+//                            cell = new Cell(id, text);
+//                        } else {
+//                            cell = new Cell(id, text);
+//                        }
+//                        cellList.add(cell);
+//                    }
+//                    list.add(cellList);
+//                }
+//            }
+//        } else if (category.equalsIgnoreCase("Hutang Galon")) {
+//            Gson gson = new Gson();
+//            receiptGet = gson.fromJson(response, ReceiptView.class);
+//
+//            for (int i = 0; i < receiptGet.getData().length; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//
+//                if (category.equalsIgnoreCase("Hutang Galon")) {
+//                    COLUMN_SIZE = 6;
+//                    for (int j = 0; j < COLUMN_SIZE; j++) {
+//                        Object text = "cell " + j + " " + i;
+//
+//                        final int random = new Random().nextInt();
+//                        if (j == 0) {
+//                            text = i;
+//                        } else if (j == 1) {
+//                            text = random;
+//                        }
+//
+//                        // Create dummy id.
+//                        String id = j + "-" + i;
+//
+//                        Cell cell;
+//                        if (j == 3) {
+//                            cell = new Cell(id, text);
+//                        } else if (j == 4) {
+//                            // NOTE female and male keywords for filter will have conflict since "female"
+//                            // contains "male"
+//                            cell = new Cell(id, text);
+//                        } else {
+//                            cell = new Cell(id, text);
+//                        }
+//                        cellList.add(cell);
+//                    }
+//                    list.add(cellList);
+//                }
+//            }
+//        } else if (category.equalsIgnoreCase("Piutang Usaha")) {
+//            Gson gson = new Gson();
+//            receiptGet = gson.fromJson(response, ReceiptView.class);
+//
+//            for (int i = 0; i < receiptGet.getData().length; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//
+//                if (category.equalsIgnoreCase("Piutang Usaha")) {
+//                    COLUMN_SIZE = 7;
+//                    for (int j = 0; j < COLUMN_SIZE; j++) {
+//                        Object text = "cell " + j + " " + i;
+//
+//                        final int random = new Random().nextInt();
+//                        if (j == 0) {
+//                            text = i;
+//                        } else if (j == 1) {
+//                            text = random;
+//                        }
+//
+//                        // Create dummy id.
+//                        String id = j + "-" + i;
+//
+//                        Cell cell;
+//                        if (j == 3) {
+//                            cell = new Cell(id, text);
+//                        } else if (j == 4) {
+//                            // NOTE female and male keywords for filter will have conflict since "female"
+//                            // contains "male"
+//                            cell = new Cell(id, text);
+//                        } else {
+//                            cell = new Cell(id, text);
+//                        }
+//                        cellList.add(cell);
+//                    }
+//                    list.add(cellList);
+//                }
+//            }
+//        } else if (category.equalsIgnoreCase("Piutang Galon")) {
+//            Gson gson = new Gson();
+//            receiptGet = gson.fromJson(response, ReceiptView.class);
+//
+//            for (int i = 0; i < receiptGet.getData().length; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//
+//                if (category.equalsIgnoreCase("Piutang Galon")) {
+//                    COLUMN_SIZE = 6;
+//                    for (int j = 0; j < COLUMN_SIZE; j++) {
+//                        Object text = "cell " + j + " " + i;
+//
+//                        final int random = new Random().nextInt();
+//                        if (j == 0) {
+//                            text = i;
+//                        } else if (j == 1) {
+//                            text = random;
+//                        }
+//
+//                        // Create dummy id.
+//                        String id = j + "-" + i;
+//
+//                        Cell cell;
+//                        if (j == 3) {
+//                            cell = new Cell(id, text);
+//                        } else if (j == 4) {
+//                            // NOTE female and male keywords for filter will have conflict since "female"
+//                            // contains "male"
+//                            cell = new Cell(id, text);
+//                        } else {
+//                            cell = new Cell(id, text);
+//                        }
+//                        cellList.add(cell);
+//                    }
+//                    list.add(cellList);
+//                }
+//            }
+//        } else if (category.equalsIgnoreCase("Pelanggan")) {
+//            Gson gson = new Gson();
+//            customerView = gson.fromJson(response, CustomerView.class);
+//
+//            for (int i = 0; i < customerView.getData().length; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//                COLUMN_SIZE = 7;
+//                for (int j = 0; j < COLUMN_SIZE; j++) {
+//                    Cell cell;
+//
+//                    // Create dummy id.
+//                    String id = j + "-" + i;
+//
+//                    if (j == 0) {
+//                        cell = new Cell(id, customerView.getData()[i].getCreated_at());
+//                    } else if (j == 1) {
+//                        cell = new Cell(id, customerView.getData()[i].getName());
+//                    } else if (j == 2) {
+//                        cell = new Cell(id, customerView.getData()[i].getPhone());
+//                    } else if (j == 3) {
+//                        cell = new Cell(id, customerView.getData()[i].getWa());
+//                    } else if (j == 4) {
+//                        cell = new Cell(id, customerView.getData()[i].getAddress());
+//                    } else if (j == 5) {
+//                        cell = new Cell(id, "Lihat Transaksi");
+//                    } else {
+//                        cell = new Cell(id, customerView.getData()[i].getId());
+//                    }
+//                    cellList.add(cell);
+//                }
+//                list.add(cellList);
+//
+//            }
+//        } else if (category.equalsIgnoreCase("Stok")) {
+//            Gson gson = new Gson();
+//            receiptGet = gson.fromJson(response, ReceiptView.class);
+//
+//            for (int i = 0; i < receiptGet.getData().length; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//
+//                if (category.equalsIgnoreCase("Stok")) {
+//                    COLUMN_SIZE = 4;
+//                    for (int j = 0; j < COLUMN_SIZE; j++) {
+//                        Object text = "cell " + j + " " + i;
+//
+//                        final int random = new Random().nextInt();
+//                        if (j == 0) {
+//                            text = i;
+//                        } else if (j == 1) {
+//                            text = random;
+//                        }
+//
+//                        // Create dummy id.
+//                        String id = j + "-" + i;
+//
+//                        Cell cell;
+//                        if (j == 3) {
+//                            cell = new Cell(id, text);
+//                        } else if (j == 4) {
+//                            // NOTE female and male keywords for filter will have conflict since "female"
+//                            // contains "male"
+//                            cell = new Cell(id, text);
+//                        } else {
+//                            cell = new Cell(id, text);
+//                        }
+//                        cellList.add(cell);
+//                    }
+//                    list.add(cellList);
+//                }
+//            }
+//        }
+//
+//        return list;
+//    }
+
     @NonNull
     public List<List<Cell>> getCellList(String category, String response) {
         List<List<Cell>> list = new ArrayList<>();
@@ -521,24 +821,14 @@ public class TableViewModel {
                 COLUMN_SIZE = 7;
                 for (int j = 0; j < COLUMN_SIZE; j++) {
                     Cell cell;
-                    Object text = null;
-
-                    final int random = new Random().nextInt();
-                    if (j == MENU_COLUMN_INDEX) {
-                        text = random % 2 == 0 ? MENU : MENU;
-                    } /*else if (j == EDIT_COLUMN_INDEX) {
-                        text = random % 2 == 0 ? EDIT : EDIT;
-                    } else if (j == DEL_COLUMN_INDEX) {
-                        text = random % 2 == 0 ? DEL : DEL;
-                    }*/
 
                     // Create dummy id.
                     String id = j + "-" + i;
 
                     if (j == 0) {
-                        cell = new Cell(id, receiptGet.getData()[i].getCreated_at());
+                        cell = new Cell(id, receiptGet.getData()[i].getCreatedAt());
                     } else if (j == 1) {
-                        cell = new Cell(id, receiptGet.getData()[i].getCustomer_name());
+                        cell = new Cell(id, receiptGet.getData()[i].getCustomerName());
                     } else if (j == 2) {
                         cell = new Cell(id, receiptGet.getData()[i].getType());
                     } else if (j == 3) {
@@ -547,10 +837,6 @@ public class TableViewModel {
                         cell = new Cell(id, "Rp " + receiptGet.getData()[i].getPrice());
                     } else if (j == 5) {
                         cell = new Cell(id, "Rp " + receiptGet.getData()[i].getTotal());
-//                    } else if (j == 6){
-//                        cell = new Cell(id, text);
-//                    } else if (j == 7){
-//                        cell = new Cell(id, text);
                     } else {
                         cell = new Cell(id, receiptGet.getData()[i].getId());
                     }
@@ -562,46 +848,35 @@ public class TableViewModel {
             }
         } else if (category.equalsIgnoreCase("Pengeluaran")) {
             Gson gson = new Gson();
-            receiptGet = gson.fromJson(response, ReceiptView.class);
+            disbursementGet = gson.fromJson(response, DisbursementView.class);
 
-            for (int i = 0; i < receiptGet.getData().length; i++) {
+            for (int i = 0; i < disbursementGet.getData().length; i++) {
                 List<Cell> cellList = new ArrayList<>();
+                COLUMN_SIZE = 5;
+                for (int j = 0; j < COLUMN_SIZE; j++) {
+                    Cell cell;
 
-                if (category.equalsIgnoreCase("Pengeluaran")) {
-                    COLUMN_SIZE = 5;
-                    for (int j = 0; j < COLUMN_SIZE; j++) {
-                        Object text = "cell " + j + " " + i;
+                    // Create dummy id.
+                    String id = j + "-" + i;
 
-                        final int random = new Random().nextInt();
-                        if (j == 0) {
-                            text = i;
-                        } else if (j == 1) {
-                            text = random;
-                        }
-
-                        // Create dummy id.
-                        String id = j + "-" + i;
-
-                        Cell cell;
-                        if (j == 3) {
-                            cell = new Cell(id, text);
-                        } else if (j == 4) {
-                            // NOTE female and male keywords for filter will have conflict since "female"
-                            // contains "male"
-                            cell = new Cell(id, text);
-                        } else {
-                            cell = new Cell(id, text);
-                        }
-                        cellList.add(cell);
+                    if (j == 0) {
+                        cell = new Cell(id, disbursementGet.getData()[i].getCreatedAt());
+                    } else if (j == 1) {
+                        cell = new Cell(id, disbursementGet.getData()[i].getType());
+                    } else if (j == 2) {
+                        cell = new Cell(id, disbursementGet.getData()[i].getCategory());
+                    } else if (j == 3) {
+                        cell = new Cell(id, "Rp " + disbursementGet.getData()[i].getTotal());
+                    } else {
+                        cell = new Cell(id, disbursementGet.getData()[i].getId());
                     }
-                    list.add(cellList);
-                }
-            }
-        } else if (category.equalsIgnoreCase("Hutang Usaha")) {
-            Gson gson = new Gson();
-            receiptGet = gson.fromJson(response, ReceiptView.class);
 
-            for (int i = 0; i < receiptGet.getData().length; i++) {
+                    cellList.add(cell);
+                }
+                list.add(cellList);
+            }
+        } else {
+            for (int i = 0; i < ROW_SIZE; i++) {
                 List<Cell> cellList = new ArrayList<>();
 
                 if (category.equalsIgnoreCase("Hutang Usaha")) {
@@ -631,17 +906,7 @@ public class TableViewModel {
                         }
                         cellList.add(cell);
                     }
-                    list.add(cellList);
-                }
-            }
-        } else if (category.equalsIgnoreCase("Hutang Galon")) {
-            Gson gson = new Gson();
-            receiptGet = gson.fromJson(response, ReceiptView.class);
-
-            for (int i = 0; i < receiptGet.getData().length; i++) {
-                List<Cell> cellList = new ArrayList<>();
-
-                if (category.equalsIgnoreCase("Hutang Galon")) {
+                } else if (category.equalsIgnoreCase("Hutang Galon")) {
                     COLUMN_SIZE = 6;
                     for (int j = 0; j < COLUMN_SIZE; j++) {
                         Object text = "cell " + j + " " + i;
@@ -668,17 +933,7 @@ public class TableViewModel {
                         }
                         cellList.add(cell);
                     }
-                    list.add(cellList);
-                }
-            }
-        } else if (category.equalsIgnoreCase("Piutang Usaha")) {
-            Gson gson = new Gson();
-            receiptGet = gson.fromJson(response, ReceiptView.class);
-
-            for (int i = 0; i < receiptGet.getData().length; i++) {
-                List<Cell> cellList = new ArrayList<>();
-
-                if (category.equalsIgnoreCase("Piutang Usaha")) {
+                } else if (category.equalsIgnoreCase("Piutang Usaha")) {
                     COLUMN_SIZE = 7;
                     for (int j = 0; j < COLUMN_SIZE; j++) {
                         Object text = "cell " + j + " " + i;
@@ -705,17 +960,7 @@ public class TableViewModel {
                         }
                         cellList.add(cell);
                     }
-                    list.add(cellList);
-                }
-            }
-        } else if (category.equalsIgnoreCase("Piutang Galon")) {
-            Gson gson = new Gson();
-            receiptGet = gson.fromJson(response, ReceiptView.class);
-
-            for (int i = 0; i < receiptGet.getData().length; i++) {
-                List<Cell> cellList = new ArrayList<>();
-
-                if (category.equalsIgnoreCase("Piutang Galon")) {
+                } else if (category.equalsIgnoreCase("Piutang Galon")) {
                     COLUMN_SIZE = 6;
                     for (int j = 0; j < COLUMN_SIZE; j++) {
                         Object text = "cell " + j + " " + i;
@@ -742,17 +987,7 @@ public class TableViewModel {
                         }
                         cellList.add(cell);
                     }
-                    list.add(cellList);
-                }
-            }
-        } else if (category.equalsIgnoreCase("Pelanggan")) {
-            Gson gson = new Gson();
-            receiptGet = gson.fromJson(response, ReceiptView.class);
-
-            for (int i = 0; i < receiptGet.getData().length; i++) {
-                List<Cell> cellList = new ArrayList<>();
-
-                if (category.equalsIgnoreCase("Pelanggan")) {
+                } else if (category.equalsIgnoreCase("Pelanggan")) {
                     COLUMN_SIZE = 7;
                     for (int j = 0; j < COLUMN_SIZE; j++) {
                         Object text = "cell " + j + " " + i;
@@ -779,17 +1014,7 @@ public class TableViewModel {
                         }
                         cellList.add(cell);
                     }
-                    list.add(cellList);
-                }
-            }
-        } else if (category.equalsIgnoreCase("Stok")) {
-            Gson gson = new Gson();
-            receiptGet = gson.fromJson(response, ReceiptView.class);
-
-            for (int i = 0; i < receiptGet.getData().length; i++) {
-                List<Cell> cellList = new ArrayList<>();
-
-                if (category.equalsIgnoreCase("Stok")) {
+                } else if (category.equalsIgnoreCase("Stok")) {
                     COLUMN_SIZE = 4;
                     for (int j = 0; j < COLUMN_SIZE; j++) {
                         Object text = "cell " + j + " " + i;
@@ -816,54 +1041,241 @@ public class TableViewModel {
                         }
                         cellList.add(cell);
                     }
-                    list.add(cellList);
                 }
+                list.add(cellList);
             }
         }
-
         return list;
     }
 
     @NonNull
-    public List<List<Cell>> getDetailCellList(String category) {
+    public List<List<Cell>> getDetailCellList(String category, String response) {
         List<List<Cell>> list = new ArrayList<>();
 
-        if (category.equalsIgnoreCase("Penerimaan")) {
-            ROW_SIZE_DETAIL = 3;
-            COLUMN_SIZE_DETAIL = 3;
-            for (int i = 0; i < ROW_SIZE_DETAIL; i++) {
-                List<Cell> cellList = new ArrayList<>();
-                for (int j = 0; j < COLUMN_SIZE_DETAIL; j++) {
-                    Object text = "cell " + j + " " + i;
+//        if (category.equalsIgnoreCase("Penerimaan")) {
+//            ROW_SIZE_DETAIL = 3;
+//            COLUMN_SIZE_DETAIL = 3;
+//            for (int i = 0; i < ROW_SIZE_DETAIL; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//                for (int j = 0; j < COLUMN_SIZE_DETAIL; j++) {
+//                    Object text = "cell " + j + " " + i;
+//
+//                    final int random = new Random().nextInt();
+//                    if (j == 0) {
+//                        text = i;
+//                    } else if (j == 1) {
+//                        text = random;
+//                    }
+//
+//                    // Create dummy id.
+//                    String id = j + "-" + i;
+//
+//                    Cell cell;
+//                    if (j == 3) {
+//                        cell = new Cell(id, text);
+//                    } else if (j == 4) {
+//                        // NOTE female and male keywords for filter will have conflict since "female"
+//                        // contains "male"
+//                        cell = new Cell(id, text);
+//                    } else {
+//                        cell = new Cell(id, text);
+//                    }
+//                    cellList.add(cell);
+//                }
+//                list.add(cellList);
+//            }
+//        } else if (category.equalsIgnoreCase("Hutang Usaha")) {
+//            ROW_SIZE_DETAIL = 1;
+//            COLUMN_SIZE_DETAIL = 1;
+//            for (int i = 0; i < ROW_SIZE_DETAIL; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//                for (int j = 0; j < COLUMN_SIZE_DETAIL; j++) {
+//                    Object text = "cell " + j + " " + i;
+//
+//                    final int random = new Random().nextInt();
+//                    if (j == 0) {
+//                        text = i;
+//                    } else if (j == 1) {
+//                        text = random;
+//                    }
+//
+//                    // Create dummy id.
+//                    String id = j + "-" + i;
+//
+//                    Cell cell;
+//                    if (j == 3) {
+//                        cell = new Cell(id, text);
+//                    } else if (j == 4) {
+//                        // NOTE female and male keywords for filter will have conflict since "female"
+//                        // contains "male"
+//                        cell = new Cell(id, text);
+//                    } else {
+//                        cell = new Cell(id, text);
+//                    }
+//                    cellList.add(cell);
+//                }
+//                list.add(cellList);
+//            }
+//        } else if (category.equalsIgnoreCase("Hutang Galon")) {
+//            ROW_SIZE_DETAIL = 1;
+//            COLUMN_SIZE_DETAIL = 3;
+//            for (int i = 0; i < ROW_SIZE_DETAIL; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//                for (int j = 0; j < COLUMN_SIZE_DETAIL; j++) {
+//                    Object text = "cell " + j + " " + i;
+//
+//                    final int random = new Random().nextInt();
+//                    if (j == 0) {
+//                        text = i;
+//                    } else if (j == 1) {
+//                        text = random;
+//                    }
+//
+//                    // Create dummy id.
+//                    String id = j + "-" + i;
+//
+//                    Cell cell;
+//                    if (j == 3) {
+//                        cell = new Cell(id, text);
+//                    } else if (j == 4) {
+//                        // NOTE female and male keywords for filter will have conflict since "female"
+//                        // contains "male"
+//                        cell = new Cell(id, text);
+//                    } else {
+//                        cell = new Cell(id, text);
+//                    }
+//                    cellList.add(cell);
+//                }
+//                list.add(cellList);
+//            }
+//        } else if (category.equalsIgnoreCase("Piutang Usaha")) {
+//            ROW_SIZE_DETAIL = 1;
+//            COLUMN_SIZE_DETAIL = 1;
+//            for (int i = 0; i < ROW_SIZE_DETAIL; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//                for (int j = 0; j < COLUMN_SIZE_DETAIL; j++) {
+//                    Object text = "cell " + j + " " + i;
+//
+//                    final int random = new Random().nextInt();
+//                    if (j == 0) {
+//                        text = i;
+//                    } else if (j == 1) {
+//                        text = random;
+//                    }
+//
+//                    // Create dummy id.
+//                    String id = j + "-" + i;
+//
+//                    Cell cell;
+//                    if (j == 3) {
+//                        cell = new Cell(id, text);
+//                    } else if (j == 4) {
+//                        // NOTE female and male keywords for filter will have conflict since "female"
+//                        // contains "male"
+//                        cell = new Cell(id, text);
+//                    } else {
+//                        cell = new Cell(id, text);
+//                    }
+//                    cellList.add(cell);
+//                }
+//                list.add(cellList);
+//            }
+//        } else if (category.equalsIgnoreCase("Piutang Galon")) {
+//            ROW_SIZE_DETAIL = 1;
+//            COLUMN_SIZE_DETAIL = 3;
+//            for (int i = 0; i < ROW_SIZE_DETAIL; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//                for (int j = 0; j < COLUMN_SIZE_DETAIL; j++) {
+//                    Object text = "cell " + j + " " + i;
+//
+//                    final int random = new Random().nextInt();
+//                    if (j == 0) {
+//                        text = i;
+//                    } else if (j == 1) {
+//                        text = random;
+//                    }
+//
+//                    // Create dummy id.
+//                    String id = j + "-" + i;
+//
+//                    Cell cell;
+//                    if (j == 3) {
+//                        cell = new Cell(id, text);
+//                    } else if (j == 4) {
+//                        // NOTE female and male keywords for filter will have conflict since "female"
+//                        // contains "male"
+//                        cell = new Cell(id, text);
+//                    } else {
+//                        cell = new Cell(id, text);
+//                    }
+//                    cellList.add(cell);
+//                }
+//                list.add(cellList);
+//            }
+//        } else if (category.equalsIgnoreCase("Pelanggan")) {
+//            ROW_SIZE_DETAIL = 1;
+//            COLUMN_SIZE_DETAIL = 1;
+//            for (int i = 0; i < ROW_SIZE_DETAIL; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//                for (int j = 0; j < COLUMN_SIZE_DETAIL; j++) {
+//                    Object text = "cell " + j + " " + i;
+//
+//                    final int random = new Random().nextInt();
+//                    if (j == 0) {
+//                        text = i;
+//                    } else if (j == 1) {
+//                        text = random;
+//                    }
+//
+//                    // Create dummy id.
+//                    String id = j + "-" + i;
+//
+//                    Cell cell;
+//                    if (j == 3) {
+//                        cell = new Cell(id, text);
+//                    } else if (j == 4) {
+//                        // NOTE female and male keywords for filter will have conflict since "female"
+//                        // contains "male"
+//                        cell = new Cell(id, text);
+//                    } else {
+//                        cell = new Cell(id, text);
+//                    }
+//                    cellList.add(cell);
+//                }
+//                list.add(cellList);
+//            }
+//        }
 
-                    final int random = new Random().nextInt();
-                    if (j == 0) {
-                        text = i;
-                    } else if (j == 1) {
-                        text = random;
-                    }
+        if (category.equalsIgnoreCase("Penerimaan")) {
+            Gson gson = new Gson();
+            receiptSummary = gson.fromJson(response, ReceiptSummary.class);
+
+            for (int i = 0; i < receiptSummary.getData().length; i++) {
+                List<Cell> cellList = new ArrayList<>();
+                COLUMN_SIZE = 3;
+                for (int j = 0; j < COLUMN_SIZE; j++) {
+                    Cell cell;
 
                     // Create dummy id.
                     String id = j + "-" + i;
 
-                    Cell cell;
-                    if (j == 3) {
-                        cell = new Cell(id, text);
-                    } else if (j == 4) {
-                        // NOTE female and male keywords for filter will have conflict since "female"
-                        // contains "male"
-                        cell = new Cell(id, text);
+                    if (j == 0) {
+                        cell = new Cell(id, receiptSummary.getData()[i].getName());
+                    } else if (j == 1) {
+                        cell = new Cell(id, receiptSummary.getData()[i].getCount());
                     } else {
-                        cell = new Cell(id, text);
+                        cell = new Cell(id, receiptSummary.getData()[i].getTotal());
                     }
+
                     cellList.add(cell);
                 }
                 list.add(cellList);
+
             }
         } else if (category.equalsIgnoreCase("Hutang Usaha")) {
-            ROW_SIZE_DETAIL = 1;
+            ROW_SIZE_DETAILS = 1;
             COLUMN_SIZE_DETAIL = 1;
-            for (int i = 0; i < ROW_SIZE_DETAIL; i++) {
+            for (int i = 0; i < ROW_SIZE_DETAILS; i++) {
                 List<Cell> cellList = new ArrayList<>();
                 for (int j = 0; j < COLUMN_SIZE_DETAIL; j++) {
                     Object text = "cell " + j + " " + i;
@@ -893,9 +1305,9 @@ public class TableViewModel {
                 list.add(cellList);
             }
         } else if (category.equalsIgnoreCase("Hutang Galon")) {
-            ROW_SIZE_DETAIL = 1;
+            ROW_SIZE_DETAILS = 1;
             COLUMN_SIZE_DETAIL = 3;
-            for (int i = 0; i < ROW_SIZE_DETAIL; i++) {
+            for (int i = 0; i < ROW_SIZE_DETAILS; i++) {
                 List<Cell> cellList = new ArrayList<>();
                 for (int j = 0; j < COLUMN_SIZE_DETAIL; j++) {
                     Object text = "cell " + j + " " + i;
@@ -925,9 +1337,9 @@ public class TableViewModel {
                 list.add(cellList);
             }
         } else if (category.equalsIgnoreCase("Piutang Usaha")) {
-            ROW_SIZE_DETAIL = 1;
+            ROW_SIZE_DETAILS = 1;
             COLUMN_SIZE_DETAIL = 1;
-            for (int i = 0; i < ROW_SIZE_DETAIL; i++) {
+            for (int i = 0; i < ROW_SIZE_DETAILS; i++) {
                 List<Cell> cellList = new ArrayList<>();
                 for (int j = 0; j < COLUMN_SIZE_DETAIL; j++) {
                     Object text = "cell " + j + " " + i;
@@ -957,9 +1369,9 @@ public class TableViewModel {
                 list.add(cellList);
             }
         } else if (category.equalsIgnoreCase("Piutang Galon")) {
-            ROW_SIZE_DETAIL = 1;
+            ROW_SIZE_DETAILS = 1;
             COLUMN_SIZE_DETAIL = 3;
-            for (int i = 0; i < ROW_SIZE_DETAIL; i++) {
+            for (int i = 0; i < ROW_SIZE_DETAILS; i++) {
                 List<Cell> cellList = new ArrayList<>();
                 for (int j = 0; j < COLUMN_SIZE_DETAIL; j++) {
                     Object text = "cell " + j + " " + i;
@@ -989,9 +1401,9 @@ public class TableViewModel {
                 list.add(cellList);
             }
         } else if (category.equalsIgnoreCase("Pelanggan")) {
-            ROW_SIZE_DETAIL = 1;
+            ROW_SIZE_DETAILS = 1;
             COLUMN_SIZE_DETAIL = 1;
-            for (int i = 0; i < ROW_SIZE_DETAIL; i++) {
+            for (int i = 0; i < ROW_SIZE_DETAILS; i++) {
                 List<Cell> cellList = new ArrayList<>();
                 for (int j = 0; j < COLUMN_SIZE_DETAIL; j++) {
                     Object text = "cell " + j + " " + i;
@@ -1024,6 +1436,191 @@ public class TableViewModel {
 
         return list;
     }
+//        } else if (category.equalsIgnoreCase("Hutang Usaha")) {
+//            Gson gson = new Gson();
+//            receiptGet = gson.fromJson(response, ReceiptView.class);
+//
+//            for (int i = 0; i < receiptGet.getData().length; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//
+//                if (category.equalsIgnoreCase("Hutang Usaha")) {
+//                    COLUMN_SIZE = 6;
+//                    for (int j = 0; j < COLUMN_SIZE; j++) {
+//                        Object text = "cell " + j + " " + i;
+//
+//                        final int random = new Random().nextInt();
+//                        if (j == 0) {
+//                            text = i;
+//                        } else if (j == 1) {
+//                            text = random;
+//                        }
+//
+//                        // Create dummy id.
+//                        String id = j + "-" + i;
+//
+//                        Cell cell;
+//                        if (j == 3) {
+//                            cell = new Cell(id, text);
+//                        } else if (j == 4) {
+//                            // NOTE female and male keywords for filter will have conflict since "female"
+//                            // contains "male"
+//                            cell = new Cell(id, text);
+//                        } else {
+//                            cell = new Cell(id, text);
+//                        }
+//                        cellList.add(cell);
+//                    }
+//                    list.add(cellList);
+//                }
+//            }
+//        } else if (category.equalsIgnoreCase("Hutang Galon")) {
+//            Gson gson = new Gson();
+//            receiptGet = gson.fromJson(response, ReceiptView.class);
+//
+//            for (int i = 0; i < receiptGet.getData().length; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//
+//                if (category.equalsIgnoreCase("Hutang Galon")) {
+//                    COLUMN_SIZE = 6;
+//                    for (int j = 0; j < COLUMN_SIZE; j++) {
+//                        Object text = "cell " + j + " " + i;
+//
+//                        final int random = new Random().nextInt();
+//                        if (j == 0) {
+//                            text = i;
+//                        } else if (j == 1) {
+//                            text = random;
+//                        }
+//
+//                        // Create dummy id.
+//                        String id = j + "-" + i;
+//
+//                        Cell cell;
+//                        if (j == 3) {
+//                            cell = new Cell(id, text);
+//                        } else if (j == 4) {
+//                            // NOTE female and male keywords for filter will have conflict since "female"
+//                            // contains "male"
+//                            cell = new Cell(id, text);
+//                        } else {
+//                            cell = new Cell(id, text);
+//                        }
+//                        cellList.add(cell);
+//                    }
+//                    list.add(cellList);
+//                }
+//            }
+//        } else if (category.equalsIgnoreCase("Piutang Usaha")) {
+//            Gson gson = new Gson();
+//            receiptGet = gson.fromJson(response, ReceiptView.class);
+//
+//            for (int i = 0; i < receiptGet.getData().length; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//
+//                if (category.equalsIgnoreCase("Piutang Usaha")) {
+//                    COLUMN_SIZE = 7;
+//                    for (int j = 0; j < COLUMN_SIZE; j++) {
+//                        Object text = "cell " + j + " " + i;
+//
+//                        final int random = new Random().nextInt();
+//                        if (j == 0) {
+//                            text = i;
+//                        } else if (j == 1) {
+//                            text = random;
+//                        }
+//
+//                        // Create dummy id.
+//                        String id = j + "-" + i;
+//
+//                        Cell cell;
+//                        if (j == 3) {
+//                            cell = new Cell(id, text);
+//                        } else if (j == 4) {
+//                            // NOTE female and male keywords for filter will have conflict since "female"
+//                            // contains "male"
+//                            cell = new Cell(id, text);
+//                        } else {
+//                            cell = new Cell(id, text);
+//                        }
+//                        cellList.add(cell);
+//                    }
+//                    list.add(cellList);
+//                }
+//            }
+//        } else if (category.equalsIgnoreCase("Piutang Galon")) {
+//            Gson gson = new Gson();
+//            receiptGet = gson.fromJson(response, ReceiptView.class);
+//
+//            for (int i = 0; i < receiptGet.getData().length; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//
+//                if (category.equalsIgnoreCase("Piutang Galon")) {
+//                    COLUMN_SIZE = 6;
+//                    for (int j = 0; j < COLUMN_SIZE; j++) {
+//                        Object text = "cell " + j + " " + i;
+//
+//                        final int random = new Random().nextInt();
+//                        if (j == 0) {
+//                            text = i;
+//                        } else if (j == 1) {
+//                            text = random;
+//                        }
+//
+//                        // Create dummy id.
+//                        String id = j + "-" + i;
+//
+//                        Cell cell;
+//                        if (j == 3) {
+//                            cell = new Cell(id, text);
+//                        } else if (j == 4) {
+//                            // NOTE female and male keywords for filter will have conflict since "female"
+//                            // contains "male"
+//                            cell = new Cell(id, text);
+//                        } else {
+//                            cell = new Cell(id, text);
+//                        }
+//                        cellList.add(cell);
+//                    }
+//                    list.add(cellList);
+//                }
+//            }
+//        } else if (category.equalsIgnoreCase("Pelanggan")) {
+//            Gson gson = new Gson();
+//            customerView = gson.fromJson(response, CustomerView.class);
+//
+//            for (int i = 0; i < customerView.getData().length; i++) {
+//                List<Cell> cellList = new ArrayList<>();
+//                COLUMN_SIZE = 7;
+//                for (int j = 0; j < COLUMN_SIZE; j++) {
+//                    Cell cell;
+//
+//                    // Create dummy id.
+//                    String id = j + "-" + i;
+//
+//                    if (j == 0) {
+//                        cell = new Cell(id, customerView.getData()[i].getCreated_at());
+//                    } else if (j == 1) {
+//                        cell = new Cell(id, customerView.getData()[i].getName());
+//                    } else if (j == 2) {
+//                        cell = new Cell(id, customerView.getData()[i].getPhone());
+//                    } else if (j == 3) {
+//                        cell = new Cell(id, customerView.getData()[i].getWa());
+//                    } else if (j == 4) {
+//                        cell = new Cell(id, customerView.getData()[i].getAddress());
+//                    } else if (j == 5) {
+//                        cell = new Cell(id, "Lihat Transaksi");
+//                    } else {
+//                        cell = new Cell(id, customerView.getData()[i].getId());
+//                    }
+//                    cellList.add(cell);
+//                }
+//                list.add(cellList);
+//
+//            }
+//        }
+//
+//        return list;
+//    }
 
     @DrawableRes
     public int getDrawable(int value) {

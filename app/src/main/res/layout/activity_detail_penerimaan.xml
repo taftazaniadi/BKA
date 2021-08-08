@@ -30,7 +30,7 @@
         android:id="@+id/svData"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/btnSelesai"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout">
@@ -187,18 +187,18 @@
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/btnSelesai"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="Selesai"
-        android:background="@drawable/button_bottom"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/svData" />
+<!--    <Button-->
+<!--        android:id="@+id/btnSelesai"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:text="Selesai"-->
+<!--        android:background="@drawable/button_bottom"-->
+<!--        android:foreground="?attr/selectableItemBackgroundBorderless"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/svData" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

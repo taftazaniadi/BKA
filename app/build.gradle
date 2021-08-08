@@ -58,6 +58,9 @@ dependencies {
     // Circle Image View
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
-// Material Dialog Library
+    // Material Dialog Library
     implementation 'dev.shreyaspatil.MaterialDialog:MaterialDialog:2.2.2'
+
+    // Table View
+//    implementation project (':tableview')
 }

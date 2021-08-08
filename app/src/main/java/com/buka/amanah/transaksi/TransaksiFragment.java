@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.buka.amanah.R;
-import com.buka.amanah.transaksi.penerimaan.AddPenerimaan;
 import com.buka.amanah.transaksi.penerimaan.PenerimaanActivity;
 import com.buka.amanah.transaksi.pengeluaran.PengeluaranActivity;
 

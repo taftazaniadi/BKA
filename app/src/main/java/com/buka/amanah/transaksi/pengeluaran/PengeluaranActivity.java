@@ -6,10 +6,13 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -19,8 +22,18 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.buka.amanah.R;
-import com.buka.amanah.transaksi.penerimaan.AddPenerimaan;
+import com.buka.amanah.home.MainActivity;
+import com.buka.amanah.transaksi.penerimaan.PenerimaanActivity;
 import com.buka.amanah.utils.tableview.TableViewAdapter;
 import com.buka.amanah.utils.tableview.TableViewListener;
 import com.buka.amanah.utils.tableview.TableViewModel;
@@ -28,10 +41,20 @@ import com.evrencoskun.tableview.TableView;
 import com.evrencoskun.tableview.pagination.Pagination;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONObject;
+
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+
 public class PengeluaranActivity extends AppCompatActivity {
 
+    RequestQueue mRequestQueue;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     Button buttonPengeluaran;
-    String message;
+    String message, messageDetail;
 
     //Table View
     private FloatingActionButton previousButton, nextButton;
@@ -48,6 +71,15 @@ public class PengeluaranActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pengeluaran);
 
+        mRequestQueue = Volley.newRequestQueue(this);
+
+        sharedPreferences = getApplication().getSharedPreferences("BuKaAuth", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        getList();
+    }
+
+    private void initialize() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(16);
@@ -62,7 +94,8 @@ public class PengeluaranActivity extends AppCompatActivity {
         buttonPengeluaran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddPengeluaran.class);
+                Intent intent = new Intent(getApplicationContext(), FormPengeluaran.class);
+                intent.putExtra("method", "Add");
                 startActivity(intent);
             }
         });
@@ -106,6 +139,68 @@ public class PengeluaranActivity extends AppCompatActivity {
         }
     }
 
+    private void getList() {
+        String url = getString(R.string.host_get_disbursement);
+
+        try {
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("page", 1);
+
+            final String mRequestBody = jsonBody.toString();
+            System.out.println("DATA JSON : " + mRequestBody);
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.i("LOG_VOLLEY", response);
+
+                    message = response;
+
+                    initialize();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("LOG_VOLLEY", error.toString());
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap headers = new HashMap();
+
+                    String access_token = sharedPreferences.getString("token", "");
+
+                    headers.put("Authorization", "Bearer " + access_token);
+                    headers.put("Content-Type", "application/json; charset=utf-8");
+
+                    return headers;
+                }
+
+                @Override
+                public byte[] getBody() throws AuthFailureError {
+                    return mRequestBody == null ? null : mRequestBody.getBytes(StandardCharsets.UTF_8);
+                }
+
+                @Override
+                protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                    String responseString = "";
+                    if (response != null) {
+                        String responseData = new String(response.data, StandardCharsets.UTF_8);
+
+                        responseString = responseData;
+                    }
+                    return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                }
+            };
+
+            // Add the request to the RequestQueue.
+            mRequestQueue.add(stringRequest);
+            System.out.println("RESPONSE API >>> " + stringRequest.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void initializeTableView() {
         // Create TableView View model class  to group view models of TableView
         TableViewModel tableViewModel = new TableViewModel();
@@ -123,13 +218,15 @@ public class PengeluaranActivity extends AppCompatActivity {
         tableViewAdapter.setAllItems(tableViewModel.getColumnHeaderList("Pengeluaran"), tableViewModel
                 .getSimpleRowHeaderList(), tableViewModel.getCellList("Pengeluaran", message));
 
+        mTableView.setColumnWidth(0, 400);
+
         //mTableView.setHasFixedWidth(true);
 
         /*for (int i = 0; i < mTableViewModel.getCellList().size(); i++) {
             mTableView.setColumnWidth(i, 200);
         }*)
 
-        //mTableView.setColumnWidth(0, -2);
+
         //mTableView.setColumnWidth(1, -2);
 
         /*mTableView.setColumnWidth(2, 200);
@@ -247,9 +344,8 @@ public class PengeluaranActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        if(getSupportFragmentManager().getBackStackEntryCount() > 0)
-            getSupportFragmentManager().popBackStack();
-        else
-            super.onBackPressed();
+        super.onBackPressed();
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }

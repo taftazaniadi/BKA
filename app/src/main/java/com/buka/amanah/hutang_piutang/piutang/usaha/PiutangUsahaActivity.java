@@ -32,7 +32,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class PiutangUsahaActivity extends AppCompatActivity {
 
     Button buttonPiutangUsaha;
-    String message;
+    String message, messageDetail;
 
     //Table View
     private FloatingActionButton previousButton, nextButton;
@@ -157,7 +157,7 @@ public class PiutangUsahaActivity extends AppCompatActivity {
 
         // Load the dummy data to the TableView
         tableViewAdapter.setAllItems(tableViewModel.getDetailColumnHeaderList("Piutang Usaha"), tableViewModel
-                .getDetailRowHeaderList("Piutang Usaha"), tableViewModel.getDetailCellList("Piutang Usaha"));
+                .getDetailRowHeaderList("Piutang Usaha"), tableViewModel.getDetailCellList("Piutang Usaha", messageDetail));
     }
 
     // The following four methods below: nextTablePage(), previousTablePage(),

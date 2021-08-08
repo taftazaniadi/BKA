@@ -32,128 +32,138 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <LinearLayout
-            style="@style/linearParent"
-            android:layout_gravity="center"
-            android:padding="@dimen/cell_height">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <TextView
-                style="@style/modifiedEditText"
+            <LinearLayout
+                style="@style/linearParent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:text="@string/signup_label"
-                android:textColor="@color/black" />
+                android:layout_gravity="center"
+                android:padding="@dimen/cell_height">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputNamaLengkap"
-                style="@style/parent"
-                android:layout_marginTop="@dimen/loginViewsMargin"
-                android:focusable="true">
-
-                <EditText
-                    android:id="@+id/editTextNamaLengkap"
-                    style="@style/modifiedEditText"
-                    android:hint="@string/signup_nama_lengkap_hint"
-                    android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputPassword"
-                style="@style/parent"
-                android:layout_marginTop="@dimen/loginViewsMargin">
-
-                <EditText
-                    android:id="@+id/editTextPassword"
-                    style="@style/modifiedEditText"
-                    android:hint="@string/signup_kata_sandi_hint"
-                    android:inputType="numberPassword"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputTelepon"
-                style="@style/parent"
-                android:layout_marginTop="@dimen/loginViewsMargin"
-                android:focusable="true">
-
-                <EditText
-                    android:id="@+id/editTextTelepon"
-                    style="@style/modifiedEditText"
-                    android:hint="@string/signup_no_wa_hint"
-                    android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputUsername"
-                style="@style/parent"
-                android:layout_marginTop="@dimen/loginViewsMargin"
-                android:focusable="true">
-
-                <EditText
-                    android:id="@+id/editTextUsername"
-                    style="@style/modifiedEditText"
-                    android:hint="@string/login_username_hint"
-                    android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textDistributor"
-                style="@style/parentDD"
-                android:layout_marginTop="20dp"
-                android:theme="@style/Theme3">
-
-                <AutoCompleteTextView
-                    android:id="@+id/actAgama"
+                <TextView
                     style="@style/modifiedEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/signup_distributor_cabang_hint"
-                    android:inputType="none"
-                    android:maxLines="1"
-                    android:theme="@style/Theme3" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_gravity="start"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:text="@string/signup_label"
+                    android:textColor="@color/black" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputAlamat"
-                style="@style/parent"
-                android:layout_marginTop="@dimen/loginViewsMargin"
-                android:focusable="true">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputNamaLengkap"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:focusable="true">
 
-                <EditText
-                    android:id="@+id/editTextAlamat"
+                    <EditText
+                        android:id="@+id/editTextNamaLengkap"
+                        style="@style/modifiedEditText"
+                        android:hint="@string/signup_nama_lengkap_hint"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputPassword"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin">
+
+                    <EditText
+                        android:id="@+id/editTextPassword"
+                        style="@style/modifiedEditText"
+                        android:hint="@string/signup_kata_sandi_hint"
+                        android:inputType="numberPassword"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputTelepon"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:focusable="true">
+
+                    <EditText
+                        android:id="@+id/editTextTelepon"
+                        style="@style/modifiedEditText"
+                        android:hint="@string/signup_no_wa_hint"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputUsername"
+                    style="@style/parent"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:focusable="true">
+
+                    <EditText
+                        android:id="@+id/editTextEmail"
+                        style="@style/modifiedEditText"
+                        android:hint="@string/login_username_hint"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textDistributor"
+                    style="@style/parentDD"
+                    android:layout_marginTop="20dp"
+                    android:theme="@style/Theme3">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/actCabang"
+                        style="@style/modifiedEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/signup_distributor_cabang_hint"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:theme="@style/Theme3" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textKecamatan"
+                    style="@style/parentDD"
+                    android:layout_marginTop="20dp"
+                    android:theme="@style/Theme3">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/actKecamatan"
+                        style="@style/modifiedEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/signup_distributor_cabang_hint"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:theme="@style/Theme3" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btn_signup"
+                    style="@style/loginButton"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:onClick="register"
+                    android:text="@string/signup" />
+
+                <TextView
                     style="@style/modifiedEditText"
-                    android:hint="@string/signup_alamat_hint"
-                    android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="@dimen/loginViewsMargin"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:onClick="userLogin"
+                    android:text="@string/signup_login_hint"
+                    android:textAlignment="center"
+                    android:textColor="@color/teal_700" />
 
-            <Button
-                android:id="@+id/btn_signup"
-                style="@style/loginButton"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/loginViewsMargin"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:text="@string/signup" />
-
-            <TextView
-                style="@style/modifiedEditText"
-                android:layout_marginTop="@dimen/loginViewsMargin"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:onClick="userLogin"
-                android:text="@string/signup_login_hint"
-                android:textAlignment="center"
-                android:textColor="@color/teal_700" />
-
-        </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 

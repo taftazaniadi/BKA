@@ -5,6 +5,16 @@ public class DataReceipt {
 
     private String id;
 
+    private String price;
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
     public String getName ()
     {
         return name;
@@ -28,6 +38,6 @@ public class DataReceipt {
     @Override
     public String toString()
     {
-        return "ClassPojo [name = "+name+", id = "+id+"]";
+        return "ClassPojo [name = "+name+",price = "+price+", id = "+id+"]";
     }
 }

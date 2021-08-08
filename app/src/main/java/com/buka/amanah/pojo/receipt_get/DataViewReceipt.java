@@ -3,29 +3,31 @@ package com.buka.amanah.pojo.receipt_get;
 public class DataViewReceipt {
     private String amount;
 
-    private String total;
-
-    private String updated_at;
-
-    private String price;
-
-    private String district;
-
-    private String distributor_id;
-
-    private String created_at;
-
-    private String id;
-
-    private String customer_id;
-
-    private String customer_name;
+    private String distributorId;
 
     private String type;
 
     private String branch;
 
-    private String created_at_raw;
+    private String customerName;
+
+    private String createdAt;
+
+    private String total;
+
+    private String createdAtRaw;
+
+    private String price;
+
+    private String district;
+
+    private String customerId;
+
+    private String typeId;
+
+    private String id;
+
+    private String updatedAt;
 
     public String getAmount ()
     {
@@ -37,92 +39,14 @@ public class DataViewReceipt {
         this.amount = amount;
     }
 
-    public String getTotal ()
+    public String getDistributorId ()
     {
-        return total;
+        return distributorId;
     }
 
-    public void setTotal (String total)
+    public void setDistributorId (String distributorId)
     {
-        this.total = total;
-    }
-
-    public String getUpdated_at ()
-    {
-        return updated_at;
-    }
-
-    public void setUpdated_at (String updated_at)
-    {
-        this.updated_at = updated_at;
-    }
-
-    public String getPrice ()
-    {
-        return price;
-    }
-
-    public void setPrice (String price)
-    {
-        this.price = price;
-    }
-
-    public String getDistrict ()
-    {
-        return district;
-    }
-
-    public void setDistrict (String district)
-    {
-        this.district = district;
-    }
-
-    public String getDistributor_id ()
-    {
-        return distributor_id;
-    }
-
-    public void setDistributor_id (String distributor_id)
-    {
-        this.distributor_id = distributor_id;
-    }
-
-    public String getCreated_at ()
-    {
-        return created_at;
-    }
-
-    public void setCreated_at (String created_at)
-    {
-        this.created_at = created_at;
-    }
-
-    public String getId ()
-    {
-        return id;
-    }
-
-    public void setId (String id)
-    {
-        this.id = id;
-    }
-
-    public String getCustomer_id ()
-    {
-        return customer_id;
-    }
-
-    public void setCustomer_id (String customer_id)
-    {
-        this.customer_id = customer_id;
-    }
-
-    public String getCustomer_name() {
-        return customer_name;
-    }
-
-    public void setCustomer_name(String customer_name) {
-        this.customer_name = customer_name;
+        this.distributorId = distributorId;
     }
 
     public String getType ()
@@ -145,19 +69,109 @@ public class DataViewReceipt {
         this.branch = branch;
     }
 
-    public String getCreated_at_raw ()
+    public String getCustomerName ()
     {
-        return created_at_raw;
+        return customerName;
     }
 
-    public void setCreated_at_raw (String created_at_raw)
+    public void setCustomerName (String customerName)
     {
-        this.created_at_raw = created_at_raw;
+        this.customerName = customerName;
+    }
+
+    public String getCreatedAt ()
+    {
+        return createdAt;
+    }
+
+    public void setCreatedAt (String createdAt)
+    {
+        this.createdAt = createdAt;
+    }
+
+    public String getTotal ()
+    {
+        return total;
+    }
+
+    public void setTotal (String total)
+    {
+        this.total = total;
+    }
+
+    public String getCreatedAtRaw ()
+    {
+        return createdAtRaw;
+    }
+
+    public void setCreatedAtRaw (String createdAtRaw)
+    {
+        this.createdAtRaw = createdAtRaw;
+    }
+
+    public String getPrice ()
+    {
+        return price;
+    }
+
+    public void setPrice (String price)
+    {
+        this.price = price;
+    }
+
+    public String getDistrict ()
+    {
+        return district;
+    }
+
+    public void setDistrict (String district)
+    {
+        this.district = district;
+    }
+
+    public String getCustomerId ()
+    {
+        return customerId;
+    }
+
+    public void setCustomerId (String customerId)
+    {
+        this.customerId = customerId;
+    }
+
+    public String getTypeId ()
+    {
+        return typeId;
+    }
+
+    public void setTypeId (String typeId)
+    {
+        this.typeId = typeId;
+    }
+
+    public String getId ()
+    {
+        return id;
+    }
+
+    public void setId (String id)
+    {
+        this.id = id;
+    }
+
+    public String getUpdatedAt ()
+    {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt (String updatedAt)
+    {
+        this.updatedAt = updatedAt;
     }
 
     @Override
     public String toString()
     {
-        return "ClassPojo [amount = "+amount+", total = "+total+", updated_at = "+updated_at+", price = "+price+", district = "+district+", distributor_id = "+distributor_id+", created_at = "+created_at+", id = "+id+", customer_id = "+customer_id+", type = "+type+", branch = "+branch+", created_at_raw = "+created_at_raw+"]";
+        return "ClassPojo [amount = "+amount+", distributorId = "+distributorId+", type = "+type+", branch = "+branch+", customerName = "+customerName+", createdAt = "+createdAt+", total = "+total+", createdAtRaw = "+createdAtRaw+", price = "+price+", district = "+district+", customerId = "+customerId+", typeId = "+typeId+", id = "+id+", updatedAt = "+updatedAt+"]";
     }
 }

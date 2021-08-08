@@ -16,7 +16,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.buka.amanah.R;
-import com.buka.amanah.transaksi.penerimaan.AddPenerimaan;
 import com.buka.amanah.utils.tableview.TableViewAdapter;
 import com.buka.amanah.utils.tableview.TableViewListener;
 import com.buka.amanah.utils.tableview.TableViewModel;

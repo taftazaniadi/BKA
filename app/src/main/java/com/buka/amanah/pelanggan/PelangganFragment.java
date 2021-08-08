@@ -16,7 +16,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.buka.amanah.R;
-import com.buka.amanah.transaksi.penerimaan.AddPenerimaan;
 import com.buka.amanah.utils.tableview.TableViewAdapter;
 import com.buka.amanah.utils.tableview.TableViewListener;
 import com.buka.amanah.utils.tableview.TableViewModel;
@@ -27,7 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class PelangganFragment extends Fragment {
 
     Button buttonAddPelanggan;
-    String message;
+    String message, messageDetail;
 
     //Table View
     private FloatingActionButton previousButton, nextButton;
@@ -141,7 +140,7 @@ public class PelangganFragment extends Fragment {
 
         // Load the dummy data to the TableView
         tableViewAdapter.setAllItems(tableViewModel.getDetailColumnHeaderList("Pelanggan"), tableViewModel
-                .getDetailRowHeaderList("Pelanggan"), tableViewModel.getDetailCellList("Pelanggan"));
+                .getDetailRowHeaderList("Pelanggan"), tableViewModel.getDetailCellList("Pelanggan", messageDetail));
     }
 
     // The following four methods below: nextTablePage(), previousTablePage(),

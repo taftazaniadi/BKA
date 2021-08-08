@@ -67,6 +67,7 @@
 
     <!-- HIT API -->
     <string name="host_auth">http://bukukas-api.herokuapp.com/authenticate</string>
+    <string name="host_register">http://bukukas-api.herokuapp.com/api/register</string>
 
     <string name="host_profile">http://bukukas-api.herokuapp.com/api/profile/get</string>
     <string name="host_update_profile">http://bukukas-api.herokuapp.com/api/profile/update</string>
@@ -83,12 +84,18 @@
     <string name="host_get_receipt">http://bukukas-api.herokuapp.com/api/receipts/get</string>
     <string name="host_delete_receipt">http://bukukas-api.herokuapp.com/api/receipts/delete</string>
     <string name="host_update_receipt">http://bukukas-api.herokuapp.com/api/receipts/update</string>
+    <string name="host_receipt_detail">http://bukukas-api.herokuapp.com/api/receipts/detail</string>
     <string name="host_get_receipt_list">http://bukukas-api.herokuapp.com/api/receipts/getOptions</string>
+    <string name="host_receipt_summary">http://bukukas-api.herokuapp.com/api/receipts/getSummary</string>
 
     <string name="host_disbursement">http://bukukas-api.herokuapp.com/api/disbursements/add</string>
     <string name="host_get_disbursement">http://bukukas-api.herokuapp.com/api/disbursements/get</string>
     <string name="host_delete_disbursement">http://bukukas-api.herokuapp.com/api/disbursements/delete</string>
     <string name="host_update_disbursement">http://bukukas-api.herokuapp.com/api/disbursements/update</string>
+    <string name="host_disbursement_detail">http://bukukas-api.herokuapp.com/api/disbursements/detail</string>
     <string name="host_get_detail_disbursement_list">http://bukukas-api.herokuapp.com/api/disbursements/getOptions</string>
     <string name="host_get_disbursement_list">http://bukukas-api.herokuapp.com/api/disbursements/getTypes</string>
+
+    <string name="host_get_branch_list">http://bukukas-api.herokuapp.com/api/get/branches</string>
+    <string name="host_get_kecamatan_list">http://bukukas-api.herokuapp.com/api/get/districts?branch</string>
 </resources>

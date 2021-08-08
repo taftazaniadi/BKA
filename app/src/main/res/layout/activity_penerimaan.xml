@@ -151,7 +151,7 @@
         <com.evrencoskun.tableview.TableView
             android:id="@+id/tableview_details"
             android:layout_width="match_parent"
-            android:layout_height="135dp"
+            android:layout_height="160dp"
             android:layout_margin="@dimen/loginViewsMargin">
 
         </com.evrencoskun.tableview.TableView>

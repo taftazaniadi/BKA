@@ -24,38 +24,21 @@
 
 package com.buka.amanah.utils.tableview;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.DialogInterface;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.buka.amanah.R;
-import com.buka.amanah.transaksi.penerimaan.AddPenerimaan;
-import com.buka.amanah.users.login.LoginActivity;
-import com.buka.amanah.users.profile.ChangePassword;
-import com.buka.amanah.users.profile.UpdateUserProfile;
-import com.buka.amanah.users.profile.UserProfile;
-import com.buka.amanah.utils.action_menu.MenuAdapter;
 import com.buka.amanah.utils.action_menu.MenuPojo;
 import com.evrencoskun.tableview.TableView;
 import com.evrencoskun.tableview.listener.ITableViewListener;
-import com.buka.amanah.utils.tableview.holder.ColumnHeaderViewHolder;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
 
-import dev.shreyaspatil.MaterialDialog.AbstractDialog;
-import dev.shreyaspatil.MaterialDialog.MaterialDialog;
 //import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
-import dev.shreyaspatil.MaterialDialog.model.TextAlignment;
+
 
 /**
  * Created by evrencoskun on 21/09/2017.
@@ -96,39 +79,39 @@ public class TableViewListener implements ITableViewListener {
         arrayList.add(new MenuPojo(R.drawable.ic_baseline_delete_24, "Hapus Transaksi"));
 
         // Do what you want.
-        if (column == VIEW_CELL_TYPE) {
-//            showToast("Cell " + column + " " + row + " has been clicked.");
-//            mContext.startActivity(new Intent(context, AddPenerimaan.class));
-
-
-//        } else if (column == EDIT_CELL_TYPE) {
+//        if (column == VIEW_CELL_TYPE) {
 ////            showToast("Cell " + column + " " + row + " has been clicked.");
-//            mContext.startActivity(new Intent(context, AddPenerimaan.class));
-//        } else if (column == DEL_CELL_TYPE) {
-////            showToast("Cell " + column + " " + row + " has been clicked.");
-//            MaterialDialog mDialog = new MaterialDialog.Builder((Activity) mContext)
-//                    .setTitle("Confirmation", TextAlignment.CENTER)
-//                    .setMessage("Apa anda yakin untuk menghapus Data Penerimaan ini?")
-//                    .setAnimation("542-warning-sign.json")
-//                    .setPositiveButton("Yes", R.drawable.ic_baseline_delete_24, new MaterialDialog.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int which) {
-//                            dialogInterface.dismiss();
+////            mContext.startActivity(new Intent(context, AddPenerimaan.class));
 //
-//                        }
-//                    })
-//                    .setNegativeButton("No", new MaterialDialog.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int which) {
-//                            dialogInterface.dismiss();
-//                        }
-//                    })
-//                    .build();
 //
-//            // Show Dialog
-//            mDialog.show();
-//            mContext.startActivity(new Intent(context, AddPenerimaan.class));
-        }
+////        } else if (column == EDIT_CELL_TYPE) {
+//////            showToast("Cell " + column + " " + row + " has been clicked.");
+////            mContext.startActivity(new Intent(context, AddPenerimaan.class));
+////        } else if (column == DEL_CELL_TYPE) {
+//////            showToast("Cell " + column + " " + row + " has been clicked.");
+////            MaterialDialog mDialog = new MaterialDialog.Builder((Activity) mContext)
+////                    .setTitle("Confirmation", TextAlignment.CENTER)
+////                    .setMessage("Apa anda yakin untuk menghapus Data Penerimaan ini?")
+////                    .setAnimation("542-warning-sign.json")
+////                    .setPositiveButton("Yes", R.drawable.ic_baseline_delete_24, new MaterialDialog.OnClickListener() {
+////                        @Override
+////                        public void onClick(DialogInterface dialogInterface, int which) {
+////                            dialogInterface.dismiss();
+////
+////                        }
+////                    })
+////                    .setNegativeButton("No", new MaterialDialog.OnClickListener() {
+////                        @Override
+////                        public void onClick(DialogInterface dialogInterface, int which) {
+////                            dialogInterface.dismiss();
+////                        }
+////                    })
+////                    .build();
+////
+////            // Show Dialog
+////            mDialog.show();
+////            mContext.startActivity(new Intent(context, AddPenerimaan.class));
+//        }
     }
 
     /**
@@ -246,57 +229,4 @@ public class TableViewListener implements ITableViewListener {
         Toast.makeText(mContext, p_strMessage, Toast.LENGTH_SHORT).show();
     }
 
-//    protected void addDailog() {
-//        // create a arraylist of the type NumbersView
-//        final ArrayList<MenuPojo> arrayList = new ArrayList<MenuPojo>();
-//
-//        // add all the values from 1 to 15 to the arrayList
-//        // the items are of the type NumbersView
-//        arrayList.add(new MenuPojo(R.drawable.ic_baseline_view_24, "Lihat Transaksi"));
-//        arrayList.add(new MenuPojo(R.drawable.ic_baseline_edit_24, "Edit Transaksi"));
-//        arrayList.add(new MenuPojo(R.drawable.ic_baseline_delete_24, "Hapus Transaksi"));
-//
-//        // Now create the instance of the NumebrsViewAdapter and pass
-//        // the context and arrayList created above
-//        MenuAdapter menuAdapter = new MenuAdapter(context, arrayList);
-//
-//        // create the instance of the ListView to set the numbersViewAdapter
-//        View view = LayoutInflater.from(context).inflate(R.layout.alertdialog_layout, null);
-//        ListView menuList = view.findViewById(R.id.list_view);
-//
-//        // set the numbersViewAdapter for ListView
-//        menuList.setAdapter(menuAdapter);
-//
-//        MaterialAlertDialogBuilder builder=new MaterialAlertDialogBuilder(context, R.style.ProfileMenu);
-//        builder.setItems(listItems, new MaterialDialog.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                if (i == 0) {
-//                    context.startActivity(new Intent(context, UpdateUserProfile.class));
-//                } else if (i == 1) {
-//                    context.startActivity(new Intent(context, ChangePassword.class));
-//                } else {
-//                    Toast.makeText(context, "Position: " + i + " Value: " + listItems[i], Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        }).show();
-//
-////        CharSequence options[] = new CharSequence[]{"RETEN", "ACCIDENTE VIAL", "INUNDACION", "ABUSO", "ASALTO / VIOLENCIA"};
-////        View view = LayoutInflater.from(context).inflate(R.layout.alertdialog_layout, null);
-////        ListView listView = view.findViewById(R.id.list_view);
-////        ArrayAdapter arrayAdapter = new ArrayAdapter(context, R.layout.item_dialog, R.id.tv1, options){};
-////        listView.setAdapter(arrayAdapter);
-////        AlertDialog dialog = new AlertDialog.Builder(this)
-////                .setTitle("AlertDialog")
-////                .setMessage("AlertDialog Message")
-////                .setView(view)
-////                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-////                    @Override
-////                    public void onClick(DialogInterface dialog, int which) {
-////                    }
-////                })
-////                .setNegativeButton("No", null)
-////                .create();
-////        dialog.show();
-//    }
 }
