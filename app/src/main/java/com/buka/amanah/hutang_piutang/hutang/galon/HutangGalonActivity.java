@@ -6,10 +6,13 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -19,6 +22,15 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.buka.amanah.R;
 import com.buka.amanah.home.MainActivity;
 import com.buka.amanah.utils.tableview.TableViewAdapter;
@@ -28,7 +40,17 @@ import com.evrencoskun.tableview.TableView;
 import com.evrencoskun.tableview.pagination.Pagination;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONObject;
+
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+
 public class HutangGalonActivity extends AppCompatActivity {
+
+    RequestQueue mRequestQueue;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     Button buttonHutangGalon;
     String message, messageDetail;
@@ -48,6 +70,17 @@ public class HutangGalonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hutang_galon);
 
+        mRequestQueue = Volley.newRequestQueue(this);
+
+        sharedPreferences = getApplication().getSharedPreferences("BuKaAuth", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        getList();
+        getDetailList();
+        initialize();
+    }
+
+    private void initialize() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setElevation(16);
@@ -62,7 +95,8 @@ public class HutangGalonActivity extends AppCompatActivity {
         buttonHutangGalon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddHutangGalon.class);
+                Intent intent = new Intent(getApplicationContext(), FormHutangGalon.class);
+                intent.putExtra("method", "Add");
                 startActivity(intent);
             }
         });
@@ -91,20 +125,160 @@ public class HutangGalonActivity extends AppCompatActivity {
             tableTestContainer.setVisibility(View.GONE);
         }
 
-        // Let's get TableView
-        mTableView = findViewById(R.id.tableview_data);
-        mTableViewDetails = findViewById(R.id.tableview_details);
+//        // Let's get TableView
+//        mTableView = findViewById(R.id.tableview_data);
+//        mTableViewDetails = findViewById(R.id.tableview_details);
+//
+//        initializeTableView();
+//        initializeTableViewDetails();
+//
+//        if (mPaginationEnabled) {
+//            // Create an instance for the TableView pagination and pass the created TableView.
+//            mPagination = new Pagination(mTableView);
+//
+//            // Sets the pagination listener of the TableView pagination to handle
+//            // pagination actions. See onTableViewPageTurnedListener variable declaration below.
+//            mPagination.setOnTableViewPageTurnedListener(onTableViewPageTurnedListener);
+//        }
+    }
 
-        initializeTableView();
-        initializeTableViewDetails();
+    private void getList() {
+        String url = getString(R.string.host_get_receipt);
 
-        if (mPaginationEnabled) {
-            // Create an instance for the TableView pagination and pass the created TableView.
-            mPagination = new Pagination(mTableView);
+        try {
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("page", 1);
+            final String mRequestBody = jsonBody.toString();
+            System.out.println("DATA JSON : " + mRequestBody);
 
-            // Sets the pagination listener of the TableView pagination to handle
-            // pagination actions. See onTableViewPageTurnedListener variable declaration below.
-            mPagination.setOnTableViewPageTurnedListener(onTableViewPageTurnedListener);
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.i("LOG_VOLLEY", response);
+
+                    message = response;
+
+                    // Let's get TableView
+                    mTableView = findViewById(R.id.tableview_data);
+//                    mTableViewDetails = findViewById(R.id.tableview_details);
+
+                    initializeTableView();
+//                    initializeTableViewDetails();
+
+                    if (mPaginationEnabled) {
+                        // Create an instance for the TableView pagination and pass the created TableView.
+                        mPagination = new Pagination(mTableView);
+
+                        // Sets the pagination listener of the TableView pagination to handle
+                        // pagination actions. See onTableViewPageTurnedListener variable declaration below.
+                        mPagination.setOnTableViewPageTurnedListener(onTableViewPageTurnedListener);
+                    }
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("LOG_VOLLEY", error.toString());
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap headers = new HashMap();
+
+                    String access_token = sharedPreferences.getString("token", "");
+
+                    headers.put("Authorization", "Bearer " + access_token);
+                    headers.put("Content-Type", "application/json; charset=utf-8");
+
+                    return headers;
+                }
+
+                @Override
+                public byte[] getBody() throws AuthFailureError {
+                    return mRequestBody == null ? null : mRequestBody.getBytes(StandardCharsets.UTF_8);
+                }
+
+                @Override
+                protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                    String responseString = "";
+                    if (response != null) {
+                        String responseData = new String(response.data, StandardCharsets.UTF_8);
+
+                        responseString = responseData;
+                    }
+                    return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                }
+            };
+
+            // Add the request to the RequestQueue.
+            mRequestQueue.add(stringRequest);
+            System.out.println("RESPONSE API >>> " + stringRequest.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getDetailList() {
+        String url = getString(R.string.host_receipt_summary);
+
+        try {
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.i("LOG_VOLLEY", response);
+
+                    messageDetail = response;
+
+                    // Let's get TableView
+//                    mTableView = findViewById(R.id.tableview_data);
+                    mTableViewDetails = findViewById(R.id.tableview_details);
+
+//                    initializeTableView();
+                    initializeTableViewDetails();
+
+//                    if (mPaginationEnabled) {
+//                        // Create an instance for the TableView pagination and pass the created TableView.
+//                        mPaginationDetail = new Pagination(mTableViewDetails);
+//
+//                        // Sets the pagination listener of the TableView pagination to handle
+//                        // pagination actions. See onTableViewPageTurnedListener variable declaration below.
+//                        mPaginationDetail.setOnTableViewPageTurnedListener(onTableViewPageTurnedListener);
+//                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("LOG_VOLLEY", error.toString());
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap headers = new HashMap();
+
+                    String access_token = sharedPreferences.getString("token", "");
+
+                    headers.put("Authorization", "Bearer " + access_token);
+
+                    return headers;
+                }
+
+                @Override
+                protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                    String responseString = "";
+                    if (response != null) {
+                        String responseData = new String(response.data, StandardCharsets.UTF_8);
+
+                        responseString = responseData;
+                    }
+                    return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                }
+            };
+
+            // Add the request to the RequestQueue.
+            mRequestQueue.add(stringRequest);
+            System.out.println("RESPONSE API >>> " + stringRequest.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

@@ -32,6 +32,7 @@ import com.buka.amanah.pojo.customer_get.CustomerView;
 import com.buka.amanah.pojo.disbursement_get.DisbursementView;
 import com.buka.amanah.pojo.receipt_get.ReceiptView;
 import com.buka.amanah.pojo.receipt_summary.ReceiptSummary;
+import com.buka.amanah.pojo.stok_get.StokView;
 import com.buka.amanah.utils.tableview.model.Cell;
 import com.buka.amanah.utils.tableview.model.ColumnHeader;
 import com.buka.amanah.utils.tableview.model.RowHeader;
@@ -86,6 +87,7 @@ public class TableViewModel {
     DisbursementView disbursementGet = new DisbursementView();
     CustomerView customerView = new CustomerView();
     ReceiptSummary receiptSummary = new ReceiptSummary();
+    StokView stokView = new StokView();
 
     public TableViewModel() {
         // initialize drawables
@@ -869,6 +871,66 @@ public class TableViewModel {
                         cell = new Cell(id, "Rp " + disbursementGet.getData()[i].getTotal());
                     } else {
                         cell = new Cell(id, disbursementGet.getData()[i].getId());
+                    }
+
+                    cellList.add(cell);
+                }
+                list.add(cellList);
+            }
+        } else if (category.equalsIgnoreCase("Pelanggan")) {
+            Gson gson = new Gson();
+            customerView = gson.fromJson(response, CustomerView.class);
+
+            for (int i = 0; i < customerView.getData().length; i++) {
+                List<Cell> cellList = new ArrayList<>();
+                COLUMN_SIZE = 7;
+                for (int j = 0; j < COLUMN_SIZE; j++) {
+                    Cell cell;
+
+                    // Create dummy id.
+                    String id = j + "-" + i;
+
+                    if (j == 0) {
+                        cell = new Cell(id, customerView.getData()[i].getCreatedAt());
+                    } else if (j == 1) {
+                        cell = new Cell(id, customerView.getData()[i].getName());
+                    } else if (j == 2) {
+                        cell = new Cell(id, customerView.getData()[i].getPhone());
+                    } else if (j == 3) {
+                        cell = new Cell(id, customerView.getData()[i].getWa());
+                    } else if (j == 4) {
+                        cell = new Cell(id, customerView.getData()[i].getAddress());
+                    } else if (j == 5) {
+                        cell = new Cell(id, null);
+                    } else {
+                        cell = new Cell(id, customerView.getData()[i].getId());
+                    }
+
+                    cellList.add(cell);
+                }
+                list.add(cellList);
+            }
+        } else if (category.equalsIgnoreCase("Stok")) {
+            Gson gson = new Gson();
+            stokView = gson.fromJson(response, StokView.class);
+
+            for (int i = 0; i < stokView.getData().length; i++) {
+                List<Cell> cellList = new ArrayList<>();
+                COLUMN_SIZE = 4;
+                for (int j = 0; j < COLUMN_SIZE; j++) {
+                    Cell cell;
+
+                    // Create dummy id.
+                    String id = j + "-" + i;
+
+                    if (j == 0) {
+                        cell = new Cell(id, stokView.getData()[i].getProductName());
+                    } else if (j == 1) {
+                        cell = new Cell(id, stokView.getData()[i].getStock());
+                    } else if (j == 2) {
+                        cell = new Cell(id, "Rp " + stokView.getData()[i].getPrice());
+                    } else {
+                        cell = new Cell(id, stokView.getData()[i].getId());
                     }
 
                     cellList.add(cell);

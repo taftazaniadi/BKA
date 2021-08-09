@@ -51,8 +51,12 @@ import com.buka.amanah.hutang_piutang.hutang.galon.HutangGalonActivity;
 import com.buka.amanah.hutang_piutang.hutang.usaha.HutangUsahaActivity;
 import com.buka.amanah.hutang_piutang.piutang.galon.PiutangGalonActivity;
 import com.buka.amanah.hutang_piutang.piutang.usaha.PiutangUsahaActivity;
+import com.buka.amanah.pelanggan.FormPelanggan;
 import com.buka.amanah.pelanggan.PelangganFragment;
+import com.buka.amanah.pelanggan.detail.DetailPelanggan;
 import com.buka.amanah.pojo.ResponseDefault;
+import com.buka.amanah.stock.DetailStock;
+import com.buka.amanah.stock.FormStockBarang;
 import com.buka.amanah.stock.StockFragment;
 import com.buka.amanah.transaksi.penerimaan.DetailPenerimaan;
 import com.buka.amanah.transaksi.penerimaan.FormPenerimaan;
@@ -78,6 +82,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
+import dev.shreyaspatil.MaterialDialog.AbstractDialog;
 import dev.shreyaspatil.MaterialDialog.MaterialDialog;
 import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import dev.shreyaspatil.MaterialDialog.model.TextAlignment;
@@ -92,9 +97,7 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
 
     // Cell View Types by Column Position
     private static final int MENU_CELL_TYPE = 1;
-//    private static final int VIEW_CELL_TYPE = 1;
-//    private static final int EDIT_CELL_TYPE = 2;
-//    private static final int DEL_CELL_TYPE = 3;
+
     // add new one if it necessary..
     private static final String LOG_TAG = TableViewAdapter.class.getSimpleName();
     @NonNull
@@ -102,7 +105,7 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
     RequestQueue mRequestQueue;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    Context context;
+    private Context context;
 
     public TableViewAdapter(@NonNull TableViewModel tableViewModel, Context context) {
         super();
@@ -127,7 +130,39 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View layout;
 
+        System.out.println("DATA CONTEXT : " + context.getApplicationContext());
+        System.out.println("DATA CONTEXT : " + context.getClass().getName());
+        System.out.println("DATA CONTEXT : " + context);
+
         if (context.toString().contains("Penerimaan")) {
+            switch (viewType) {
+                case MENU_CELL_TYPE:
+                    // Get image cell layout which has ImageView on the base instead of TextView.
+                    layout = inflater.inflate(R.layout.table_view_action_cell_layout, parent, false);
+
+                    return new ActionCellViewHolder(layout);
+                default:
+                    // For cells that display a text
+                    layout = inflater.inflate(R.layout.table_view_cell_layout, parent, false);
+
+                    // Create a Cell ViewHolder
+                    return new CellViewHolder(layout);
+            }
+        } else if (context.toString().contains("Pengeluaran")) {
+            switch (viewType) {
+                case MENU_CELL_TYPE:
+                    // Get image cell layout which has ImageView on the base instead of TextView.
+                    layout = inflater.inflate(R.layout.table_view_action_cell_layout, parent, false);
+
+                    return new ActionCellViewHolder(layout);
+                default:
+                    // For cells that display a text
+                    layout = inflater.inflate(R.layout.table_view_cell_layout, parent, false);
+
+                    // Create a Cell ViewHolder
+                    return new CellViewHolder(layout);
+            }
+        } else if (context.toString().contains("Pelanggan")) {
             switch (viewType) {
                 case MENU_CELL_TYPE:
                     // Get image cell layout which has ImageView on the base instead of TextView.
@@ -178,10 +213,6 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
 
         switch (holder.getItemViewType()) {
             case MENU_CELL_TYPE:
-//                MenuCellViewHolder menuViewHolder = (MenuCellViewHolder) holder;
-//
-//                menuViewHolder.cell_image.setImageResource(mTableViewModel.getDrawable((int) cellItemModel
-//                        .getData()));
                 ActionCellViewHolder actionViewHolder = (ActionCellViewHolder) holder;
 
                 if (context.toString().contains("Penerimaan")) {
@@ -259,6 +290,96 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int which) {
                                             deleteData(Integer.parseInt(cellItemModel.getData().toString()), "Pengeluaran");
+                                            dialogInterface.dismiss();
+                                        }
+                                    })
+                                    .setNegativeButton("No", new MaterialDialog.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int which) {
+                                            dialogInterface.dismiss();
+                                        }
+                                    })
+                                    .build();
+
+                            // Show Dialog
+                            mDialog.show();
+                        }
+                    });
+                } else if (context.toString().contains("Pelanggan")) {
+                    actionViewHolder.btnView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent((Activity) context, DetailPelanggan.class);
+                            i.putExtra("customerId", cellItemModel.getData().toString());
+                            i.putExtra("method", "View");
+                            context.startActivity(i);
+                        }
+                    });
+                    actionViewHolder.btnEdit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent((Activity) context, FormPelanggan.class);
+                            i.putExtra("customerId", cellItemModel.getData().toString());
+                            i.putExtra("method", "Edit");
+                            context.startActivity(i);
+                        }
+                    });
+                    actionViewHolder.btnDel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            MaterialDialog mDialog = new MaterialDialog.Builder((Activity) context)
+                                    .setTitle("Confirmation", TextAlignment.CENTER)
+                                    .setMessage("Apa anda yakin untuk menghapus Data ini?")
+                                    .setAnimation("542-warning-sign.json")
+                                    .setPositiveButton("Yes", R.drawable.ic_baseline_delete_24, new MaterialDialog.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int which) {
+                                            deleteData(Integer.parseInt(cellItemModel.getData().toString()), "Pelanggan");
+                                            dialogInterface.dismiss();
+                                        }
+                                    })
+                                    .setNegativeButton("No", new MaterialDialog.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int which) {
+                                            dialogInterface.dismiss();
+                                        }
+                                    })
+                                    .build();
+
+                            // Show Dialog
+                            mDialog.show();
+                        }
+                    });
+                } else if (context.toString().contains("Stock")) {
+                    actionViewHolder.btnView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent((Activity) context, DetailStock.class);
+                            i.putExtra("disbursementId", cellItemModel.getData().toString());
+                            i.putExtra("method", "View");
+                            context.startActivity(i);
+                        }
+                    });
+                    actionViewHolder.btnEdit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent((Activity) context, FormStockBarang.class);
+                            i.putExtra("disbursementId", cellItemModel.getData().toString());
+                            i.putExtra("method", "Edit");
+                            context.startActivity(i);
+                        }
+                    });
+                    actionViewHolder.btnDel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            MaterialDialog mDialog = new MaterialDialog.Builder((Activity) context)
+                                    .setTitle("Confirmation", TextAlignment.CENTER)
+                                    .setMessage("Apa anda yakin untuk menghapus Data ini?")
+                                    .setAnimation("542-warning-sign.json")
+                                    .setPositiveButton("Yes", R.drawable.ic_baseline_delete_24, new MaterialDialog.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int which) {
+                                            deleteData(Integer.parseInt(cellItemModel.getData().toString()), "Stock");
                                             dialogInterface.dismiss();
                                         }
                                     })
@@ -450,9 +571,25 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
                     // Default view type
                     return 0;
             }
-        } else {
+        } else if (context.toString().contains("Pengeluaran")) {
             switch (column) {
                 case TableViewModel.PENGELUARAN_COLUMN_INDEX:
+                    return MENU_CELL_TYPE;
+                default:
+                    // Default view type
+                    return 0;
+            }
+        } else if (context.toString().contains("Pelanggan")) {
+            switch (column) {
+                case TableViewModel.PELANGGAN_COLUMN_INDEX:
+                    return MENU_CELL_TYPE;
+                default:
+                    // Default view type
+                    return 0;
+            }
+        } else {
+            switch (column) {
+                case TableViewModel.STOCK_COLUMN_INDEX:
                     return MENU_CELL_TYPE;
                 default:
                     // Default view type
@@ -609,6 +746,222 @@ public class TableViewAdapter extends AbstractTableAdapter<ColumnHeader, RowHead
                                             dialogInterface.dismiss();
 
                                             context.startActivity(new Intent((Activity) context, PengeluaranActivity.class));
+                                        }
+                                    })
+                                    .build();
+
+                            // Show Dialog
+                            mDialog.show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("LOG_VOLLEY", error.toString());
+
+                        progressDialog.dismiss();
+
+                        Gson gson = new Gson();
+                        ResponseDefault message = gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ResponseDefault.class);
+
+                        if (message.getStatus().equalsIgnoreCase("validation error")) {
+                            MaterialDialog mDialog = new MaterialDialog.Builder((Activity) context)
+                                    .setTitle("Failed", TextAlignment.CENTER)
+                                    .setMessage(message.getResponse_message())
+                                    .setAnimation("6718-loading-fail-state.json")
+                                    .setPositiveButton("OK", new MaterialDialog.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int which) {
+                                            dialogInterface.dismiss();
+                                        }
+                                    })
+                                    .build();
+
+                            // Show Dialog
+                            mDialog.show();
+                        }
+                    }
+                }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        HashMap headers = new HashMap();
+
+                        String access_token = sharedPreferences.getString("token", "");
+
+                        headers.put("Authorization", "Bearer " + access_token);
+                        headers.put("Content-Type", "application/json; charset=utf-8");
+
+                        return headers;
+                    }
+
+                    @Override
+                    public byte[] getBody() throws AuthFailureError {
+                        return mRequestBody == null ? null : mRequestBody.getBytes(StandardCharsets.UTF_8);
+                    }
+
+                    @Override
+                    protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                        String responseString = "";
+                        if (response != null) {
+
+                            String responseData = new String(response.data, StandardCharsets.UTF_8);
+
+                            responseString = responseData;
+
+                        }
+                        return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                    }
+                };
+
+                // Add the request to the RequestQueue.
+                mRequestQueue.add(stringRequest);
+                System.out.println("RESPONSE API >>> " + stringRequest.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (category.equalsIgnoreCase("Pelanggan")) {
+            String url = "http://bukukas-api.herokuapp.com/api/customers/delete";
+
+            try {
+                JSONObject jsonBody = new JSONObject();
+                jsonBody.put("custId", id);
+
+                final String mRequestBody = jsonBody.toString();
+                System.out.println("DATA JSON : " + mRequestBody);
+
+                final ProgressDialog progressDialog = new ProgressDialog(context);
+                progressDialog.setMessage("Loading ...");
+                progressDialog.show();
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.i("LOG_VOLLEY", response);
+
+                        progressDialog.dismiss();
+
+                        Gson gson = new Gson();
+                        ResponseDefault message = gson.fromJson(response, ResponseDefault.class);
+
+                        if (message.getStatus().equalsIgnoreCase("success")) {
+                            MaterialDialog mDialog = new MaterialDialog.Builder((Activity) context)
+                                    .setTitle("Success", TextAlignment.CENTER)
+                                    .setMessage("Data berhasil dihapus.")
+                                    .setAnimation("6717-loading-passed-state.json")
+                                    .setPositiveButton("Selesai", new MaterialDialog.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int which) {
+                                            dialogInterface.dismiss();
+
+                                            context.startActivity(new Intent((Activity) context, context.getClass()));
+                                        }
+                                    })
+                                    .build();
+
+                            // Show Dialog
+                            mDialog.show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("LOG_VOLLEY", error.toString());
+
+                        progressDialog.dismiss();
+
+                        Gson gson = new Gson();
+                        ResponseDefault message = gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ResponseDefault.class);
+
+                        if (message.getStatus().equalsIgnoreCase("validation error")) {
+                            MaterialDialog mDialog = new MaterialDialog.Builder((Activity) context)
+                                    .setTitle("Failed", TextAlignment.CENTER)
+                                    .setMessage(message.getResponse_message())
+                                    .setAnimation("6718-loading-fail-state.json")
+                                    .setPositiveButton("OK", new MaterialDialog.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int which) {
+                                            dialogInterface.dismiss();
+                                        }
+                                    })
+                                    .build();
+
+                            // Show Dialog
+                            mDialog.show();
+                        }
+                    }
+                }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        HashMap headers = new HashMap();
+
+                        String access_token = sharedPreferences.getString("token", "");
+
+                        headers.put("Authorization", "Bearer " + access_token);
+                        headers.put("Content-Type", "application/json; charset=utf-8");
+
+                        return headers;
+                    }
+
+                    @Override
+                    public byte[] getBody() throws AuthFailureError {
+                        return mRequestBody == null ? null : mRequestBody.getBytes(StandardCharsets.UTF_8);
+                    }
+
+                    @Override
+                    protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                        String responseString = "";
+                        if (response != null) {
+
+                            String responseData = new String(response.data, StandardCharsets.UTF_8);
+
+                            responseString = responseData;
+
+                        }
+                        return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                    }
+                };
+
+                // Add the request to the RequestQueue.
+                mRequestQueue.add(stringRequest);
+                System.out.println("RESPONSE API >>> " + stringRequest.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (category.equalsIgnoreCase("Stock")) {
+            String url = "http://bukukas-api.herokuapp.com/api/customers/delete";
+
+            try {
+                JSONObject jsonBody = new JSONObject();
+                jsonBody.put("stockId", id);
+
+                final String mRequestBody = jsonBody.toString();
+                System.out.println("DATA JSON : " + mRequestBody);
+
+                final ProgressDialog progressDialog = new ProgressDialog(context);
+                progressDialog.setMessage("Loading ...");
+                progressDialog.show();
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.i("LOG_VOLLEY", response);
+
+                        progressDialog.dismiss();
+
+                        Gson gson = new Gson();
+                        ResponseDefault message = gson.fromJson(response, ResponseDefault.class);
+
+                        if (message.getStatus().equalsIgnoreCase("success")) {
+                            MaterialDialog mDialog = new MaterialDialog.Builder((Activity) context)
+                                    .setTitle("Success", TextAlignment.CENTER)
+                                    .setMessage("Data berhasil dihapus.")
+                                    .setAnimation("6717-loading-passed-state.json")
+                                    .setPositiveButton("Selesai", new MaterialDialog.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int which) {
+                                            dialogInterface.dismiss();
+
+                                            context.startActivity(new Intent((Activity) context, context.getClass()));
                                         }
                                     })
                                     .build();

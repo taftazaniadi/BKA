@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
+                android:paddingStart="25dp"
                 app:titleTextAppearance="@style/Toolbar.TitleText"
                 app:titleTextColor="@color/main_color" />
 
@@ -79,8 +80,9 @@
                     android:layout_marginTop="10dp"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:onClick="forgotPassword"
-                    android:text="Lupa Password?"
-                    android:textColor="@color/teal_700"
+                    android:text="Lupa Kata Sandi ?"
+                    android:textFontWeight="400"
+                    android:textColor="#BDBDBD"
                     android:textSize="@dimen/newsMoreTextSize" />
 
                 <Button
@@ -90,7 +92,8 @@
                     android:layout_marginTop="@dimen/loginViewsMargin"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:onClick="login"
-                    android:text="@string/login" />
+                    android:text="@string/login"
+                    android:textFontWeight="700"/>
 
                 <TextView
                     style="@style/modifiedEditText"
@@ -99,7 +102,7 @@
                     android:onClick="userRegistration"
                     android:text="@string/login_signup_hint"
                     android:textAlignment="center"
-                    android:textColor="@color/teal_700" />
+                    android:textColor="#092857" />
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

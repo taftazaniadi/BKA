@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="777dp"
+    android:viewportWidth="360"
+    android:viewportHeight="777">
+
+    <group
+        android:pivotX="360"
+        android:pivotY="777"
+        android:scaleX="1"
+        android:scaleY="1">
+        <path
+            android:fillColor="#ffffff"
+            android:pathData="M 0 0 H 360 V 777 H 0 V 0 Z" />
+        <path
+            android:fillColor="#ffffff"
+            android:pathData="M0 0H360V640H0V0Z" />
+        <path
+            android:fillColor="#F8F8FA"
+            android:pathData="M 23 -93 C 74.3624817343 -93 116 -51.3624817343 116 0 C 116 51.3624817343 74.3624817343 93 23 93 C -28.3624817343 93 -70 51.3624817343 -70 0 C -70 -51.3624817343 -28.3624817343 -93 23 -93 Z" />
+        <path
+            android:fillColor="#53AB21"
+            android:pathData="M0 0H360V326C360 339.807 348.807 351 335 351H25C11.1929 351 0 339.807 0 326V0Z" />
+        <path
+            android:fillColor="#F8F8FA"
+            android:pathData="M -10 462 C 23.1370849898 462 50 488.86291501 50 522 C 50 555.13708499 23.1370849898 582 -10 582 C -43.1370849898 582 -70 555.13708499 -70 522 C -70 488.86291501 -43.1370849898 462 -10 462 Z" />
+        <path
+            android:fillColor="#53AB21"
+            android:fillType="evenOdd"
+            android:pathData="M0 0V24H360V0H0Z" />
+    </group>
+</vector>

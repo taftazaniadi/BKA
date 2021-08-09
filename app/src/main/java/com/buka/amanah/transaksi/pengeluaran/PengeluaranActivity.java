@@ -54,7 +54,7 @@ public class PengeluaranActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
 
     Button buttonPengeluaran;
-    String message, messageDetail;
+    String message;
 
     //Table View
     private FloatingActionButton previousButton, nextButton;

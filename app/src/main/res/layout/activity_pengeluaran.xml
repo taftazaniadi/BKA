@@ -48,7 +48,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins"
                 android:text="Daftar Pengeluaran"
-                android:textColor="@color/black"
+                android:textColor="#092857"
                 android:textSize="18dp"
                 android:textFontWeight="700"
                 app:layout_constraintStart_toStartOf="parent"
@@ -110,6 +110,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="130"
+                    android:textFontWeight="400"
+                    android:textColor="#000000"
                     android:fontFamily="@font/poppins" />
 
                 <Spinner

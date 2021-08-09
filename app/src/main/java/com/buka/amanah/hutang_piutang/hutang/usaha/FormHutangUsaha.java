@@ -61,7 +61,7 @@ import dev.shreyaspatil.MaterialDialog.MaterialDialog;
 import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import dev.shreyaspatil.MaterialDialog.model.TextAlignment;
 
-public class AddHutangUsaha extends AppCompatActivity {
+public class FormHutangUsaha extends AppCompatActivity {
 
     RequestQueue mRequestQueue;
     SharedPreferences sharedPreferences;
@@ -99,7 +99,7 @@ public class AddHutangUsaha extends AppCompatActivity {
         actionbar.setTitle("Tambah Hutang Usaha");
 
         etTgl = findViewById(R.id.editTextTglHutangUsaha);
-        etPickTgl = (ImageButton) findViewById(R.id.buttonPickTglAddHutangUsaha);
+        etPickTgl = (ImageButton) findViewById(R.id.buttonPickTglHutangUsaha);
         etTotal = findViewById(R.id.editTextTotal);
         etCatatan = findViewById(R.id.editTextCatatanHutangUsaha);
         actPelanggan = (AutoCompleteTextView) findViewById(R.id.actPelanggan);
@@ -133,7 +133,7 @@ public class AddHutangUsaha extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new DatePickerDialog(AddHutangUsaha.this, date, myCalendar
+                new DatePickerDialog(FormHutangUsaha.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
@@ -221,14 +221,14 @@ public class AddHutangUsaha extends AppCompatActivity {
                         }
 
                         // Creates the adapter and set it to the AutoCompleteTextView
-                        ArrayAdapter adapter = new ArrayAdapter<String>(AddHutangUsaha.this, android.R.layout.simple_spinner_dropdown_item, bebas2);
+                        ArrayAdapter adapter = new ArrayAdapter<String>(FormHutangUsaha.this, android.R.layout.simple_spinner_dropdown_item, bebas2);
                         actBiaya.setAdapter(adapter);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(AddHutangUsaha.this, "error: " + error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FormHutangUsaha.this, "error: " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
         );
@@ -238,7 +238,7 @@ public class AddHutangUsaha extends AppCompatActivity {
                 1,
                 2
         ));
-        RequestQueue requestQueue = Volley.newRequestQueue(AddHutangUsaha.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(FormHutangUsaha.this);
         requestQueue.add(stringRequest);
     }
 
@@ -260,14 +260,14 @@ public class AddHutangUsaha extends AppCompatActivity {
                         }
 
                         // Creates the adapter and set it to the AutoCompleteTextView
-                        ArrayAdapter adapter = new ArrayAdapter<String>(AddHutangUsaha.this, android.R.layout.simple_spinner_dropdown_item, bebas);
+                        ArrayAdapter adapter = new ArrayAdapter<String>(FormHutangUsaha.this, android.R.layout.simple_spinner_dropdown_item, bebas);
                         actDetailBiaya.setAdapter(adapter);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(AddHutangUsaha.this, "error: " + error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FormHutangUsaha.this, "error: " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
         );
@@ -277,7 +277,7 @@ public class AddHutangUsaha extends AppCompatActivity {
                 1,
                 2
         ));
-        RequestQueue requestQueue = Volley.newRequestQueue(AddHutangUsaha.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(FormHutangUsaha.this);
         requestQueue.add(stringRequest);
     }
 
@@ -299,14 +299,14 @@ public class AddHutangUsaha extends AppCompatActivity {
                         }
 
                         // Creates the adapter and set it to the AutoCompleteTextView
-                        ArrayAdapter adapter = new ArrayAdapter<String>(AddHutangUsaha.this, android.R.layout.simple_spinner_dropdown_item, bebas1);
+                        ArrayAdapter adapter = new ArrayAdapter<String>(FormHutangUsaha.this, android.R.layout.simple_spinner_dropdown_item, bebas1);
                         actPelanggan.setAdapter(adapter);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(AddHutangUsaha.this, "error: " + error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FormHutangUsaha.this, "error: " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
         ) {
@@ -327,7 +327,7 @@ public class AddHutangUsaha extends AppCompatActivity {
                 1,
                 2
         ));
-        RequestQueue requestQueue = Volley.newRequestQueue(AddHutangUsaha.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(FormHutangUsaha.this);
         requestQueue.add(stringRequest);
     }
 
@@ -339,7 +339,7 @@ public class AddHutangUsaha extends AppCompatActivity {
     }
 
     public void confirmation(View view) {
-        MaterialDialog mDialog = new MaterialDialog.Builder(AddHutangUsaha.this)
+        MaterialDialog mDialog = new MaterialDialog.Builder(FormHutangUsaha.this)
                 .setTitle("Confirmation", TextAlignment.CENTER)
                 .setMessage("Apa anda yakin untuk menambahkan Data Hutang Usaha ini?")
                 .setAnimation("542-warning-sign.json")
@@ -398,7 +398,7 @@ public class AddHutangUsaha extends AppCompatActivity {
             final String mRequestBody = jsonBody.toString();
             System.out.println("DATA JSON : " + mRequestBody);
 
-            final ProgressDialog progressDialog = new ProgressDialog(AddHutangUsaha.this);
+            final ProgressDialog progressDialog = new ProgressDialog(FormHutangUsaha.this);
             progressDialog.setMessage("Loading ...");
             progressDialog.show();
 
@@ -413,7 +413,7 @@ public class AddHutangUsaha extends AppCompatActivity {
                     ResponseDefault message = gson.fromJson(response, ResponseDefault.class);
 
                     if (message.getStatus().equalsIgnoreCase("success")) {
-                        MaterialDialog mDialog = new MaterialDialog.Builder(AddHutangUsaha.this)
+                        MaterialDialog mDialog = new MaterialDialog.Builder(FormHutangUsaha.this)
                                 .setTitle("Success", TextAlignment.CENTER)
                                 .setMessage("Data has been Saved")
                                 .setAnimation("6717-loading-passed-state.json")
@@ -449,7 +449,7 @@ public class AddHutangUsaha extends AppCompatActivity {
                     ResponseDefault message = gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ResponseDefault.class);
 
                     if (message.getStatus().equalsIgnoreCase("validation error")) {
-                        MaterialDialog mDialog = new MaterialDialog.Builder(AddHutangUsaha.this)
+                        MaterialDialog mDialog = new MaterialDialog.Builder(FormHutangUsaha.this)
                                 .setTitle("Failed", TextAlignment.CENTER)
                                 .setMessage("Update Profile Failed.")
                                 .setAnimation("6718-loading-fail-state.json")

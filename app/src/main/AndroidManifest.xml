@@ -19,6 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BuKa"
         android:usesCleartextTraffic="true">
+        <activity android:name=".hutang_piutang.piutang.usaha.DetailPiutangUsaha"></activity>
+        <activity android:name=".hutang_piutang.piutang.galon.DetailPiutangGalon" />
+        <activity android:name=".hutang_piutang.hutang.galon.DetailHutangGalon" />
+        <activity android:name=".hutang_piutang.hutang.usaha.DetailHutangUsaha" />
+        <activity android:name=".stock.DetailStock" />
         <activity
             android:name=".transaksi.pengeluaran.DetailPengeluaran"
             android:configChanges="orientation"
@@ -48,16 +53,16 @@
             android:parentActivityName=".home.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ProfileTheme" />
-        <activity android:name=".stock.AddStockBarang" />
+        <activity android:name=".stock.FormStockBarang" />
         <activity android:name=".pelanggan.detail.DetailPelanggan" />
-        <activity android:name=".pelanggan.AddPelanggan" />
-        <activity android:name=".hutang_piutang.piutang.galon.AddPiutangGalon" />
-        <activity android:name=".hutang_piutang.piutang.usaha.AddPiutangUsaha" />
+        <activity android:name=".pelanggan.FormPelanggan" />
+        <activity android:name=".hutang_piutang.piutang.galon.FormPiutangGalon" />
+        <activity android:name=".hutang_piutang.piutang.usaha.FormPiutangUsaha" />
         <activity android:name=".hutang_piutang.piutang.galon.PiutangGalonActivity" />
         <activity android:name=".hutang_piutang.piutang.usaha.PiutangUsahaActivity" />
-        <activity android:name=".hutang_piutang.hutang.galon.AddHutangGalon" />
+        <activity android:name=".hutang_piutang.hutang.galon.FormHutangGalon" />
         <activity android:name=".hutang_piutang.hutang.galon.HutangGalonActivity" />
-        <activity android:name=".hutang_piutang.hutang.usaha.AddHutangUsaha" />
+        <activity android:name=".hutang_piutang.hutang.usaha.FormHutangUsaha" />
         <activity android:name=".hutang_piutang.hutang.usaha.HutangUsahaActivity" />
         <activity android:name=".transaksi.pengeluaran.PengeluaranActivity" />
         <activity android:name=".transaksi.pengeluaran.FormPengeluaran" />

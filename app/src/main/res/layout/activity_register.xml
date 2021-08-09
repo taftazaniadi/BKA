@@ -26,6 +26,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:paddingStart="25dp"
                 android:background="?attr/colorPrimary"
                 app:titleTextAppearance="@style/Toolbar.TitleText"
                 app:titleTextColor="@color/main_color" />
@@ -34,14 +35,13 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="@dimen/cell_height">
 
             <LinearLayout
                 style="@style/linearParent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="@dimen/cell_height">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/modifiedEditText"
@@ -50,7 +50,7 @@
                     android:layout_gravity="start"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:text="@string/signup_label"
-                    android:textColor="@color/black" />
+                    android:textColor="#092857" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputNamaLengkap"
@@ -160,7 +160,8 @@
                     android:onClick="userLogin"
                     android:text="@string/signup_login_hint"
                     android:textAlignment="center"
-                    android:textColor="@color/teal_700" />
+                    android:textFontWeight="400"
+                    android:textColor="#092857" />
 
             </LinearLayout>
         </ScrollView>

@@ -21,7 +21,6 @@ import android.widget.TextView;
 
 import com.buka.amanah.R;
 import com.buka.amanah.home.MainActivity;
-import com.buka.amanah.hutang_piutang.hutang.galon.AddHutangGalon;
 import com.buka.amanah.utils.tableview.TableViewAdapter;
 import com.buka.amanah.utils.tableview.TableViewListener;
 import com.buka.amanah.utils.tableview.TableViewModel;
@@ -63,7 +62,7 @@ public class PiutangUsahaActivity extends AppCompatActivity {
         buttonPiutangUsaha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddPiutangUsaha.class);
+                Intent intent = new Intent(getApplicationContext(), FormPiutangUsaha.class);
                 startActivity(intent);
             }
         });

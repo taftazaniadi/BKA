@@ -1,25 +1,37 @@
 package com.buka.amanah.pojo.customer_get;
 
 public class DataViewCustomer {
+    private String createdAt;
+
     private String address;
 
-    private String updated_at;
+    private String createdAtRaw;
 
     private String phone;
 
+    private String distributorId;
+
     private String district;
 
-    private String distributor_id;
-
     private String name;
-
-    private String created_at;
 
     private String wa;
 
     private String id;
 
     private String branch;
+
+    private String updatedAt;
+
+    public String getCreatedAt ()
+    {
+        return createdAt;
+    }
+
+    public void setCreatedAt (String createdAt)
+    {
+        this.createdAt = createdAt;
+    }
 
     public String getAddress ()
     {
@@ -31,14 +43,14 @@ public class DataViewCustomer {
         this.address = address;
     }
 
-    public String getUpdated_at ()
+    public String getCreatedAtRaw ()
     {
-        return updated_at;
+        return createdAtRaw;
     }
 
-    public void setUpdated_at (String updated_at)
+    public void setCreatedAtRaw (String createdAtRaw)
     {
-        this.updated_at = updated_at;
+        this.createdAtRaw = createdAtRaw;
     }
 
     public String getPhone ()
@@ -51,6 +63,16 @@ public class DataViewCustomer {
         this.phone = phone;
     }
 
+    public String getDistributorId ()
+    {
+        return distributorId;
+    }
+
+    public void setDistributorId (String distributorId)
+    {
+        this.distributorId = distributorId;
+    }
+
     public String getDistrict ()
     {
         return district;
@@ -61,16 +83,6 @@ public class DataViewCustomer {
         this.district = district;
     }
 
-    public String getDistributor_id ()
-    {
-        return distributor_id;
-    }
-
-    public void setDistributor_id (String distributor_id)
-    {
-        this.distributor_id = distributor_id;
-    }
-
     public String getName ()
     {
         return name;
@@ -79,16 +91,6 @@ public class DataViewCustomer {
     public void setName (String name)
     {
         this.name = name;
-    }
-
-    public String getCreated_at ()
-    {
-        return created_at;
-    }
-
-    public void setCreated_at (String created_at)
-    {
-        this.created_at = created_at;
     }
 
     public String getWa ()
@@ -121,9 +123,19 @@ public class DataViewCustomer {
         this.branch = branch;
     }
 
+    public String getUpdatedAt ()
+    {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt (String updatedAt)
+    {
+        this.updatedAt = updatedAt;
+    }
+
     @Override
     public String toString()
     {
-        return "ClassPojo [address = "+address+", updated_at = "+updated_at+", phone = "+phone+", district = "+district+", distributor_id = "+distributor_id+", name = "+name+", created_at = "+created_at+", wa = "+wa+", id = "+id+", branch = "+branch+"]";
+        return "ClassPojo [createdAt = "+createdAt+", address = "+address+", createdAtRaw = "+createdAtRaw+", phone = "+phone+", distributorId = "+distributorId+", district = "+district+", name = "+name+", wa = "+wa+", id = "+id+", branch = "+branch+", updatedAt = "+updatedAt+"]";
     }
 }

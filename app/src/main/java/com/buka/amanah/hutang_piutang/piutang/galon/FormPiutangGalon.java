@@ -1,4 +1,4 @@
-package com.buka.amanah.hutang_piutang.hutang.galon;
+package com.buka.amanah.hutang_piutang.piutang.galon;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,14 +12,14 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.buka.amanah.R;
-import com.buka.amanah.transaksi.penerimaan.PenerimaanActivity;
+import com.buka.amanah.hutang_piutang.hutang.galon.HutangGalonActivity;
 
-public class AddHutangGalon extends AppCompatActivity {
+public class FormPiutangGalon extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_hutang_galon);
+        setContentView(R.layout.activity_add_piutang_galon);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -28,7 +28,7 @@ public class AddHutangGalon extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         //actionbar.setLogo(R.drawable.ic_logo);
-        actionbar.setTitle("Tambah Hutang Galon");
+        actionbar.setTitle("Tambah Piutang Galon");
 
         // making notification bar transparent
         changeStatusBarColor();
@@ -51,7 +51,7 @@ public class AddHutangGalon extends AppCompatActivity {
         //that you want to do when the user presses the back button.
         /* your specific things...*/
         super.onBackPressed();
-        startActivity(new Intent(this, HutangGalonActivity.class));
+        startActivity(new Intent(this, PiutangGalonActivity.class));
         finish();
     }
 }

@@ -47,7 +47,7 @@
                 android:layout_margin="@dimen/loginViewsMargin">
 
                 <TextView
-                    style="@style/modifiedEditTextEmail"
+                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -62,7 +62,7 @@
                 android:layout_margin="@dimen/loginViewsMargin">
 
                 <TextView
-                    style="@style/modifiedEditTextEmail"
+                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Hari, Tanggal" />
@@ -83,7 +83,7 @@
                 android:layout_margin="@dimen/loginViewsMargin">
 
                 <TextView
-                    style="@style/modifiedEditTextEmail"
+                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Biaya" />
@@ -104,7 +104,7 @@
                 android:layout_margin="@dimen/loginViewsMargin">
 
                 <TextView
-                    style="@style/modifiedEditTextEmail"
+                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Total Rupiah" />
@@ -125,7 +125,7 @@
 <!--                android:layout_margin="@dimen/loginViewsMargin">-->
 
 <!--                <TextView-->
-<!--                    style="@style/modifiedEditTextEmail"-->
+<!--                    style="@style/modifiedEditTextDetail"-->
 <!--                    android:layout_width="match_parent"-->
 <!--                    android:layout_height="wrap_content"-->
 <!--                    android:text="Total Rupiah" />-->
@@ -146,7 +146,7 @@
                 android:layout_margin="@dimen/loginViewsMargin">
 
                 <TextView
-                    style="@style/modifiedEditTextEmail"
+                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Ketarangan" />
@@ -175,7 +175,7 @@
 
                 <TextView
                     android:id="@+id/txtTotalPengeluaran"
-                    style="@style/modifiedEditTextEmail"
+                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"

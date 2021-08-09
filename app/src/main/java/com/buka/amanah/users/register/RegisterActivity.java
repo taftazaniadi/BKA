@@ -195,13 +195,6 @@ public class RegisterActivity extends AppCompatActivity {
                                         dialogInterface.dismiss();
 
                                         Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-//                                        i.putExtra("method", "Add");
-//                                        i.putExtra("tgl", etTgl.getText().toString());
-//                                        i.putExtra("cust", actPelanggan.getText().toString());
-//                                        i.putExtra("receipt", actPenerimaan.getText().toString());
-//                                        i.putExtra("amount", etJumlah.getText().toString());
-//                                        i.putExtra("price", etHarga.getText().toString());
-//                                        i.putExtra("total", etTotal.getText().toString());
                                         startActivity(i);
                                         finishAffinity();
                                     }

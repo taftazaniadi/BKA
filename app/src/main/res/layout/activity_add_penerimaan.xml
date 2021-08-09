@@ -48,10 +48,10 @@
                 android:layout_gravity="start"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins"
+                android:textColor="#092857"
                 android:textFontWeight="700"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="Lengkapi data penerimaan Anda"
-                android:textColor="@color/black"
                 android:textSize="@dimen/newsMoreTextSize" />
 
             <LinearLayout

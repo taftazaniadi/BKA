@@ -1,27 +1,25 @@
-package com.buka.amanah.pelanggan;
+package com.buka.amanah.hutang_piutang.piutang.usaha;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 
 import com.buka.amanah.R;
+import com.buka.amanah.hutang_piutang.hutang.usaha.HutangUsahaActivity;
 
-public class AddPelanggan extends AppCompatActivity {
-
-    Button buttonPelanggan;
+public class FormPiutangUsaha extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_pelanggan);
+        setContentView(R.layout.activity_add_piutang_usaha);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -30,7 +28,7 @@ public class AddPelanggan extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         //actionbar.setLogo(R.drawable.ic_logo);
-        actionbar.setTitle("Tambah Pelanggan");
+        actionbar.setTitle("Tambah Piutang Usaha");
 
         // making notification bar transparent
         changeStatusBarColor();
@@ -48,27 +46,12 @@ public class AddPelanggan extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                if(getSupportFragmentManager().getBackStackEntryCount() > 0) {
-                    getSupportFragmentManager().popBackStack();
-                }
-                else {
-                    super.onBackPressed();
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
-    public void onBackPressed()
-    {
-        if(getSupportFragmentManager().getBackStackEntryCount() > 0)
-            getSupportFragmentManager().popBackStack();
-        else
-            super.onBackPressed();
+    public void onBackPressed() {
+        //this is only needed if you have specific things
+        //that you want to do when the user presses the back button.
+        /* your specific things...*/
+        super.onBackPressed();
+        startActivity(new Intent(this, PiutangUsahaActivity.class));
+        finish();
     }
 }

@@ -38,6 +38,13 @@
                 app:cardCornerRadius="@dimen/loginCardRadius"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/card_trx" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -52,7 +59,8 @@
                         android:fontFamily="@font/poppins"
                         android:text="Total Transaksi"
                         android:layout_marginStart="25dp"
-                        android:textColor="@color/black"
+                        android:textFontWeight="400"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_size" />
 
                     <TextView
@@ -62,7 +70,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:text="100 Transaksi"
                         android:layout_marginStart="25dp"
-                        android:textColor="@color/main_color"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_home_size" />
 
                 </LinearLayout>
@@ -79,6 +87,13 @@
                 app:cardCornerRadius="@dimen/loginCardRadius"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/card_utang" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -92,8 +107,9 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
                         android:text="Total Hutang"
+                        android:textFontWeight="400"
                         android:layout_marginStart="25dp"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_size" />
 
                     <TextView
@@ -103,7 +119,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:text="Rp 567.443.000"
                         android:layout_marginStart="25dp"
-                        android:textColor="@color/main_color"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_home_size" />
 
                     <TextView
@@ -111,8 +127,9 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
                         android:text="Total Piutang"
+                        android:textFontWeight="400"
                         android:layout_marginStart="25dp"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_size" />
 
                     <TextView
@@ -123,7 +140,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:text="Rp 20.000.000"
                         android:layout_marginStart="25dp"
-                        android:textColor="@color/main_color"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_home_size" />
 
                 </LinearLayout>
@@ -140,6 +157,13 @@
                 app:cardCornerRadius="@dimen/loginCardRadius"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/card_pelanggan" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -153,8 +177,9 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
                         android:text="Total Pelanggan"
+                        android:textFontWeight="400"
                         android:layout_marginStart="25dp"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_size" />
 
                     <TextView
@@ -164,7 +189,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:text="20 Pelanggan"
                         android:layout_marginStart="25dp"
-                        android:textColor="@color/main_color"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_home_size" />
 
                 </LinearLayout>
@@ -181,6 +206,13 @@
                 app:cardCornerRadius="@dimen/loginCardRadius"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/card_stok" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -194,7 +226,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
                         android:text="Total Stok Barang"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
+                        android:textFontWeight="400"
                         android:layout_marginStart="25dp"
                         android:textSize="@dimen/text_size" />
 
@@ -205,7 +238,7 @@
                         android:fontFamily="@font/poppins_bold"
                         android:text="15 Barang"
                         android:layout_marginStart="25dp"
-                        android:textColor="@color/main_color"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_home_size" />
 
                 </LinearLayout>
@@ -221,6 +254,13 @@
                 android:elevation="5dp"
                 app:cardCornerRadius="@dimen/loginCardRadius"
                 app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/card_laporan" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -246,7 +286,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Laporan"
-                        android:textColor="@color/main_color"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_home_size" />
 
                 </LinearLayout>

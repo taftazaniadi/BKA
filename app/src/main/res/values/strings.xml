@@ -6,7 +6,7 @@
 
     <string name="label">BuKa AMANAH</string>
     <string name="desc_label">Aplikasi Pencatatan Keuangan <br />Distributor Amanah</string>
-    <string name="signup_label">Buat akun BuKa AMANAH dan nikmati <br />pencatatan keuaangan Anda</string>
+    <string name="signup_label">Buat akun BuKa AMANAH dan nikmati pencatatan keuangan Anda</string>
 
     <!-- Text Slide -->
     <string name="slide1">Catat <b>transaksi keuangan</b> <br />Anda lebih mudah</string>
@@ -75,9 +75,10 @@
     <string name="host_update_picture_profile">http://bukukas-api.herokuapp.com/api/profile/picture/update</string>
 
     <string name="host_add_customer">http://bukukas-api.herokuapp.com/api/customers/add</string>
-    <string name="host_get_customer">http://bukukas-api.herokuapp.com/api/customers/</string>
+    <string name="host_get_customer">http://bukukas-api.herokuapp.com/api/customers/get</string>
     <string name="host_update_customer">http://bukukas-api.herokuapp.com/api/customers/update</string>
     <string name="host_delete_customer">http://bukukas-api.herokuapp.com/api/customers/delete</string>
+    <string name="host_get_detail_customer">http://bukukas-api.herokuapp.com/api/customers/detail</string>
     <string name="host_get_customer_list">http://bukukas-api.herokuapp.com/api/customers/getCustList</string>
 
     <string name="host_income">http://bukukas-api.herokuapp.com/api/receipts/add</string>
@@ -95,6 +96,10 @@
     <string name="host_disbursement_detail">http://bukukas-api.herokuapp.com/api/disbursements/detail</string>
     <string name="host_get_detail_disbursement_list">http://bukukas-api.herokuapp.com/api/disbursements/getOptions</string>
     <string name="host_get_disbursement_list">http://bukukas-api.herokuapp.com/api/disbursements/getTypes</string>
+
+    <string name="host_add_stock">http://bukukas-api.herokuapp.com/api/stocks/add</string>
+    <string name="host_get_stock">http://bukukas-api.herokuapp.com/api/stocks/get</string>
+    <!--    <string name="host_update_stock">http://bukukas-api.herokuapp.com/api/customers/detail</string>-->
 
     <string name="host_get_branch_list">http://bukukas-api.herokuapp.com/api/get/branches</string>
     <string name="host_get_kecamatan_list">http://bukukas-api.herokuapp.com/api/get/districts?branch</string>

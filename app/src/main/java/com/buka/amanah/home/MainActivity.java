@@ -116,8 +116,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case 4:
-                        actionbar.setTitle(getString(R.string.stok));
                         actionbar = getSupportActionBar();
+                        actionbar.setTitle(getString(R.string.stok));
                         break;
                 }
             }

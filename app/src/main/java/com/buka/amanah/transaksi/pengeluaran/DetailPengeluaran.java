@@ -71,7 +71,7 @@ public class DetailPengeluaran extends AppCompatActivity {
         tvBiaya = findViewById(R.id.txtBiayaPengeluaran);
         tvCategory = findViewById(R.id.txtDetailBiaya);
         tvKet = findViewById(R.id.txtKeterangan);
-        tvTotal = findViewById(R.id.txtTotalPenerimaan);
+        tvTotal = findViewById(R.id.txtTotalPengeluaran);
 //        btnSelesai = findViewById(R.id.btnSelesai);
 
         if (getIntent().getStringExtra("method").equalsIgnoreCase("View")) {
@@ -81,7 +81,7 @@ public class DetailPengeluaran extends AppCompatActivity {
             tvBiaya.setText(getIntent().getStringExtra("biaya"));
             tvCategory.setText(getIntent().getStringExtra("category"));
             tvKet.setText(getIntent().getStringExtra("detail"));
-            tvTotal.setText(getIntent().getStringExtra("total"));
+            tvTotal.setText("Rp " + getIntent().getStringExtra("total"));
         }
 
 //        btnSelesai.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +145,7 @@ public class DetailPengeluaran extends AppCompatActivity {
                     tvBiaya.setText(message.getData()[0].getType());
                     tvCategory.setText(message.getData()[0].getCategory());
                     tvKet.setText(message.getData()[0].getDetail());
-                    tvTotal.setText(message.getData()[0].getTotal());
+                    tvTotal.setText("Rp " + message.getData()[0].getTotal());
                 }
             }, new Response.ErrorListener() {
                 @Override
