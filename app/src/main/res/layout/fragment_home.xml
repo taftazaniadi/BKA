@@ -1,300 +1,285 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/fragment_home"
-    tools:context=".home.HomeFragment">
+    tools:context=".view.home.HomeFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/advice"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginBottom="16dp"
-        android:layout_weight="1"
-        android:background="@android:color/transparent"
-        android:orientation="horizontal"
-        tools:listitem="@layout/advice_list" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <LinearLayout
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ss.com.bannerslider.Slider
+            android:id="@+id/slider"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="230dp"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/trx_card"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/trx_card"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginVertical="15dp"
+            android:elevation="5dp"
+            app:cardCornerRadius="@dimen/loginCardRadius"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginHorizontal="25dp"
-                android:layout_marginVertical="15dp"
-                android:elevation="5dp"
-                app:cardCornerRadius="@dimen/loginCardRadius"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:src="@drawable/card_trx" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="28dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="Total Transaksi"
+                    android:layout_marginStart="25dp"
+                    android:textFontWeight="400"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:id="@+id/trx_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="100 Transaksi"
+                    android:layout_marginStart="25dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_home_size" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/hutang_card"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="15dp"
+            android:elevation="5dp"
+            app:cardCornerRadius="@dimen/loginCardRadius"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:src="@drawable/card_utang" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="Total Hutang"
+                    android:textFontWeight="400"
+                    android:layout_marginStart="25dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:id="@+id/hutang_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Rp 567.443.000"
+                    android:layout_marginStart="25dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_home_size" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="Total Piutang"
+                    android:textFontWeight="400"
+                    android:layout_marginStart="25dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:id="@+id/piutang_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Rp 20.000.000"
+                    android:layout_marginStart="25dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_home_size" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cust_card"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="15dp"
+            android:elevation="5dp"
+            app:cardCornerRadius="@dimen/loginCardRadius"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:src="@drawable/card_pelanggan" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="28dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="Total Pelanggan"
+                    android:textFontWeight="400"
+                    android:layout_marginStart="25dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:id="@+id/cust_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="20 Pelanggan"
+                    android:layout_marginStart="25dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_home_size" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/stock_card"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="15dp"
+            android:elevation="5dp"
+            app:cardCornerRadius="@dimen/loginCardRadius"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:src="@drawable/card_stok" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="28dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="Total Stok Barang"
+                    android:textColor="@color/white"
+                    android:textFontWeight="400"
+                    android:layout_marginStart="25dp"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:id="@+id/stock_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="15 Barang"
+                    android:layout_marginStart="25dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_home_size" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/report_card"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="15dp"
+            android:elevation="5dp"
+            app:cardCornerRadius="@dimen/loginCardRadius"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:src="@drawable/card_laporan" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="28dp"
+                android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="25dp"
+                    android:src="@drawable/ic_statistic" />
+
+                <TextView
+                    android:id="@+id/report_value"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/card_trx" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Laporan"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_home_size" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginVertical="28dp"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
+            </LinearLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:text="Total Transaksi"
-                        android:layout_marginStart="25dp"
-                        android:textFontWeight="400"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_size" />
-
-                    <TextView
-                        android:id="@+id/trx_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="100 Transaksi"
-                        android:layout_marginStart="25dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_home_size" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/hutang_card"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginHorizontal="25dp"
-                android:layout_marginVertical="15dp"
-                android:elevation="5dp"
-                app:cardCornerRadius="@dimen/loginCardRadius"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/card_utang" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginVertical="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:text="Total Hutang"
-                        android:textFontWeight="400"
-                        android:layout_marginStart="25dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_size" />
-
-                    <TextView
-                        android:id="@+id/hutang_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Rp 567.443.000"
-                        android:layout_marginStart="25dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_home_size" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:text="Total Piutang"
-                        android:textFontWeight="400"
-                        android:layout_marginStart="25dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_size" />
-
-                    <TextView
-                        android:id="@+id/piutang_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Rp 20.000.000"
-                        android:layout_marginStart="25dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_home_size" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cust_card"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginHorizontal="25dp"
-                android:layout_marginVertical="15dp"
-                android:elevation="5dp"
-                app:cardCornerRadius="@dimen/loginCardRadius"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/card_pelanggan" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginVertical="28dp"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:text="Total Pelanggan"
-                        android:textFontWeight="400"
-                        android:layout_marginStart="25dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_size" />
-
-                    <TextView
-                        android:id="@+id/cust_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="20 Pelanggan"
-                        android:layout_marginStart="25dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_home_size" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/stock_card"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginHorizontal="25dp"
-                android:layout_marginVertical="15dp"
-                android:elevation="5dp"
-                app:cardCornerRadius="@dimen/loginCardRadius"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/card_stok" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginVertical="28dp"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:text="Total Stok Barang"
-                        android:textColor="@color/white"
-                        android:textFontWeight="400"
-                        android:layout_marginStart="25dp"
-                        android:textSize="@dimen/text_size" />
-
-                    <TextView
-                        android:id="@+id/stock_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="15 Barang"
-                        android:layout_marginStart="25dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_home_size" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/report_card"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginHorizontal="25dp"
-                android:layout_marginVertical="15dp"
-                android:elevation="5dp"
-                app:cardCornerRadius="@dimen/loginCardRadius"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/card_laporan" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginVertical="28dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="25dp"
-                        android:src="@drawable/ic_statistic" />
-
-                    <TextView
-                        android:id="@+id/report_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Laporan"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_home_size" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-
-    </ScrollView>
-
-</LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>

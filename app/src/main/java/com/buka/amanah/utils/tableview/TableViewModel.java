@@ -28,11 +28,11 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 
 import com.buka.amanah.R;
-import com.buka.amanah.pojo.customer_get.CustomerView;
-import com.buka.amanah.pojo.disbursement_get.DisbursementView;
-import com.buka.amanah.pojo.receipt_get.ReceiptView;
-import com.buka.amanah.pojo.receipt_summary.ReceiptSummary;
-import com.buka.amanah.pojo.stok_get.StokView;
+import com.buka.amanah.model.customer_get.CustomerView;
+import com.buka.amanah.model.disbursement_get.DisbursementView;
+import com.buka.amanah.model.receipt_get.ReceiptView;
+import com.buka.amanah.model.receipt_summary.ReceiptSummary;
+import com.buka.amanah.model.stok_get.StokView;
 import com.buka.amanah.utils.tableview.model.Cell;
 import com.buka.amanah.utils.tableview.model.ColumnHeader;
 import com.buka.amanah.utils.tableview.model.RowHeader;

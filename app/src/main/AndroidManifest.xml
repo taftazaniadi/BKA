@@ -19,84 +19,84 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BuKa"
         android:usesCleartextTraffic="true">
-        <activity android:name=".hutang_piutang.piutang.usaha.DetailPiutangUsaha"></activity>
-        <activity android:name=".hutang_piutang.piutang.galon.DetailPiutangGalon" />
-        <activity android:name=".hutang_piutang.hutang.galon.DetailHutangGalon" />
-        <activity android:name=".hutang_piutang.hutang.usaha.DetailHutangUsaha" />
-        <activity android:name=".stock.DetailStock" />
+        <activity android:name=".view.hutang_piutang.piutang.usaha.DetailPiutangUsaha"></activity>
+        <activity android:name=".view.hutang_piutang.piutang.galon.DetailPiutangGalon" />
+        <activity android:name=".view.hutang_piutang.hutang.galon.DetailHutangGalon" />
+        <activity android:name=".view.hutang_piutang.hutang.usaha.DetailHutangUsaha" />
+        <activity android:name=".view.stock.DetailStock" />
         <activity
-            android:name=".transaksi.pengeluaran.DetailPengeluaran"
+            android:name=".view.transaksi.pengeluaran.DetailPengeluaran"
             android:configChanges="orientation"
-            android:parentActivityName=".transaksi.pengeluaran.PengeluaranActivity"
+            android:parentActivityName=".view.transaksi.pengeluaran.PengeluaranActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".transaksi.penerimaan.DetailPenerimaan"
+            android:name=".view.transaksi.penerimaan.DetailPenerimaan"
             android:configChanges="orientation"
-            android:parentActivityName=".transaksi.penerimaan.PenerimaanActivity"
+            android:parentActivityName=".view.transaksi.penerimaan.PenerimaanActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".report.ReportActivity" />
+        <activity android:name=".view.report.ReportActivity" />
         <activity
-            android:name=".users.profile.ChangePassword"
+            android:name=".view.users.profile.ChangePassword"
             android:configChanges="orientation"
-            android:parentActivityName=".users.profile.UserProfile"
+            android:parentActivityName=".view.users.profile.UserProfile"
             android:screenOrientation="portrait"
             android:theme="@style/ProfileTheme" />
         <activity
-            android:name=".users.profile.UpdateUserProfile"
+            android:name=".view.users.profile.UpdateUserProfile"
             android:configChanges="orientation"
-            android:parentActivityName=".users.profile.UserProfile"
+            android:parentActivityName=".view.users.profile.UserProfile"
             android:screenOrientation="portrait"
             android:theme="@style/ProfileTheme" />
         <activity
-            android:name=".users.profile.UserProfile"
+            android:name=".view.users.profile.UserProfile"
             android:configChanges="orientation"
-            android:parentActivityName=".home.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ProfileTheme" />
-        <activity android:name=".stock.FormStockBarang" />
-        <activity android:name=".pelanggan.detail.DetailPelanggan" />
-        <activity android:name=".pelanggan.FormPelanggan" />
-        <activity android:name=".hutang_piutang.piutang.galon.FormPiutangGalon" />
-        <activity android:name=".hutang_piutang.piutang.usaha.FormPiutangUsaha" />
-        <activity android:name=".hutang_piutang.piutang.galon.PiutangGalonActivity" />
-        <activity android:name=".hutang_piutang.piutang.usaha.PiutangUsahaActivity" />
-        <activity android:name=".hutang_piutang.hutang.galon.FormHutangGalon" />
-        <activity android:name=".hutang_piutang.hutang.galon.HutangGalonActivity" />
-        <activity android:name=".hutang_piutang.hutang.usaha.FormHutangUsaha" />
-        <activity android:name=".hutang_piutang.hutang.usaha.HutangUsahaActivity" />
-        <activity android:name=".transaksi.pengeluaran.PengeluaranActivity" />
-        <activity android:name=".transaksi.pengeluaran.FormPengeluaran" />
+        <activity android:name=".view.stock.FormStockBarang" />
+        <activity android:name=".view.pelanggan.detail.DetailPelanggan" />
+        <activity android:name=".view.pelanggan.FormPelanggan" />
+        <activity android:name=".view.hutang_piutang.piutang.galon.FormPiutangGalon" />
+        <activity android:name=".view.hutang_piutang.piutang.usaha.FormPiutangUsaha" />
+        <activity android:name=".view.hutang_piutang.piutang.galon.PiutangGalonActivity" />
+        <activity android:name=".view.hutang_piutang.piutang.usaha.PiutangUsahaActivity" />
+        <activity android:name=".view.hutang_piutang.hutang.galon.FormHutangGalon" />
+        <activity android:name=".view.hutang_piutang.hutang.galon.HutangGalonActivity" />
+        <activity android:name=".view.hutang_piutang.hutang.usaha.FormHutangUsaha" />
+        <activity android:name=".view.hutang_piutang.hutang.usaha.HutangUsahaActivity" />
+        <activity android:name=".view.transaksi.pengeluaran.PengeluaranActivity" />
+        <activity android:name=".view.transaksi.pengeluaran.FormPengeluaran" />
         <activity
-            android:name=".transaksi.penerimaan.FormPenerimaan"
+            android:name=".view.transaksi.penerimaan.FormPenerimaan"
             android:configChanges="orientation"
-            android:parentActivityName=".transaksi.penerimaan.PenerimaanActivity"
+            android:parentActivityName=".view.transaksi.penerimaan.PenerimaanActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".transaksi.penerimaan.PenerimaanActivity"
+            android:name=".view.transaksi.penerimaan.PenerimaanActivity"
             android:configChanges="orientation"
-            android:parentActivityName=".home.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".users.resetpass.ForgotPasswordInputOTP"
+            android:name=".view.users.resetpass.ForgotPasswordInputOTP"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".users.resetpass.ForgotPasswordActivity"
+            android:name=".view.users.resetpass.ForgotPasswordActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".users.register.RegisterActivity"
+            android:name=".view.users.register.RegisterActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".users.login.LoginActivity"
+            android:name=".view.users.login.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".splashscreen.SplashScreenActivity">
+        <activity android:name=".view.splashscreen.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".splashscreen.WelcomeActivity" />
-        <activity android:name=".home.MainActivity" />
+        <activity android:name=".view.splashscreen.WelcomeActivity" />
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

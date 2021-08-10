@@ -20,7 +20,7 @@
     <dimen name="cell_height">30dp</dimen>
     <dimen name="row_header_width">55dp</dimen>
     <dimen name="text_size">14sp</dimen>
-    <dimen name="text_home_size">30sp</dimen>
+    <dimen name="text_home_size">20sp</dimen>
 
     <!-- Overriding the default values of the tableView -->
     <dimen name="default_row_header_width">55dp</dimen>

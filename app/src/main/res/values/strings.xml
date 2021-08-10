@@ -17,7 +17,7 @@
     <!-- Button Slide -->
     <string name="login">Masuk</string>
     <string name="signup">Daftar</string>
-    <string name="forgot">Lanjut</string>
+    <string name="next">Lanjut</string>
     <string name="tgl">Hari, Tanggal</string>
     <string name="pelanggan">Pelanggan</string>
     <string name="penerimaan">Penerimaan</string>
@@ -48,7 +48,7 @@
     <string name="scroll_to_column_position">Scroll to 15. column position</string>
     <string name="scroll_to_row_position">Scroll to 5. row position</string>
     <string name="show_hide_the_column">Showing / Hiding 1. column</string>
-    <string name="table_pagination_details">%s dari %s data</string>
+    //<string name="table_pagination_details">%s dari %s data</string>
 
     <string-array name="items_per_page">
         <item>15</item>
