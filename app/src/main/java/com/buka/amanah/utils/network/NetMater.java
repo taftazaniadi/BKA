@@ -29,7 +29,7 @@ public class NetMater {
 
     }
 
-    public <T> void getData(String token, String url, ResponseCallback<T> callback){
+    public <T> void getData(String token, String url, Class<T> parse, ResponseCallback<T> callback){
         callback.onLoading(true);
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -48,7 +48,7 @@ public class NetMater {
         requestQueue.add(request);
     }
 
-    public <T> void postData(String token, String url,JSONObject body, ResponseCallback<T> callback){
+    public <T> void postData(String token, String url, JSONObject body, Class<T> parse, ResponseCallback<T> callback){
         callback.onLoading(true);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, body, new Response.Listener(){
             @Override

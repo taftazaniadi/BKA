@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.hutang_piutang.hutang.usaha.FormHutangUsaha">
+    tools:context=".view.hutangpiutang.hutang.usaha.FormHutangUsaha">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -146,14 +146,12 @@
                 android:id="@+id/textInputTotal"
                 style="@style/parentTotal"
                 android:layout_marginTop="@dimen/loginViewsMargin"
-                android:enabled="false"
                 android:hint="Total Rupiah"
                 app:prefixText="Rp ">
 
                 <EditText
                     android:id="@+id/editTextTotal"
                     style="@style/modifiedEditText"
-                    android:enabled="false"
                     android:fontFamily="@font/poppins"
                     android:maxLines="1"
                     android:textColor="@color/black" />

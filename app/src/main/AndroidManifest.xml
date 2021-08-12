@@ -19,10 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BuKa"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.hutang_piutang.piutang.usaha.DetailPiutangUsaha"></activity>
-        <activity android:name=".view.hutang_piutang.piutang.galon.DetailPiutangGalon" />
-        <activity android:name=".view.hutang_piutang.hutang.galon.DetailHutangGalon" />
-        <activity android:name=".view.hutang_piutang.hutang.usaha.DetailHutangUsaha" />
+        <activity android:name=".view.hutangpiutang.piutang.usaha.DetailPiutangUsaha"/>
+        <activity android:name=".view.hutangpiutang.piutang.HutangPiutangActivityOwl"/>
+        <activity android:name=".view.hutangpiutang.piutang.galon.DetailPiutangGalon" />
+        <activity android:name=".view.hutangpiutang.hutang.galon.DetailHutangGalon" />
+        <activity android:name=".view.hutangpiutang.hutang.usaha.DetailHutangUsaha" />
         <activity android:name=".view.stock.DetailStock" />
         <activity
             android:name=".view.transaksi.pengeluaran.DetailPengeluaran"
@@ -54,17 +55,18 @@
             android:screenOrientation="portrait"
             android:theme="@style/ProfileTheme" />
         <activity android:name=".view.stock.FormStockBarang" />
-        <activity android:name=".view.pelanggan.detail.DetailPelanggan" />
+        <activity android:name=".view.pelanggan.DetailPelanggan" />
         <activity android:name=".view.pelanggan.FormPelanggan" />
-        <activity android:name=".view.hutang_piutang.piutang.galon.FormPiutangGalon" />
-        <activity android:name=".view.hutang_piutang.piutang.usaha.FormPiutangUsaha" />
-        <activity android:name=".view.hutang_piutang.piutang.galon.PiutangGalonActivity" />
-        <activity android:name=".view.hutang_piutang.piutang.usaha.PiutangUsahaActivity" />
-        <activity android:name=".view.hutang_piutang.hutang.galon.FormHutangGalon" />
-        <activity android:name=".view.hutang_piutang.hutang.galon.HutangGalonActivity" />
-        <activity android:name=".view.hutang_piutang.hutang.usaha.FormHutangUsaha" />
-        <activity android:name=".view.hutang_piutang.hutang.usaha.HutangUsahaActivity" />
+        <activity android:name=".view.hutangpiutang.piutang.galon.FormPiutangGalon" />
+        <activity android:name=".view.hutangpiutang.piutang.usaha.FormPiutangUsaha" />
+        <activity android:name=".view.hutangpiutang.piutang.galon.PiutangGalonActivity" />
+        <activity android:name=".view.hutangpiutang.piutang.usaha.PiutangUsahaActivity" />
+        <activity android:name=".view.hutangpiutang.hutang.galon.FormHutangGalon" />
+        <activity android:name=".view.hutangpiutang.hutang.galon.HutangGalonActivity" />
+        <activity android:name=".view.hutangpiutang.hutang.usaha.FormHutangUsaha" />
+        <activity android:name=".view.hutangpiutang.hutang.usaha.HutangUsahaActivity" />
         <activity android:name=".view.transaksi.pengeluaran.PengeluaranActivity" />
+        <activity android:name=".view.transaksi.pengeluaran.PengeluaranActivityOwl" />
         <activity android:name=".view.transaksi.pengeluaran.FormPengeluaran" />
         <activity
             android:name=".view.transaksi.penerimaan.FormPenerimaan"
@@ -73,6 +75,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.transaksi.penerimaan.PenerimaanActivity"
+            android:configChanges="orientation"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.transaksi.penerimaan.PenerimaanActivityOwl"
             android:configChanges="orientation"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />

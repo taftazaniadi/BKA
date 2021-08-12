@@ -89,7 +89,7 @@
                     android:text="Jumlah" />
 
                 <TextView
-                    android:id="@+id/txtJumlah"
+                    android:id="@+id/txtJumlahBarang"
                     style="@style/modifiedEditTextAlamat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                     android:text="Harga" />
 
                 <TextView
-                    android:id="@+id/txtHarga"
+                    android:id="@+id/txtHargaBarang"
                     style="@style/modifiedEditTextAlamat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

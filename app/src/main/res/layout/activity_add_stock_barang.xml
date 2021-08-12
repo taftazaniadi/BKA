@@ -95,10 +95,12 @@
                 android:hint="Harga">
 
                 <EditText
-                    android:id="@+id/editTextHarga"
+                    android:id="@+id/editTextHargaBarang"
                     style="@style/modifiedEditText"
                     android:fontFamily="@font/poppins"
                     android:maxLines="1"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,7 +110,7 @@
                 android:layout_marginTop="70dp">
 
                 <Button
-                    android:id="@+id/btn_cancel_pelanggan"
+                    android:id="@+id/btn_cancel_stock"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="15dp"
@@ -123,11 +125,11 @@
                     android:paddingHorizontal="30dp"
                     app:backgroundTint="@null"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_form_pelanggan"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_form_stock"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btn_form_pelanggan"
+                    android:id="@+id/btn_form_stock"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/button"

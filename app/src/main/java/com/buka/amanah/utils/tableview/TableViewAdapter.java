@@ -47,7 +47,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.buka.amanah.view.pelanggan.FormPelanggan;
-import com.buka.amanah.view.pelanggan.detail.DetailPelanggan;
+import com.buka.amanah.view.pelanggan.DetailPelanggan;
 import com.buka.amanah.model.ResponseDefault;
 import com.buka.amanah.view.stock.DetailStock;
 import com.buka.amanah.view.stock.FormStockBarang;

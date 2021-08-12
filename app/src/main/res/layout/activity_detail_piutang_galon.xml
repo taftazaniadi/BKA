@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.hutang_piutang.piutang.galon.DetailPiutangGalon">
+    tools:context=".view.hutangpiutang.piutang.galon.DetailPiutangGalon">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -38,129 +38,167 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/loginViewsMargin">
+                android:layout_margin="@dimen/loginViewsMargin"
+                android:orientation="vertical">
 
                 <TextView
-                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center"
-                    android:text="Informasi Detail Hutang Galon" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/loginViewsMargin">
+                    android:text="Informasi Detail Piutang Galon"
+                    android:textColor="#092857"
+                    android:textFontWeight="400"
+                    android:textSize="16sp" />
 
                 <TextView
-                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hari, Tanggal" />
-
-                <TextView
-                    android:id="@+id/txtHariTgl"
-                    style="@style/modifiedEditTextAlamat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Informasi Detail Penerimaan" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/loginViewsMargin">
-
-                <TextView
-                    style="@style/modifiedEditTextDetail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Pelanggan / Perusahaan" />
-
-                <TextView
-                    android:id="@+id/txtPelangganPiutangGalon"
-                    style="@style/modifiedEditTextAlamat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Informasi Detail Penerimaan" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/loginViewsMargin">
-
-                <TextView
-                    style="@style/modifiedEditTextDetail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Jumlah" />
-
-                <TextView
-                    android:id="@+id/txtJumalhPiutangGalon"
-                    style="@style/modifiedEditTextAlamat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Informasi Detail Penerimaan" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/loginViewsMargin">
-
-                <TextView
-                    style="@style/modifiedEditTextDetail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Harga" />
-
-                <TextView
-                    android:id="@+id/txtHargaPiutangGalon"
-                    style="@style/modifiedEditTextAlamat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Informasi Detail Penerimaan" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/loginViewsMargin">
-
-                <TextView
-                    style="@style/modifiedEditTextAlamat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center"
-                    android:text="Total Rupiah" />
-
-                <TextView
-                    android:id="@+id/txtTotalPiutangGalon"
-                    style="@style/modifiedEditTextDetail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Informasi Detail Penerimaan" />
+                    android:text="Informasi Detail Piutang Galon"
+                    android:textColor="#092857"
+                    android:textFontWeight="700"
+                    android:textSize="18sp" />
 
             </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:layout_marginStart="@dimen/loginViewsMargin"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="@dimen/loginViewsMargin"
+                android:layout_marginBottom="@dimen/loginViewsMargin"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:text="Hutang Awal"
+                            android:textColor="#092857"
+                            android:textFontWeight="400"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtHutangAwal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins"
+                            android:scaleType="fitCenter"
+                            android:text="Rp 1.000.000"
+                            android:textColor="#092857"
+                            android:textFontWeight="700"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:text="Hutang Tersisa"
+                            android:textColor="#092857"
+                            android:textFontWeight="400"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtHutangSisa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins"
+                            android:scaleType="fitCenter"
+                            android:text="Rp 600.000"
+                            android:textColor="#092857"
+                            android:textFontWeight="700"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/loginViewsMargin"
+                android:paddingVertical="5dp">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins"
+                    android:text="Riwayat Pembayaran"
+                    android:textColor="#092857"
+                    android:textFontWeight="700"
+                    android:textSize="18sp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/buttonBayar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button"
+                        android:fontFamily="@font/poppins"
+                        android:text="Bayar"
+                        android:textAllCaps="false"
+                        android:textFontWeight="600"
+                        app:icon="@drawable/ic_baseline_add_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvData"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/loginViewsMargin"
+                tools:listitem="@layout/detail_hutang_list_row" />
 
         </LinearLayout>
 

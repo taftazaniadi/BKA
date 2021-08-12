@@ -13,6 +13,8 @@ public class DataStok {
 
     private String stock;
 
+    private String productId;
+
     private String productName;
 
     private String updatedAt;
@@ -30,6 +32,14 @@ public class DataStok {
     public String getCreatedAtRaw ()
     {
         return createdAtRaw;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public void setCreatedAtRaw (String createdAtRaw)
@@ -100,6 +110,6 @@ public class DataStok {
     @Override
     public String toString()
     {
-        return "ClassPojo [createdAt = "+createdAt+", createdAtRaw = "+createdAtRaw+", price = "+price+", distributorId = "+distributorId+", id = "+id+", stock = "+stock+", productName = "+productName+", updatedAt = "+updatedAt+"]";
+        return "ClassPojo [createdAt = "+createdAt+", createdAtRaw = "+createdAtRaw+", price = "+price+", distributorId = "+distributorId+", id = "+id+", stock = "+stock+", productId = "+productId+", productName = "+productName+", updatedAt = "+updatedAt+"]";
     }
 }

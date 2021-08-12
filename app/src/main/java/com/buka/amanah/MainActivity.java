@@ -12,7 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import com.buka.amanah.adapter.ViewPagerAdapter;
-import com.buka.amanah.view.hutang_piutang.HutangPiutangFragment;
+import com.buka.amanah.view.hutangpiutang.HutangPiutangFragment;
 import com.buka.amanah.view.pelanggan.PelangganFragment;
 import com.buka.amanah.view.stock.StockFragment;
 import com.buka.amanah.view.transaksi.TransaksiFragment;
