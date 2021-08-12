@@ -112,7 +112,6 @@
                 android:id="@+id/textInputJumlahGalon"
                 style="@style/parentTotal"
                 android:layout_marginTop="@dimen/loginViewsMargin"
-                android:enabled="false"
                 android:hint="Jumlah Galon">
 
                 <EditText
@@ -129,7 +128,7 @@
                 android:id="@+id/textInputHarga"
                 style="@style/parentTotal"
                 android:layout_marginTop="@dimen/loginViewsMargin"
-                android:enabled="false"
+                app:prefixText="Rp "
                 android:hint="Harga">
 
                 <EditText
@@ -147,6 +146,7 @@
                 style="@style/parentTotal"
                 android:layout_marginTop="@dimen/loginViewsMargin"
                 android:enabled="false"
+                app:prefixText="Rp "
                 android:hint="Total Rupiah">
 
                 <EditText

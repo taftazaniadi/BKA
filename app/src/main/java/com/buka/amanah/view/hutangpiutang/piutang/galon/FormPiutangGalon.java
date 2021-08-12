@@ -63,7 +63,6 @@ import dev.shreyaspatil.MaterialDialog.interfaces.DialogInterface;
 import dev.shreyaspatil.MaterialDialog.model.TextAlignment;
 
 public class FormPiutangGalon extends AppCompatActivity {
-
     RequestQueue mRequestQueue;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;

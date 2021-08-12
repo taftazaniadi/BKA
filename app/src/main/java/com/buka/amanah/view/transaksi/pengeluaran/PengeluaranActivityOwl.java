@@ -202,7 +202,7 @@ public class PengeluaranActivityOwl extends AppCompatActivity implements Pengelu
     public void onSuccessGetDisbursements(List<ResponseDisbursement.ResponseDisbursementItem> mData) {
         if (pageRecord < page){
             pageRecord += 1;
-            dataCount = mData.size();
+            dataCount += mData.size();
         }
         tvTableDetail.setText(String.format("%s dari %s data", mData.size(), dataCount));
         adapterPengeluaran.clearItems();

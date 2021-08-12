@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <resources>
     <string name="app_name">BuKa\nAMANAH</string>
     <string name="transaksi">Transaksi</string>
@@ -48,7 +50,7 @@
     <string name="scroll_to_column_position">Scroll to 15. column position</string>
     <string name="scroll_to_row_position">Scroll to 5. row position</string>
     <string name="show_hide_the_column">Showing / Hiding 1. column</string>
-    //<string name="table_pagination_details">%s dari %s data</string>
+    <string name="table_pagination_details">%s dari %s data</string>
 
     <string-array name="items_per_page">
         <item>15</item>

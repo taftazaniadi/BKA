@@ -593,7 +593,7 @@ public class FormPengeluaran extends AppCompatActivity {
                                     public void onClick(DialogInterface dialogInterface, int which) {
                                         dialogInterface.dismiss();
 
-                                        Intent i = new Intent(getApplicationContext(), PengeluaranActivity.class);
+                                        //Intent i = new Intent(getApplicationContext(), PengeluaranActivity.class);
 //                                        i.putExtra("method", "Update");
 //                                        i.putExtra("tgl", etTgl.getText().toString());
 //                                        i.putExtra("cust", actPelanggan.getText().toString());
@@ -601,8 +601,10 @@ public class FormPengeluaran extends AppCompatActivity {
 //                                        i.putExtra("amount", etJumlah.getText().toString());
 //                                        i.putExtra("price", etHarga.getText().toString());
 //                                        i.putExtra("total", etTotal.getText().toString());
-                                        startActivity(i);
-                                        finishAffinity();
+                                        //startActivity(i);
+                                        //finishAffinity();
+                                        setResult(RESULT_OK);
+                                        finish();
                                     }
                                 })
                                 .setNegativeButton("Tambah Lagi", new MaterialDialog.OnClickListener() {
@@ -710,13 +712,4 @@ public class FormPengeluaran extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        //this is only needed if you have specific things
-        //that you want to do when the user presses the back button.
-        /* your specific things...*/
-        super.onBackPressed();
-        startActivity(new Intent(this, PengeluaranActivity.class));
-        finish();
-    }
 }

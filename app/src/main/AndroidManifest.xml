@@ -19,8 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BuKa"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.hutangpiutang.piutang.usaha.DetailPiutangUsaha"/>
-        <activity android:name=".view.hutangpiutang.piutang.HutangPiutangActivityOwl"/>
+        <activity android:name=".view.hutangpiutang.piutang.usaha.BayarPiutangUsaha"></activity>
+        <activity android:name=".view.hutangpiutang.piutang.galon.BayarPiutangGalon" />
+        <activity android:name=".view.hutangpiutang.hutang.usaha.BayarHutangUsaha" />
+        <activity android:name=".view.hutangpiutang.hutang.galon.BayarHutangGalon" />
+        <activity android:name=".view.hutangpiutang.piutang.usaha.DetailPiutangUsaha" />
+        <activity android:name=".view.hutangpiutang.piutang.HutangPiutangActivityOwl" />
         <activity android:name=".view.hutangpiutang.piutang.galon.DetailPiutangGalon" />
         <activity android:name=".view.hutangpiutang.hutang.galon.DetailHutangGalon" />
         <activity android:name=".view.hutangpiutang.hutang.usaha.DetailHutangUsaha" />

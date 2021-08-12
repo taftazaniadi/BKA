@@ -44,6 +44,7 @@ import com.buka.amanah.model.ResponseDefault;
 import com.buka.amanah.model.cust_list.CustList;
 import com.buka.amanah.model.cust_list.DataCust;
 import com.buka.amanah.model.receipt_get.ReceiptView;
+import com.buka.amanah.view.hutangpiutang.hutang.usaha.HutangUsahaActivity;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -97,7 +98,6 @@ public class FormHutangGalon extends AppCompatActivity {
         etJumlah = findViewById(R.id.editTextJumlahGalon);
         etHarga = findViewById(R.id.editTextHargaGalon);
         etTotal = findViewById(R.id.editTextTotalGalon);
-        etTotal.setEnabled(false);
         actPelanggan = (AutoCompleteTextView) findViewById(R.id.actPelanggan);
         btnBatal = findViewById(R.id.btn_cancel_hutang_galon);
         btnHutangUsaha = findViewById(R.id.btn_form_hutang_galon);
@@ -113,7 +113,7 @@ public class FormHutangGalon extends AppCompatActivity {
         if (getIntent().getStringExtra("method").equalsIgnoreCase("Edit")) {
             actionbar.setTitle("Edit Hutang Galon");
 
-            getDetailHutangGalon(getIntent().getStringExtra("debtId"));
+            getDetailHutangGalon(getIntent().getStringExtra("receiptId"));
 
             btnHutangUsaha.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -210,7 +210,7 @@ public class FormHutangGalon extends AppCompatActivity {
         btnBatal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), HutangGalonActivity.class));
+                startActivity(new Intent(getApplicationContext(), HutangUsahaActivity.class));
                 finish();
             }
         });
@@ -433,7 +433,8 @@ public class FormHutangGalon extends AppCompatActivity {
             jsonBody.put("date", etTgl.getText().toString() + " 00:00:00");
             jsonBody.put("customerId", Integer.parseInt(idCust));
             jsonBody.put("gallonAmount", Integer.parseInt(etJumlah.getText().toString()));
-            jsonBody.put("amount", Integer.parseInt(etHarga.getText().toString()));
+            jsonBody.put("gallonPrice", Integer.parseInt(etHarga.getText().toString()));
+            jsonBody.put("amount", Integer.parseInt(etTotal.getText().toString()));
 
             final String mRequestBody = jsonBody.toString();
             System.out.println("DATA JSON : " + mRequestBody);
@@ -561,7 +562,7 @@ public class FormHutangGalon extends AppCompatActivity {
     }
 
     private void getDetailHutangGalon(String id) {
-        String url = getString(R.string.host_receipt_detail);
+        String url = getString(R.string.host_debt_gallon_detail);
 
         try {
             JSONObject jsonBody = new JSONObject();

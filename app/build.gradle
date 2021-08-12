@@ -62,9 +62,6 @@ dependencies {
     // Material Dialog Library
     implementation 'dev.shreyaspatil.MaterialDialog:MaterialDialog:2.2.2'
 
-    // Slider
-    implementation 'com.ss.bannerslider:bannerslider:2.0.0'
-
     // Table View
 //    implementation project (':tableview')
 }

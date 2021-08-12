@@ -406,7 +406,7 @@ public class FormPiutangUsaha extends AppCompatActivity {
 //                    if (message.getStatus().equalsIgnoreCase("success")) {
                     etTgl.setText(message.getData()[0].getCreatedAtRaw().substring(0, 10));
                     actPelanggan.setText(message.getData()[0].getCustomerName());
-                    actPenerimaan.setText(message.getData()[0].getType());
+                    actPiutangUsaha.setText(message.getData()[0].getType());
                     etJumlah.setText(message.getData()[0].getAmount());
                     etHarga.setText(message.getData()[0].getPrice().replace(",", ""));
                     etTotal.setText(message.getData()[0].getTotal().replace(",", ""));

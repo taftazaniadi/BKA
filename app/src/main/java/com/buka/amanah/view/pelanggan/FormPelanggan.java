@@ -269,9 +269,11 @@ public class FormPelanggan extends AppCompatActivity {
                                     public void onClick(DialogInterface dialogInterface, int which) {
                                         dialogInterface.dismiss();
 
-                                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                                        startActivity(i);
-                                        finishAffinity();
+                                        //Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                        //startActivity(i);
+                                        //finishAffinity();
+                                        setResult(RESULT_OK);
+                                        finish();
                                     }
                                 })
                                 .setNegativeButton("Tambah Lagi", new MaterialDialog.OnClickListener() {
@@ -529,14 +531,5 @@ public class FormPelanggan extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public void onBackPressed()
-    {
-        if(getSupportFragmentManager().getBackStackEntryCount() > 0)
-            getSupportFragmentManager().popBackStack();
-        else
-            super.onBackPressed();
     }
 }

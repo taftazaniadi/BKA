@@ -156,13 +156,4 @@ public class DetailPelanggan extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        //this is only needed if you have specific things
-        //that you want to do when the user presses the back button.
-        /* your specific things...*/
-        super.onBackPressed();
-        startActivity(new Intent(this, MainActivity.class));
-        finishAffinity();
-    }
 }

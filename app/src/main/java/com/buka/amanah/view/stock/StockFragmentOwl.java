@@ -118,7 +118,7 @@ public class StockFragmentOwl extends Fragment implements StockView {
                     @Override
                     public void onSee(ResponseStok.ResponseStokItem data) {
                         Intent i = new Intent(requireContext(), DetailStock.class);
-                        i.putExtra("disbursementId", data.getId().toString());
+                        i.putExtra("stockId", data.getId().toString());
                         i.putExtra("method", "View");
                         startActivity(i);
                     }
@@ -151,7 +151,7 @@ public class StockFragmentOwl extends Fragment implements StockView {
                     @Override
                     public void onEdit(ResponseStok.ResponseStokItem data) {
                         Intent i = new Intent(requireContext(), FormStockBarang.class);
-                        i.putExtra("disbursementId", data.getId().toString());
+                        i.putExtra("stockId", data.getId().toString());
                         i.putExtra("method", "Edit");
                         startActivityForResult(i, CODE_EDIT);
                     }
@@ -172,7 +172,7 @@ public class StockFragmentOwl extends Fragment implements StockView {
     public void onSuccessGetStock(List<ResponseStok.ResponseStokItem> mData) {
         if (pageRecord < page){
             pageRecord += 1;
-            dataCount = mData.size();
+            dataCount += mData.size();
         }
         tvTableDetail.setText(String.format("%s dari %s data", mData.size(), dataCount));
         adapterStock.clearItems();

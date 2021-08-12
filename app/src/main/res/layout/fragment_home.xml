@@ -12,10 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <ss.com.bannerslider.Slider
-            android:id="@+id/slider"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAdvertisement"
             android:layout_width="match_parent"
-            android:layout_height="230dp"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_home_advertisement"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/trx_card"

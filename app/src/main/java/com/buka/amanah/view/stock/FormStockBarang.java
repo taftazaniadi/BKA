@@ -139,7 +139,6 @@ public class FormStockBarang extends AppCompatActivity {
         actBarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                getReceiptList();
                 actBarang.showDropDown();
             }
         });
@@ -244,9 +243,12 @@ public class FormStockBarang extends AppCompatActivity {
                                     public void onClick(DialogInterface dialogInterface, int which) {
                                         dialogInterface.dismiss();
 
-                                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                                        startActivity(i);
-                                        finishAffinity();
+                                        //Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                        //startActivity(i);
+                                        //finishAffinity();
+
+                                        setResult(RESULT_OK);
+                                        finish();
                                     }
                                 })
                                 .setNegativeButton("Tambah Lagi", new MaterialDialog.OnClickListener() {
@@ -343,7 +345,7 @@ public class FormStockBarang extends AppCompatActivity {
     }
 
     public void updateStock() {
-        String url = getString(R.string.host_update_receipt);
+        String url = getString(R.string.host_update_stock);
         final String idBarang;
 
         if (id_barang == null || id_barang.isEmpty()) {
@@ -386,9 +388,11 @@ public class FormStockBarang extends AppCompatActivity {
                                     public void onClick(DialogInterface dialogInterface, int which) {
                                         dialogInterface.dismiss();
 
-                                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                                        startActivity(i);
-                                        finishAffinity();
+                                        //Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                        //startActivity(i);
+                                        //finishAffinity();
+                                        setResult(RESULT_OK);
+                                        finish();
                                     }
                                 })
                                 .setNegativeButton("Tambah Lagi", new MaterialDialog.OnClickListener() {
@@ -591,12 +595,4 @@ public class FormStockBarang extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        if(getSupportFragmentManager().getBackStackEntryCount() > 0)
-            getSupportFragmentManager().popBackStack();
-        else
-            super.onBackPressed();
-    }
 }

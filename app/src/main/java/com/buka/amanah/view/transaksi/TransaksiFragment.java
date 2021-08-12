@@ -12,7 +12,9 @@ import android.widget.Button;
 
 import com.buka.amanah.R;
 import com.buka.amanah.view.transaksi.penerimaan.PenerimaanActivity;
+import com.buka.amanah.view.transaksi.penerimaan.PenerimaanActivityOwl;
 import com.buka.amanah.view.transaksi.pengeluaran.PengeluaranActivity;
+import com.buka.amanah.view.transaksi.pengeluaran.PengeluaranActivityOwl;
 
 public class TransaksiFragment extends Fragment {
 
@@ -26,7 +28,7 @@ public class TransaksiFragment extends Fragment {
         btnPenerimaan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), PenerimaanActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), PenerimaanActivityOwl.class);
                 startActivity(intent);
             }
         });
@@ -35,7 +37,7 @@ public class TransaksiFragment extends Fragment {
         btnPengeluaran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), PengeluaranActivity.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), PengeluaranActivityOwl.class);
                 startActivity(intent);
             }
         });

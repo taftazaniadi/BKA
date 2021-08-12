@@ -218,7 +218,7 @@ public class PenerimaanActivityOwl extends AppCompatActivity implements Penerima
     public void onSuccessGetReceipt(List<ResponseReceipt.ResponseReceiptItem> mData) {
         if (pageRecord < page){
             pageRecord += 1;
-            dataCount = mData.size();
+            dataCount += mData.size();
         }
         tvTableDetail.setText(String.format("%s dari %s data", mData.size(), dataCount));
         adapterPenerimaan.clearItems();

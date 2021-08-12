@@ -13,8 +13,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.buka.amanah.adapter.ViewPagerAdapter;
 import com.buka.amanah.view.hutangpiutang.HutangPiutangFragment;
-import com.buka.amanah.view.pelanggan.PelangganFragment;
-import com.buka.amanah.view.stock.StockFragment;
+import com.buka.amanah.view.pelanggan.PelangganFragmentOwl;
+import com.buka.amanah.view.stock.StockFragmentOwl;
 import com.buka.amanah.view.transaksi.TransaksiFragment;
 import com.buka.amanah.view.users.profile.UserProfile;
 import com.buka.amanah.view.home.HomeFragment;
@@ -131,8 +131,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new HomeFragment());
         adapter.addFragment(new TransaksiFragment());
         adapter.addFragment(new HutangPiutangFragment());
-        adapter.addFragment(new PelangganFragment());
-        adapter.addFragment(new StockFragment());
+        adapter.addFragment(new PelangganFragmentOwl());
+        adapter.addFragment(new StockFragmentOwl());
         viewPager.setAdapter(adapter);
     }
 

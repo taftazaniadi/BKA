@@ -44,13 +44,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_margin="@dimen/loginViewsMargin">
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="60dp">
 
                 <TextView
-                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="#092857"
+                    android:textFontWeight="700"
+                    android:fontFamily="@font/poppins"
                     android:text="Informasi Detail Penerimaan" />
 
             </LinearLayout>
@@ -59,17 +62,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_margin="@dimen/loginViewsMargin">
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="60dp">
 
                 <TextView
-                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#092857"
+                    android:textFontWeight="700"
+                    android:fontFamily="@font/poppins"
                     android:text="Hari, Tanggal" />
 
                 <TextView
                     android:id="@+id/txtHariTgl"
-                    style="@style/modifiedEditTextAlamat"
+                    android:textSize="15sp"
+                    android:textColor="#092857"
+                    android:textFontWeight="400"
+                    android:fontFamily="@font/poppins"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Informasi Detail Penerimaan" />
@@ -80,17 +90,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_margin="@dimen/loginViewsMargin">
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="60dp">
 
                 <TextView
-                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#092857"
+                    android:textFontWeight="700"
+                    android:fontFamily="@font/poppins"
                     android:text="Pelanggan" />
 
                 <TextView
                     android:id="@+id/txtPelangganPenerimaan"
-                    style="@style/modifiedEditTextAlamat"
+                    android:textSize="15sp"
+                    android:textColor="#092857"
+                    android:textFontWeight="400"
+                    android:fontFamily="@font/poppins"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Informasi Detail Penerimaan" />
@@ -101,17 +118,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_margin="@dimen/loginViewsMargin">
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="60dp">
 
                 <TextView
-                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#092857"
+                    android:textFontWeight="700"
+                    android:fontFamily="@font/poppins"
                     android:text="Penerimaan" />
 
                 <TextView
                     android:id="@+id/txtPenerimaan"
-                    style="@style/modifiedEditTextAlamat"
+                    android:textSize="15sp"
+                    android:textColor="#092857"
+                    android:textFontWeight="400"
+                    android:fontFamily="@font/poppins"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Informasi Detail Penerimaan" />
@@ -122,17 +146,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_margin="@dimen/loginViewsMargin">
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="60dp">
 
                 <TextView
-                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#092857"
+                    android:textFontWeight="700"
+                    android:fontFamily="@font/poppins"
                     android:text="Jumlah" />
 
                 <TextView
                     android:id="@+id/txtJumlahPenerimaan"
-                    style="@style/modifiedEditTextAlamat"
+                    android:textSize="15sp"
+                    android:textColor="#092857"
+                    android:textFontWeight="400"
+                    android:fontFamily="@font/poppins"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Informasi Detail Penerimaan" />
@@ -143,17 +174,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_margin="@dimen/loginViewsMargin">
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="60dp">
 
                 <TextView
-                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#092857"
+                    android:textFontWeight="700"
+                    android:fontFamily="@font/poppins"
                     android:text="Harga" />
 
                 <TextView
                     android:id="@+id/txtHargaPenerimaan"
-                    style="@style/modifiedEditTextAlamat"
+                    android:textSize="15sp"
+                    android:textColor="#092857"
+                    android:textFontWeight="400"
+                    android:fontFamily="@font/poppins"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Informasi Detail Penerimaan" />
@@ -164,10 +202,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_margin="@dimen/loginViewsMargin">
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="60dp">
 
                 <TextView
-                    style="@style/modifiedEditTextAlamat"
+                    android:textSize="15sp"
+                    android:textColor="#092857"
+                    android:textFontWeight="400"
+                    android:fontFamily="@font/poppins"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -175,10 +217,13 @@
 
                 <TextView
                     android:id="@+id/txtTotalPenerimaan"
-                    style="@style/modifiedEditTextDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="#092857"
+                    android:textFontWeight="700"
+                    android:fontFamily="@font/poppins"
                     android:text="Informasi Detail Penerimaan" />
 
             </LinearLayout>

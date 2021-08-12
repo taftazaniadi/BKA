@@ -3,11 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/button_transparant.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/shape_bg_header_table_gray.xml" value="0.29322916666666665" />
         <entry key="app/src/main/res/layout/activity_add_hutang_usaha.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/activity_forgot_password_input_otp.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/activity_hutang_galon.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3671794871794872" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3729166666666667" />
+        <entry key="app/src/main/res/layout/activity_penerimaan_owl.xml" value="0.32222222222222224" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3729166666666667" />
+        <entry key="app/src/main/res/layout/item_home_advertisement.xml" value="0.32222222222222224" />
         <entry key="app/src/main/res/menu/home_menu.xml" value="0.3671794871794872" />
         <entry key="app/src/main/res/menu/item_menu.xml" value="0.3671794871794872" />
       </map>
