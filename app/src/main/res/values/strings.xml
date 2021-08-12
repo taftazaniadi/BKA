@@ -101,6 +101,10 @@
     <string name="host_get_stock">http://bukukas-api.herokuapp.com/api/stocks/get</string>
     <!--    <string name="host_update_stock">http://bukukas-api.herokuapp.com/api/customers/detail</string>-->
 
+    <string name="host_debt_bussiness_add">http://bukukas-api.herokuapp.com/api/debts/add</string>
+
+    <string name="host_debt_gallon_add">http://bukukas-api.herokuapp.com/api/debts/add</string>
+    
     <string name="host_get_branch_list">http://bukukas-api.herokuapp.com/api/get/branches</string>
     <string name="host_get_kecamatan_list">http://bukukas-api.herokuapp.com/api/get/districts?branch</string>
 </resources>

@@ -133,7 +133,7 @@
                 android:hint="Harga">
 
                 <EditText
-                    android:id="@+id/editTextHarga"
+                    android:id="@+id/editTextHargaGalon"
                     style="@style/modifiedEditText"
                     android:enabled="false"
                     android:fontFamily="@font/poppins"
@@ -150,7 +150,7 @@
                 android:hint="Total Rupiah">
 
                 <EditText
-                    android:id="@+id/editTextTotal"
+                    android:id="@+id/editTextTotalGalon"
                     style="@style/modifiedEditText"
                     android:enabled="false"
                     android:fontFamily="@font/poppins"

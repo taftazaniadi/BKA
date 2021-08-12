@@ -13,9 +13,11 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -43,6 +45,9 @@ import com.buka.amanah.model.cust_list.CustList;
 import com.buka.amanah.model.cust_list.DataCust;
 import com.buka.amanah.model.detail_biaya.DataDetail;
 import com.buka.amanah.model.detail_biaya.DetailBiaya;
+import com.buka.amanah.model.receipt_get.ReceiptView;
+import com.buka.amanah.view.transaksi.penerimaan.FormPenerimaan;
+import com.buka.amanah.view.transaksi.penerimaan.PenerimaanActivity;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -71,8 +76,8 @@ public class FormHutangUsaha extends AppCompatActivity {
     private EditText etTgl, etCatatan, etTotal;
     AutoCompleteTextView actPelanggan, actBiaya, actDetailBiaya;
     ImageButton etPickTgl;
-    Button btnBatal;
-    String id_type, id_cust, id_detail;
+    Button btnBatal, btnHutangUsaha;
+    String id_biaya, id_cust, id_detail;
     int a, b;
     CustList custList = new CustList();
     BiayaList biayaList = new BiayaList();
@@ -83,6 +88,7 @@ public class FormHutangUsaha extends AppCompatActivity {
     LinkedHashSet<String> dataSet = new LinkedHashSet<>();
     LinkedHashSet<String> dataSet1 = new LinkedHashSet<>();
     LinkedHashSet<String> dataSet2 = new LinkedHashSet<>();
+    private String dataCust, dataBiaya, dataDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,8 +101,6 @@ public class FormHutangUsaha extends AppCompatActivity {
 
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
-        //actionbar.setLogo(R.drawable.ic_logo);
-        actionbar.setTitle("Tambah Hutang Usaha");
 
         etTgl = findViewById(R.id.editTextTglHutangUsaha);
         etPickTgl = (ImageButton) findViewById(R.id.buttonPickTglHutangUsaha);
@@ -106,6 +110,7 @@ public class FormHutangUsaha extends AppCompatActivity {
         actBiaya = (AutoCompleteTextView) findViewById(R.id.actBiaya);
         actDetailBiaya = (AutoCompleteTextView) findViewById(R.id.actDetailBiaya);
         btnBatal = findViewById(R.id.btn_cancel_hutang_usaha);
+        btnHutangUsaha = findViewById(R.id.btn_form_hutang_usaha);
 
         // making notification bar transparent
         changeStatusBarColor();
@@ -114,6 +119,28 @@ public class FormHutangUsaha extends AppCompatActivity {
 
         sharedPreferences = getApplication().getSharedPreferences("BuKaAuth", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+
+        if (getIntent().getStringExtra("method").equalsIgnoreCase("Edit")) {
+            actionbar.setTitle("Edit Hutang Usaha");
+
+            getDetailHutangUsaha(getIntent().getStringExtra("receiptId"));
+
+            btnHutangUsaha.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    updateHutangUsaha();
+                }
+            });
+        } else {
+            actionbar.setTitle("Tambah Hutang Usaha");
+
+            btnHutangUsaha.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    addHutangUsaha();
+                }
+            });
+        }
 
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -141,6 +168,21 @@ public class FormHutangUsaha extends AppCompatActivity {
         });
 
         getCustList();
+        actPelanggan.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                actPelanggan.showDropDown();
+                InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(actPelanggan.getWindowToken(), 0);
+                return false;
+            }
+        });
+        actPelanggan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actPelanggan.showDropDown();
+            }
+        });
         actPelanggan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -159,6 +201,22 @@ public class FormHutangUsaha extends AppCompatActivity {
         });
 
         getBiayaList();
+        actBiaya.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                actBiaya.showDropDown();
+                InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(actBiaya.getWindowToken(), 0);
+                return false;
+            }
+        });
+        actBiaya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                getReceiptList();
+                actBiaya.showDropDown();
+            }
+        });
         actBiaya.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -169,7 +227,7 @@ public class FormHutangUsaha extends AppCompatActivity {
 
                 for (Data pojo : biayaList.getData()) {
                     if (pojo.getName().equals(itemName)) {
-                        id_type = pojo.getId(); // This is the correct ID
+                        id_biaya = pojo.getId(); // This is the correct ID
                         break; // No need to keep looping once you found it.
                     }
                 }
@@ -177,6 +235,21 @@ public class FormHutangUsaha extends AppCompatActivity {
         });
 
         getDetailBiayaList();
+        actDetailBiaya.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                actDetailBiaya.showDropDown();
+                InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(actDetailBiaya.getWindowToken(), 0);
+                return false;
+            }
+        });
+        actDetailBiaya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actDetailBiaya.showDropDown();
+            }
+        });
         actDetailBiaya.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -338,63 +411,99 @@ public class FormHutangUsaha extends AppCompatActivity {
         etTgl.setText(sdf.format(myCalendar.getTime()));
     }
 
-    public void confirmation(View view) {
-        MaterialDialog mDialog = new MaterialDialog.Builder(FormHutangUsaha.this)
-                .setTitle("Confirmation", TextAlignment.CENTER)
-                .setMessage("Apa anda yakin untuk menambahkan Data Hutang Usaha ini?")
-                .setAnimation("542-warning-sign.json")
-                .setPositiveButton("Yes", new MaterialDialog.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        addHutangUsaha();
-                        dialogInterface.dismiss();
+    private void getDetailHutangUsaha(String id) {
+        String url = getString(R.string.host_receipt_detail);
 
-//                        Intent i = new Intent(getApplicationContext(), DetailPenerimaan.class);
-//                        i.putExtra("tgl", etTgl.getText().toString());
-//                        i.putExtra("cust", actPelanggan.getText().toString());
-//                        i.putExtra("receipt", actPengeluaran.getText().toString());
-//                        i.putExtra("amount", etJumlah.getText().toString());
-//                        i.putExtra("price", etHarga.getText().toString());
-//                        i.putExtra("total", etTotal.getText().toString());
-//                        startActivity(i);
-//                        finish();
-                    }
-                })
-                .setNegativeButton("No", new MaterialDialog.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        dialogInterface.dismiss();
-                    }
-                })
-                .build();
+        try {
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("receiptId", Integer.parseInt(id));
 
-        // Show Dialog
-        mDialog.show();
+            final String mRequestBody = jsonBody.toString();
+            System.out.println("DATA JSON : " + mRequestBody);
+
+            final ProgressDialog progressDialog = new ProgressDialog(FormHutangUsaha.this);
+            progressDialog.setMessage("Loading ...");
+            progressDialog.show();
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.i("LOG_VOLLEY", response);
+
+                    progressDialog.dismiss();
+
+                    Gson gson = new Gson();
+                    ReceiptView message = gson.fromJson(response, ReceiptView.class);
+
+                    etTgl.setText(message.getData()[0].getCreatedAtRaw().substring(0, 10));
+                    etTotal.setText(message.getData()[0].getCustomerName());
+                    etCatatan.setText(message.getData()[0].getType());
+                    actPelanggan.setText(message.getData()[0].getAmount());
+                    actBiaya.setText(message.getData()[0].getPrice().replace(",", ""));
+                    actDetailBiaya.setText(message.getData()[0].getTotal().replace(",", ""));
+
+                    dataCust = message.getData()[0].getCustomerId();
+                    dataBiaya = message.getData()[0].getTypeId();
+                    dataDetail = message.getData()[0].getAmount();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("LOG_VOLLEY", error.toString());
+
+                    progressDialog.dismiss();
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap headers = new HashMap();
+
+                    String access_token = sharedPreferences.getString("token", "");
+
+                    headers.put("Authorization", "Bearer " + access_token);
+                    headers.put("Content-Type", "application/json; charset=utf-8");
+
+                    return headers;
+                }
+
+                @Override
+                public byte[] getBody() throws AuthFailureError {
+                    return mRequestBody == null ? null : mRequestBody.getBytes(StandardCharsets.UTF_8);
+                }
+
+                @Override
+                protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                    String responseString = "";
+                    if (response != null) {
+
+                        String responseData = new String(response.data, StandardCharsets.UTF_8);
+
+                        responseString = responseData;
+
+                    }
+                    return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                }
+            };
+
+            // Add the request to the RequestQueue.
+            mRequestQueue.add(stringRequest);
+            System.out.println("RESPONSE API >>> " + stringRequest.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void addHutangUsaha() {
-        String url = getString(R.string.host_disbursement);
+        String url = getString(R.string.host_debt_bussiness_add);
 
-        // Request a string response from the provided URL.
-//        if (email.getText().toString().equalsIgnoreCase("") || password.getText().toString().equalsIgnoreCase("")) {
-//            MaterialAlertDialogBuilder alertDialog = new MaterialAlertDialogBuilder(UpdateUserProfile.this, R.style.AlertDialogTheme);
-//            alertDialog.setTitle("Login Gagal");
-//            alertDialog.setMessage("Mohon Input Username & Password terlebih dahulu !");
-//            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    dialogInterface.dismiss();
-//                }
-//            });
-//            alertDialog.show();
-//        } else {
         try {
             JSONObject jsonBody = new JSONObject();
-//            jsonBody.put("date", etTgl.getText().toString() + " 00:00:00");
-//            jsonBody.put("type", Integer.parseInt(id_type));
-//            jsonBody.put("category", Integer.parseInt(id_detail));
-//            jsonBody.put("total", Integer.parseInt(etTotal.getText().toString()));
-//            jsonBody.put("detail", etKeterangan.getText().toString());
+            jsonBody.put("date", etTgl.getText().toString() + " 00:00:00");
+            jsonBody.put("customerId", Integer.parseInt(id_cust));
+            jsonBody.put("debtCategory", 1);
+            jsonBody.put("debtType", Integer.parseInt(id_biaya));
+            jsonBody.put("debtTypeOpt", Integer.parseInt(id_detail));
+
             final String mRequestBody = jsonBody.toString();
             System.out.println("DATA JSON : " + mRequestBody);
 
@@ -417,19 +526,25 @@ public class FormHutangUsaha extends AppCompatActivity {
                                 .setTitle("Success", TextAlignment.CENTER)
                                 .setMessage("Data has been Saved")
                                 .setAnimation("6717-loading-passed-state.json")
-                                .setPositiveButton("DONE", new MaterialDialog.OnClickListener() {
+                                .setPositiveButton("Selesai", new MaterialDialog.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int which) {
                                         dialogInterface.dismiss();
 
-//                                        Intent i = new Intent(getApplicationContext(), DetailPengeluaran.class);
-//                                        i.putExtra("tgl", etTgl.getText().toString());
-//                                        i.putExtra("biaya", actBiaya.getText().toString());
-//                                        i.putExtra("category", actDetailBiaya.getText().toString());
-//                                        i.putExtra("total", etTotal.getText().toString());
-//                                        i.putExtra("detail", etKeterangan.getText().toString());
-//                                        startActivity(i);
-//                                        finish();
+                                        Intent i = new Intent(getApplicationContext(), HutangUsahaActivity.class);
+                                        startActivity(i);
+                                        finishAffinity();
+                                    }
+                                })
+                                .setNegativeButton("Tambah Lagi", new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        dialogInterface.dismiss();
+
+                                        Intent i = new Intent(getApplicationContext(), FormHutangUsaha.class);
+                                        i.putExtra("method", "Add");
+                                        startActivity(i);
+                                        finishAffinity();
                                     }
                                 })
                                 .build();
@@ -449,9 +564,17 @@ public class FormHutangUsaha extends AppCompatActivity {
                     ResponseDefault message = gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ResponseDefault.class);
 
                     if (message.getStatus().equalsIgnoreCase("validation error")) {
+                        String data;
+
+                        if (message.getResponse_message().contains("|")) {
+                            data = message.getResponse_message().replace("|", "\n");
+                        } else {
+                            data = message.getResponse_message();
+                        }
+
                         MaterialDialog mDialog = new MaterialDialog.Builder(FormHutangUsaha.this)
                                 .setTitle("Failed", TextAlignment.CENTER)
-                                .setMessage("Update Profile Failed.")
+                                .setMessage(data)
                                 .setAnimation("6718-loading-fail-state.json")
                                 .setPositiveButton("OK", new MaterialDialog.OnClickListener() {
                                     @Override
@@ -503,7 +626,163 @@ public class FormHutangUsaha extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        }
+    }
+
+    public void updateHutangUsaha() {
+        String url = getString(R.string.host_update_receipt);
+        final String idCust, idBiaya, idDetail;
+
+        if (id_cust == null || id_cust.isEmpty()) {
+            idCust = dataCust;
+        } else {
+            idCust = id_cust;
+        }
+
+        if (id_biaya == null || id_biaya.isEmpty()) {
+            idBiaya = dataBiaya;
+        } else {
+            idBiaya = id_biaya;
+        }
+
+        if (id_detail == null || id_biaya.isEmpty()) {
+            idDetail = dataDetail;
+        } else {
+            idDetail = id_detail;
+        }
+
+        try {
+            JSONObject jsonBody = new JSONObject();
+//            jsonBody.put("receiptId", Integer.parseInt(getIntent().getStringExtra("receiptId")));
+//            jsonBody.put("date", etTgl.getText().toString() + " 00:00:00");
+//            jsonBody.put("custId", Integer.parseInt(idCust));
+//            jsonBody.put("type", Integer.parseInt(idType));
+//            jsonBody.put("amount", Integer.parseInt(etJumlah.getText().toString()));
+//            jsonBody.put("price", Integer.parseInt(etHarga.getText().toString()));
+//            jsonBody.put("total", Integer.parseInt(etTotal.getText().toString()));
+
+            final String mRequestBody = jsonBody.toString();
+            System.out.println("DATA JSON : " + mRequestBody);
+
+            final ProgressDialog progressDialog = new ProgressDialog(FormHutangUsaha.this);
+            progressDialog.setMessage("Loading ...");
+            progressDialog.show();
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.i("LOG_VOLLEY", response);
+
+                    progressDialog.dismiss();
+
+                    Gson gson = new Gson();
+                    ResponseDefault message = gson.fromJson(response, ResponseDefault.class);
+
+                    if (message.getStatus().equalsIgnoreCase("success")) {
+                        MaterialDialog mDialog = new MaterialDialog.Builder(FormHutangUsaha.this)
+                                .setTitle("Success", TextAlignment.CENTER)
+                                .setMessage("Data has been Updated")
+                                .setAnimation("6717-loading-passed-state.json")
+                                .setPositiveButton("Selesai", new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        dialogInterface.dismiss();
+
+                                        Intent i = new Intent(getApplicationContext(), HutangUsahaActivity.class);
+                                        startActivity(i);
+                                        finishAffinity();
+                                    }
+                                })
+                                .setNegativeButton("Tambah Lagi", new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        dialogInterface.dismiss();
+
+                                        Intent i = new Intent(getApplicationContext(), FormHutangUsaha.class);
+                                        i.putExtra("method", "Add");
+                                        startActivity(i);
+                                        finishAffinity();
+                                    }
+                                })
+                                .build();
+
+                        // Show Dialog
+                        mDialog.show();
+
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("LOG_VOLLEY", error.toString());
+
+                    progressDialog.dismiss();
+
+                    Gson gson = new Gson();
+                    ResponseDefault message = gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ResponseDefault.class);
+
+                    if (message.getStatus().equalsIgnoreCase("validation error")) {
+                        String data;
+
+                        if (message.getResponse_message().contains("|")) {
+                            data = message.getResponse_message().replace("|", "\n");
+                        } else {
+                            data = message.getResponse_message();
+                        }
+
+                        MaterialDialog mDialog = new MaterialDialog.Builder(FormHutangUsaha.this)
+                                .setTitle("Failed", TextAlignment.CENTER)
+                                .setMessage(data)
+                                .setAnimation("6718-loading-fail-state.json")
+                                .setPositiveButton("OK", new MaterialDialog.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                .build();
+
+                        // Show Dialog
+                        mDialog.show();
+                    }
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap headers = new HashMap();
+
+                    String access_token = sharedPreferences.getString("token", "");
+
+                    headers.put("Authorization", "Bearer " + access_token);
+                    headers.put("Content-Type", "application/json; charset=utf-8");
+
+                    return headers;
+                }
+
+                @Override
+                public byte[] getBody() throws AuthFailureError {
+                    return mRequestBody == null ? null : mRequestBody.getBytes(StandardCharsets.UTF_8);
+                }
+
+                @Override
+                protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                    String responseString = "";
+                    if (response != null) {
+
+                        String responseData = new String(response.data, StandardCharsets.UTF_8);
+
+                        responseString = responseData;
+
+                    }
+                    return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                }
+            };
+
+            // Add the request to the RequestQueue.
+            mRequestQueue.add(stringRequest);
+            System.out.println("RESPONSE API >>> " + stringRequest.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
